@@ -191,14 +191,25 @@ figcaption{margin-top:16px;font-size:14.5px;color:var(--muted);line-height:1.55}
 /* ---------- 5 — THE OFFER ---------- */
 .offer{text-align:center}
 .offer h2{margin:0 auto}
-.beats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;margin-top:44px;
-  text-align:left}
+/* Centred, like everything else on this band — these were left-aligned inside
+   a centred section, which is what made the row look broken. */
+/* Held in from the full 1120 shell — spread across the whole width the three
+   short beats read as scattered rather than as a group. */
+.beats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px;
+  margin:46px auto 0;max-width:1000px}
 /* All three beats stay at 17px. "It won't be our best work" is the best line
-   on the band and it still must not be the loudest thing on it — the CTA is. */
-.beats p{font-size:17px;line-height:1.6;color:#CBB9A8;max-width:none;margin-top:0}
-.sharpen{font-size:17px;line-height:1.65;color:#CBB9A8;max-width:620px;margin:40px auto 0}
-.start{font-family:var(--display);font-weight:700;font-size:20px;color:var(--gold);
-  max-width:620px;margin:22px auto 34px}
+   on the band and it still must not be the loudest thing on it — the CTA is.
+   The short gold rule is what marks them as three parallel items; without it
+   they read as one paragraph that has been broken in odd places. */
+.beats p{position:relative;padding-top:24px;font-size:17px;line-height:1.6;
+  color:#CBB9A8;max-width:none;margin-top:0;text-wrap:balance}
+.beats p::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:34px;height:2px;background:var(--gold);border-radius:1px}
+.sharpen{font-size:17px;line-height:1.65;color:#CBB9A8;max-width:560px;margin:42px auto 0}
+/* Display face rather than gold. The CTA sits directly below and is gold; two
+   gold things stacked means neither wins the band. */
+.start{font-family:var(--display);font-weight:700;font-size:19px;color:#CBB9A8;
+  max-width:560px;margin:20px auto 32px}
 
 /* ---------- 6 — TESTIMONIAL (dormant until there is a real quote) ---------- */
 .quote-band{background:#fff}
@@ -298,7 +309,9 @@ figcaption{margin-top:16px;font-size:14.5px;color:var(--muted);line-height:1.55}
 
   .globe p{font-size:16px}
   .beats p,.sharpen{font-size:16px}
-  .sharpen{margin-top:30px}
+  /* clear of the last beat: stacked, the gold rules space the beats about
+     70px apart, so a tighter gap here makes this read as a fourth beat */
+  .sharpen{margin-top:46px}
   .start{font-size:18px;margin-bottom:28px}
   /* the closing CTA is long enough to wrap at this width */
   .cta{line-height:1.35}
