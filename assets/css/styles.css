@@ -63,7 +63,10 @@ nav{position:sticky;top:0;z-index:50;background:rgba(248,245,238,.92);
 /* ---------- HERO ---------- */
 .hero{padding-top:110px;padding-bottom:130px}
 /* Single left-aligned column. With the demo gone a stretched full-width block
-   reads worse, and one column keeps the eye on one path: sentence, sub, input. */
+   reads worse, and one column keeps the eye on one path: sentence, sub, input.
+   This sits INSIDE .shell rather than on it — putting max-width on the shell
+   itself inherits its margin:0 auto, which re-centres the column and pushes the
+   hero 200px off the left margin that sections 1 and 3 establish. */
 .hero-col{max-width:720px}
 .hero .sub{font-size:19px;line-height:1.6;color:var(--muted);margin:26px 0 34px;max-width:520px}
 .tagline{margin-top:30px;font-family:var(--display);font-weight:500;font-size:15px;
@@ -181,12 +184,16 @@ figcaption{margin-top:16px;font-size:14.5px;color:var(--muted);line-height:1.55}
 .ledger-field b{font-family:var(--display);font-weight:700;font-size:19px;color:var(--berry-deep)}
 
 /* ---------- 4 — THE TURN ---------- */
-/* No card here. The turn works because the page goes quiet around it. */
-.narrow{max-width:640px;margin:0 auto;text-align:center}
-.narrow h2{margin:0 auto}
+/* No card here. The turn works because the page goes quiet around it.
+   Left-aligned on the page's spine, not centred: three paragraphs of centred
+   body copy rag on both edges and are genuinely harder to read, and this was
+   the third centred section in a row at the bottom of the page. */
+.narrow{max-width:640px}
 .narrow p{font-size:17px;line-height:1.65;margin-bottom:16px}
+/* The reversal. It needs more space above than a paragraph gap, or it reads as
+   a subheading of the line before it rather than an answer to it. */
 .turn{font-family:var(--display);font-weight:700;font-size:clamp(22px,3vw,28px);
-  line-height:1.2;margin:26px 0 34px}
+  line-height:1.2;margin:32px 0 42px}
 
 /* ---------- 5 — THE OFFER ---------- */
 .offer{text-align:center}
