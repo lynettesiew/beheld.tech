@@ -119,7 +119,7 @@ every reference to it.
 grep -rn "?v=" index.html 404.html
 ```
 
-Currently at `v=6`. After a bump, the first 10 minutes still serve some visitors
+Currently at `v=7`. After a bump, the first 10 minutes still serve some visitors
 cached HTML pointing at the old URL; after that everyone is guaranteed a matched
 pair.
 
