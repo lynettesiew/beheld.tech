@@ -100,6 +100,29 @@ drops its labels below 10px. Both sit in the DOM; the `<figure>` carries
 `role="img"` and the `aria-label`, and both `<svg>`s are `aria-hidden`, so a screen
 reader announces the claim once rather than twice.
 
+## Cache busting — read before you deploy a style change
+
+GitHub Pages serves everything with `Cache-Control: max-age=600`, and this site
+has no build step, so asset filenames never change on their own. That means a
+returning visitor can load **new HTML against an old stylesheet** — which looks
+like the site is broken rather than cached: headings stick and overlap, the hero
+input loses its frame, the screen-reader label becomes visible, and any SVG using
+a newly-added CSS variable falls back to solid black.
+
+So: **whenever you change `styles.css` or `main.js`, bump the `?v=` number** on
+every reference to it.
+
+- `index.html` — two references (the stylesheet and the script)
+- `404.html` — one reference (the stylesheet)
+
+```bash
+grep -rn "?v=" index.html 404.html
+```
+
+Currently at `v=4`. After a bump, the first 10 minutes still serve some visitors
+cached HTML pointing at the old URL; after that everyone is guaranteed a matched
+pair.
+
 ## Deploying (GitHub Pages)
 
 1. Repo **Settings → Pages → Source: Deploy from a branch**, branch `main`, folder `/ (root)`.
