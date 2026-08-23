@@ -17,6 +17,24 @@ h2{font-size:clamp(30px,4vw,52px)}
 .hl{background:linear-gradient(transparent 58%, rgba(215,156,58,.5) 58%)}
 .muted{color:var(--muted)}
 
+/* Sentence scale — sits alongside the display scale above, it does not
+   replace it. h1/h2 stay as they are for the short lines ("We go and ask.",
+   "Nobody should build alone."). Headlines that are actual sentences get
+   .h-sentence: lighter weight and looser leading, because a reader needs the
+   line gap to track back to the left margin. max-width in em holds each line
+   to roughly 32-38 characters and scales with the font. */
+.h-sentence{font-weight:700;letter-spacing:-0.012em;line-height:1.10;text-wrap:balance}
+h1.h-sentence{font-size:clamp(32px,4.6vw,54px);max-width:15.5em}
+h2.h-sentence{font-size:clamp(26px,3.4vw,40px);max-width:17em}
+
+/* Section 2's closing line and Section 1's. Was scoped .problem .kicker,
+   which meant it silently did nothing outside the problem band. */
+.kicker{font-family:var(--display);font-weight:700;color:var(--berry);
+  margin-top:30px;font-size:20px}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
 /* ---------- NAV ---------- */
 nav{position:sticky;top:0;z-index:50;background:rgba(248,245,238,.92);
   backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
@@ -48,13 +66,13 @@ nav{position:sticky;top:0;z-index:50;background:rgba(248,245,238,.92);
 .cta:focus-visible,.nav-cta:focus-visible{outline:3px solid var(--berry);outline-offset:2px}
 
 /* ---------- EDITORIAL SECTIONS ---------- */
+/* The h2 used to be sticky here. Both split sections now carry a figure
+   directly under the heading, and a sticky heading with no background plate
+   would scroll over the drawing. */
 .split{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:64px;align-items:start}
-.split h2{position:sticky;top:110px}
 
 .problem-band{background:#fff}
 .problem p{font-size:19px;line-height:1.65;max-width:520px}
-.problem .kicker{font-family:var(--display);font-weight:700;color:var(--berry);
-  margin-top:30px;font-size:20px}
 
 /* ---------- GLOBAL ---------- */
 .globe-band{background:var(--ink);color:var(--bg)}
@@ -86,7 +104,6 @@ nav{position:sticky;top:0;z-index:50;background:rgba(248,245,238,.92);
 /* ---------- Tablet / small laptop ---------- */
 @media (max-width:960px){
   .split{grid-template-columns:minmax(0,1fr);gap:28px}
-  .split h2{position:static}
   section{padding-top:96px;padding-bottom:96px}
   .hero{padding-top:64px;padding-bottom:96px}
 }
@@ -112,8 +129,11 @@ nav{position:sticky;top:0;z-index:50;background:rgba(248,245,238,.92);
   .nav-link{font-size:11.5px;letter-spacing:.08em}
   .nav-cta{padding:11px 18px;font-size:12.5px}
 
+  h1.h-sentence{font-size:clamp(29px,7.6vw,36px)}
+  h2.h-sentence{font-size:clamp(23px,6vw,29px)}
+
   .problem p{font-size:17px}
-  .problem .kicker{font-size:18px;margin-top:22px}
+  .kicker{font-size:18px;margin-top:22px}
 
   .globe p{font-size:16px}
 
