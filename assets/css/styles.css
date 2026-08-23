@@ -232,7 +232,11 @@ figcaption{margin-top:16px;font-size:14.5px;color:var(--muted);line-height:1.55}
 
 /* ---------- CLOSER ---------- */
 .closer{padding-bottom:170px}
-.closer-col{max-width:var(--centred);margin:0 auto;text-align:center}
+/* Deliberately NOT centred. The offer band directly above is a centred single
+   column, and repeating that shape immediately makes the two read as one long
+   block. On the spine at the same 720px as .hero-col, the page opens and closes
+   on the same edge. */
+.closer-col{max-width:720px}
 /* balance keeps "alone." — which carries the gold underline — off a line
    of its own on narrow screens */
 .closer h2{margin-bottom:38px;text-wrap:balance}
