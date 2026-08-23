@@ -1,7 +1,13 @@
 :root{
   --ink:#43281C; --bg:#F8F5EE; --card:#FFFFFF;
-  --berry:#C05235; --berry-soft:#F7E4D4; --line:#EBDCC6; --muted:#8A7060;
+  --berry:#C05235; --berry-soft:#F7E4D4; --line:#EBDCC6;
   --gold:#D79C3A; --rust:#A94328;
+  /* Contrast pass. --muted was #8A7060 (4.22 on cream) and every coloured
+     small text item was --berry (4.29 at 13px bold, which is not large text).
+     Both now clear 4.5 against the existing cream, so the fix does not wait
+     on the brand repaint: #806656 measures 4.88, #B5462E measures 4.97. */
+  --muted:#806656;
+  --berry-deep:#B5462E;
   --display:'Bricolage Grotesque',sans-serif;
 }
 *{box-sizing:border-box;margin:0}
@@ -13,7 +19,7 @@ h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.02;letter-spac
 h1{font-size:clamp(40px,6vw,76px)}
 h2{font-size:clamp(30px,4vw,52px)}
 .eyebrow{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--berry);margin-bottom:18px}
+  text-transform:uppercase;color:var(--berry-deep);margin-bottom:18px}
 .hl{background:linear-gradient(transparent 58%, rgba(215,156,58,.5) 58%)}
 .muted{color:var(--muted)}
 
@@ -100,6 +106,15 @@ nav{position:sticky;top:0;z-index:50;background:rgba(248,245,238,.92);
 .globe-band{background:var(--ink);color:var(--bg)}
 .globe h2{color:#fff;max-width:640px}
 .globe p{font-size:17px;color:#CBB9A8;max-width:480px;margin-top:26px;line-height:1.65}
+
+/* Contrast on the dark band. Berry on ink is 2.89:1 — below the 3:1 floor
+   for a UI component, never mind readable. Both fixes land on gold: ink on
+   #D79C3A measures 5.58, and gold on ink measures the same. Body copy stays
+   #CBB9A8, which is already 7.08. */
+.globe-band .eyebrow{color:var(--gold)}
+.globe-band .cta{background:var(--gold);color:var(--ink)}
+.globe-band .cta:hover{box-shadow:0 6px 18px rgba(215,156,58,.35)}
+.globe-band .cta:focus-visible{outline-color:var(--gold)}
 
 /* ---------- CLOSER ---------- */
 .closer{text-align:center;padding-bottom:170px}
