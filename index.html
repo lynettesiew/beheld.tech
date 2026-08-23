@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BeHeld — Nobody should build alone</title>
+<meta name="description" content="Small circles of founders, matched by what you're stuck on — with people who push you, and who remember what you said you'd do.">
+<link rel="canonical" href="https://beheld.tech/">
+<meta name="theme-color" content="#F8F5EE">
+
+<!-- Social sharing -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BeHeld">
+<meta property="og:url" content="https://beheld.tech/">
+<meta property="og:title" content="BeHeld — Nobody should build alone">
+<meta property="og:description" content="Small circles of founders, matched by what you're stuck on — with people who push you, and who remember what you said you'd do.">
+<meta property="og:image" content="https://beheld.tech/assets/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="BeHeld — be seen, be held, move forward together.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BeHeld — Nobody should build alone">
+<meta name="twitter:description" content="Small circles of founders, matched by what you're stuck on — with people who push you, and who remember what you said you'd do.">
+<meta name="twitter:image" content="https://beheld.tech/assets/img/og-image.png">
+
+<!-- Icons -->
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/styles.css">
+<script src="assets/js/main.js" defer></script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#top">Be<span>Held</span></a>
+    <a class="nav-link" href="#how">How it works</a>
+    <a class="nav-link" href="#who">Who it's for</a>
+    <a class="nav-cta" href="https://tally.so/r/QK9bQG">Apply</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="shell hero-grid">
+    <div>
+      <h1>Nobody should build <span class="hl">alone.</span></h1>
+      <p class="sub">Small circles of founders, matched by what you're stuck on — with people who push you, and who remember what you said you'd do.</p>
+      <a class="cta" href="https://tally.so/r/QK9bQG">Apply to join</a>
+      <p class="tagline">BE SEEN. BE HELD. MOVE FORWARD TOGETHER.</p>
+    </div>
+    <div class="convo" id="convo" aria-live="polite">
+      <p class="prompt">What are you stuck on? Tap it:</p>
+      <div class="chips" id="chips" role="group" aria-label="Pick what you're stuck on"></div>
+    </div>
+  </div>
+</header>
+
+<!-- PROBLEM -->
+<section class="problem-band">
+  <div class="shell split problem">
+    <h2>Advice is easy to find.</h2>
+    <div>
+      <p>What's hard is finding someone who's already made the mistakes you're about to make, has exactly the skill or intro you need, or will sit with you through the part you're dreading.</p>
+      <p class="kicker">That's what a circle is for.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="shell">
+    <div class="how-head">
+      <div class="eyebrow">The rhythm</div>
+      <h2>How a circle works</h2>
+      <p>Three small habits — and every one of them is something a real person does for you. Try them:</p>
+    </div>
+    <div class="steps">
+
+      <div class="step">
+        <h3>Get matched by a human.</h3>
+        <p class="desc">Every application is read and matched by hand — by what you're stuck on, not by industry or follower count.</p>
+        <div class="ring">
+          <div class="avatar">Y</div><div class="avatar">K</div><div class="avatar">C</div>
+        </div>
+        <p class="ring-caption">Two or three founders, same wall, complementary strengths — plus the wider community behind them.</p>
+        <p class="more">You already tried this in the box above ↑</p>
+      </div>
+
+      <div class="step">
+        <h3>Ask.</h3>
+        <p class="desc">Tell your circle what you're stuck on — a voice note or a few lines of text, on your own time. Press play to hear how the help comes back:</p>
+        <div class="vn">
+          <button class="play" id="playBtn" aria-label="Play a sample ask"><span></span></button>
+          <div class="bars" id="bars" aria-hidden="true"></div>
+          <div class="vn-time" id="vnTime">0:00</div>
+        </div>
+        <p class="vn-script" id="vnScript">&ldquo;I make organic snack boxes for new moms&hellip; and I can't get them into stores without living on social media. I don't know where to start.&rdquo;</p>
+        <div class="vn-replies" id="vnReplies"></div>
+      </div>
+
+      <div class="step">
+        <h3>Make each other move.</h3>
+        <p class="desc">Every three weeks you each commit to one next step. One circle-mate is assigned to check on you personally, and the group follows up. Pick a next move:</p>
+        <div class="commit-chips" id="commitChips"></div>
+        <div id="commitOut" aria-live="polite"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GLOBAL -->
+<section class="globe-band" id="who">
+  <div class="shell globe">
+    <div class="eyebrow" style="color:var(--gold)">Who it's for</div>
+    <h2>Women building something real, in every timezone.</h2>
+    <div class="cityline">Right now: <span id="cities">New York</span></div>
+    <p>Six countries and counting — which is exactly why everything here works async, around your real life.</p>
+  </div>
+</section>
+
+<!-- CLOSER -->
+<section class="closer" id="apply">
+  <div class="shell">
+    <h2>Because someone should be<br>watching you <span class="hl">win.</span></h2>
+    <a class="cta" href="https://tally.so/r/QK9bQG">Apply to join</a>
+    <p class="fine">Free to join. Read by a human, always.</p>
+  </div>
+</section>
+
+</body>
+</html>
