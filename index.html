@@ -51,6 +51,21 @@
   <div class="shell hero-col">
     <h1 class="h-sentence">The person who could change everything doesn't know you exist.</h1>
     <p class="sub">Tell us where you're stuck, and we'll find them and ask them for you.</p>
+
+    <!-- The input name MUST stay `initial_ask` — it is the Tally hidden field
+         that pre-fills question 1. Case-sensitive. This is the only place the
+         field name is written; the browser builds ?initial_ask=… from it, so
+         the form works with JavaScript disabled. For links written by hand
+         (QR codes, email, social bios) the parameter needs a value:
+         https://tally.so/r/QK9bQG?initial_ask=get%20my%20first%20ten%20customers -->
+    <form class="ask" id="ask" action="https://tally.so/r/QK9bQG" method="get">
+      <label class="sr-only" for="initial_ask">Tell us where you're stuck</label>
+      <input id="initial_ask" name="initial_ask" type="text" placeholder="I'm trying to&hellip;"
+             autocomplete="off" enterkeyhint="go" maxlength="180">
+      <button type="submit" aria-label="Send">&rarr;</button>
+    </form>
+    <p class="ask-note">In three days we&rsquo;ll tell you who to talk to, and it costs nothing to start.</p>
+
     <p class="tagline">BE SEEN. BE HELD. MOVE FORWARD TOGETHER.</p>
   </div>
 </header>
