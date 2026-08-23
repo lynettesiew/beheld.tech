@@ -87,7 +87,7 @@ function showAfter(count){
   setTimeout(()=>{
     const a = document.createElement("div");
     a.className = "after";
-    a.innerHTML = `<p class="count"><b>${count} members</b> can help with this &middot; a global circle, from New York to Nairobi to Singapore</p>
+    a.innerHTML = `<p class="count"><b>${count} members</b> can help with this</p>
       <a class="cta" href="https://tally.so/r/QK9bQG">Join the next circle</a>
       <button class="switch" onclick="resetFlow()">Try another</button>`;
     convo.appendChild(a);
