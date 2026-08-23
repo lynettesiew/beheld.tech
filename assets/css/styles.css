@@ -1,7 +1,15 @@
 :root{
   --ink:#43281C; --bg:#F8F5EE; --card:#FFFFFF;
-  --berry:#C05235; --berry-soft:#F7E4D4; --line:#EBDCC6; --muted:#8A7060;
+  --berry:#C05235; --berry-soft:#F7E4D4; --line:#EBDCC6;
   --gold:#D79C3A; --rust:#A94328;
+  /* Contrast pass. --muted was #8A7060 (4.22 on cream) and every coloured
+     small text item was --berry (4.29 at 13px bold, which is not large text).
+     Both now clear 4.5 against the existing cream, so the fix does not wait
+     on the brand repaint: #806656 measures 4.88, #B5462E measures 4.97. */
+  --muted:#806656;
+  --berry-deep:#B5462E;
+  /* figures: one colour carries meaning, everything else is neutral */
+  --fig-line:#C9B79A; --fig-soft:#E0CDB0; --fig-tint:#FAF1E8;
   --display:'Bricolage Grotesque',sans-serif;
 }
 *{box-sizing:border-box;margin:0}
@@ -13,9 +21,27 @@ h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.02;letter-spac
 h1{font-size:clamp(40px,6vw,76px)}
 h2{font-size:clamp(30px,4vw,52px)}
 .eyebrow{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--berry);margin-bottom:18px}
+  text-transform:uppercase;color:var(--berry-deep);margin-bottom:18px}
 .hl{background:linear-gradient(transparent 58%, rgba(215,156,58,.5) 58%)}
 .muted{color:var(--muted)}
+
+/* Sentence scale — sits alongside the display scale above, it does not
+   replace it. h1/h2 stay as they are for the short lines ("We go and ask.",
+   "Nobody should build alone."). Headlines that are actual sentences get
+   .h-sentence: lighter weight and looser leading, because a reader needs the
+   line gap to track back to the left margin. max-width in em holds each line
+   to roughly 32-38 characters and scales with the font. */
+.h-sentence{font-weight:700;letter-spacing:-0.012em;line-height:1.10;text-wrap:balance}
+h1.h-sentence{font-size:clamp(32px,4.6vw,54px);max-width:15.5em}
+h2.h-sentence{font-size:clamp(26px,3.4vw,40px);max-width:17em}
+
+/* Section 2's closing line and Section 1's. Was scoped .problem .kicker,
+   which meant it silently did nothing outside the problem band. */
+.kicker{font-family:var(--display);font-weight:700;color:var(--berry);
+  margin-top:30px;font-size:20px}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
 /* ---------- NAV ---------- */
 nav{position:sticky;top:0;z-index:50;background:rgba(248,245,238,.92);
@@ -36,141 +62,156 @@ nav{position:sticky;top:0;z-index:50;background:rgba(248,245,238,.92);
 
 /* ---------- HERO ---------- */
 .hero{padding-top:110px;padding-bottom:130px}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:64px;align-items:center}
-.hero .sub{font-size:19px;line-height:1.6;color:var(--muted);margin:26px 0 34px;max-width:460px}
+/* Single left-aligned column. With the demo gone a stretched full-width block
+   reads worse, and one column keeps the eye on one path: sentence, sub, input. */
+.hero-col{max-width:720px}
+.hero .sub{font-size:19px;line-height:1.6;color:var(--muted);margin:26px 0 34px;max-width:520px}
 .tagline{margin-top:30px;font-family:var(--display);font-weight:500;font-size:15px;
   letter-spacing:.04em;color:var(--muted)}
 
-.convo{background:var(--card);border:1.5px solid var(--ink);border-radius:20px;
-  padding:22px;display:flex;flex-direction:column;gap:12px;text-align:left;
-  box-shadow:8px 8px 0 var(--berry-soft)}
-.prompt{font-family:var(--display);font-weight:700;font-size:15px;text-align:center}
-.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:8px}
-.chip{font-size:15px;font-weight:500;border:1.5px solid var(--berry);color:var(--berry);
-  background:transparent;border-radius:999px;padding:10px 18px;cursor:pointer;
-  transition:background .18s,color .18s,transform .12s;font-family:'Karla',sans-serif}
-.chip:hover{background:var(--berry-soft)}
-.chip:active{transform:scale(.97)}
-.chip[aria-pressed="true"]{background:var(--berry);color:#fff}
-.chip:focus-visible,.cta:focus-visible,.play:focus-visible,.nav-cta:focus-visible{outline:3px solid var(--berry);outline-offset:2px}
+/* ---------- THE ASK — the page's one interaction ---------- */
+/* Same card frame as .note so the two read as family. */
+.ask{display:flex;align-items:center;gap:0;max-width:560px;
+  background:var(--card);border:1.5px solid var(--ink);border-radius:16px;
+  box-shadow:8px 8px 0 var(--berry-soft);
+  transition:box-shadow .18s,border-color .18s}
+.ask:focus-within{border-color:var(--berry);
+  box-shadow:8px 8px 0 var(--berry-soft),0 0 0 3px rgba(192,82,53,.22)}
+.ask input{flex:1;min-width:0;border:none;background:none;outline:none;
+  font-family:'Karla',sans-serif;font-size:18px;color:var(--ink);padding:20px 8px 20px 22px}
+.ask input::placeholder{color:var(--muted);opacity:1}
+/* The arrow starts quiet and turns berry once there is text — that is the
+   whole feedback loop, no animation needed. The idle glyph is --muted, not
+   white: white on --line measures 1.35:1, i.e. invisible. */
+.ask button{flex:none;width:48px;height:48px;margin-right:8px;border:none;border-radius:12px;
+  background:var(--line);color:var(--muted);cursor:pointer;
+  transition:background .18s,color .18s;
+  display:flex;align-items:center;justify-content:center;font-size:20px;line-height:1}
+.ask.filled button{background:var(--berry);color:#fff}
+.ask-note{margin-top:14px;font-size:15px;color:var(--muted);max-width:520px;line-height:1.55}
 
-.bubble{max-width:88%;border-radius:16px;padding:12px 16px;font-size:15px;line-height:1.45;
-  opacity:0;transform:translateY(8px);animation:pop .35s ease forwards}
-.you{align-self:flex-end;background:var(--berry);color:#fff;border-bottom-right-radius:5px}
-.member{align-self:stretch;background:var(--bg);border:1px solid var(--line);
-  border-left:4px solid var(--berry);border-radius:12px;padding:14px 16px;
-  opacity:0;transform:translateY(8px);animation:pop .35s ease forwards}
-.mhead{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-.avatar{flex:none;width:34px;height:34px;border-radius:50%;
-  background:linear-gradient(135deg,#C05235,#D79C3A);color:#fff;
-  font-family:var(--display);font-weight:700;font-size:15px;
-  display:flex;align-items:center;justify-content:center}
-.mwho b{display:block;font-size:14px;line-height:1.25}
-.mwho span{font-size:12px;color:var(--muted)}
-.moffer{font-size:14.5px;line-height:1.45}
-.typing{align-self:flex-start;display:flex;gap:5px;padding:14px 18px;background:var(--bg);
-  border:1px solid var(--line);border-radius:16px;border-bottom-left-radius:5px}
-.typing b{width:7px;height:7px;border-radius:50%;background:var(--muted);animation:blink 1s infinite}
-.typing b:nth-child(2){animation-delay:.2s}.typing b:nth-child(3){animation-delay:.4s}
-.after{text-align:center;opacity:0;animation:pop .4s ease forwards;margin-top:8px;
-  display:flex;flex-direction:column;align-items:center;gap:12px}
-.after .count{font-size:13px;color:var(--muted)}
-.after .count b{color:var(--berry)}
 .cta{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.06em;
   text-transform:uppercase;background:var(--berry);color:#fff;border:none;border-radius:12px;
   padding:16px 30px;cursor:pointer;transition:transform .12s,box-shadow .18s;
   text-decoration:none;display:inline-block}
 .cta:hover{box-shadow:0 6px 18px rgba(192,82,53,.30);transform:translateY(-1px)}
-.switch{background:none;border:none;color:var(--muted);font-size:14px;cursor:pointer;
-  text-decoration:underline;text-underline-offset:3px;font-family:'Karla',sans-serif}
+.cta:focus-visible,.nav-cta:focus-visible,.ask button:focus-visible{
+  outline:3px solid var(--berry);outline-offset:2px}
 
 /* ---------- EDITORIAL SECTIONS ---------- */
+/* The h2 used to be sticky here. Both split sections now carry a figure
+   directly under the heading, and a sticky heading with no background plate
+   would scroll over the drawing. */
 .split{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:64px;align-items:start}
-.split h2{position:sticky;top:110px}
 
 .problem-band{background:#fff}
 .problem p{font-size:19px;line-height:1.65;max-width:520px}
-.problem .kicker{font-family:var(--display);font-weight:700;color:var(--berry);
-  margin-top:30px;font-size:20px}
-
-.how-head{max-width:560px;margin-bottom:64px}
-.how-head p{font-size:17px;color:var(--muted);line-height:1.6;margin-top:16px}
-/* minmax(0,1fr) keeps the three cards exactly equal — plain 1fr means
-   minmax(auto,1fr), which lets a wide child stretch its own column */
-.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;align-items:start;
-  counter-reset:stepnum}
-.step{background:var(--card);border:1.5px solid var(--ink);border-radius:20px;padding:28px;
-  position:relative;counter-increment:stepnum}
-.step:nth-child(2){box-shadow:8px 8px 0 var(--berry-soft)}
-.step::before{content:counter(stepnum,decimal-leading-zero);position:absolute;top:-18px;left:22px;
-  font-family:var(--display);font-weight:800;font-size:15px;color:#fff;background:var(--berry);
-  border-radius:10px;padding:6px 12px;letter-spacing:.08em}
-.step h3{font-size:24px;margin:8px 0 10px}
-.step .desc{font-size:15px;color:var(--muted);line-height:1.55;margin-bottom:16px}
-.step .more{font-family:var(--display);font-weight:700;font-size:13px;color:var(--berry);
-  margin-top:16px;letter-spacing:.04em}
-
-.ring{display:flex;justify-content:center;margin:10px 0 4px}
-.ring .avatar{width:46px;height:46px;font-size:19px;border:3px solid #fff;margin:0 -7px}
-.ring-caption{text-align:center;font-size:13px;color:var(--muted);margin-top:12px}
-
-.vn{display:flex;align-items:center;gap:12px;background:var(--bg);border:1px solid var(--line);
-  border-radius:999px;padding:10px 16px}
-.play{flex:none;width:38px;height:38px;border-radius:50%;background:var(--berry);border:none;
-  cursor:pointer;display:flex;align-items:center;justify-content:center}
-.play span{width:0;height:0;border-left:11px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:2px}
-.play.playing span{border:none;width:10px;height:12px;border-left:3.5px solid #fff;border-right:3.5px solid #fff;margin:0}
-/* min-width:0 lets the waveform shrink instead of forcing the card wider than
-   its column; the bars themselves flex so all 34 stay visible at any width */
-.bars{flex:1;min-width:0;display:flex;align-items:center;gap:2px;height:26px;overflow:hidden}
-.bars i{flex:1 1 3px;min-width:1px;max-width:3px;border-radius:2px;background:var(--line);
-  display:block;transition:background .2s}
-.bars i.lit{background:var(--gold)}
-.vn-time{flex:none;font-size:12px;color:var(--muted);min-width:34px;text-align:right}
-.vn-script{margin-top:10px;font-size:14px;font-style:italic;color:var(--muted);opacity:0;transition:opacity .4s}
-.vn-script.show{opacity:1}
-.vn-lead{font-family:var(--display);font-weight:700;font-size:13.5px;color:var(--berry);
-  margin-top:14px;opacity:0;animation:pop .3s ease forwards}
-.vn-replies{margin-top:12px;display:flex;flex-direction:column;gap:10px}
-.help{background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--gold);
-  border-radius:12px;padding:12px 14px;font-size:14.5px;line-height:1.5;
-  opacity:0;transform:translateY(6px);animation:pop .3s ease forwards}
-.hhead{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;flex-wrap:wrap}
-.hwho{flex:1;min-width:120px}
-.hwho b{display:block;font-size:13.5px;line-height:1.25}
-.hwho span{font-size:12px;color:var(--muted)}
-.htag{flex:none;font-family:var(--display);font-weight:700;font-size:10px;letter-spacing:.1em;
-  text-transform:uppercase;color:#fff;background:var(--gold);border-radius:8px;padding:4px 9px}
-.htag.exp{background:var(--berry)}
-.htag.intro{background:var(--rust)}
-.htag.idea{background:var(--gold)}
-
-.commit-chips{display:flex;flex-wrap:wrap;gap:8px}
-.commit-card{margin-top:12px;background:var(--bg);border:1px solid var(--line);border-radius:12px;
-  padding:14px 16px;font-size:14.5px;line-height:1.5;opacity:0;transform:translateY(6px);animation:pop .3s ease forwards}
-.commit-card b{color:var(--berry)}
-.nudge{margin-top:10px;background:#fff;border:1px solid var(--line);
-  border-left:4px solid var(--berry);border-radius:12px;padding:12px 16px;font-size:14.5px;
-  opacity:0;transform:translateY(6px);animation:pop .3s ease forwards}
-.nudge .from{font-family:var(--display);font-weight:700;font-size:11px;color:var(--berry);
-  letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
-.outcome{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;opacity:0;animation:pop .3s ease forwards}
-.grad{margin-top:12px;background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);
-  border-radius:12px;padding:14px 16px;font-size:14.5px;line-height:1.5;
-  opacity:0;transform:translateY(6px);animation:pop .3s ease forwards}
-.grad .gtitle{font-family:var(--display);font-weight:700;font-size:16px;margin-bottom:4px}
-.grad .gsub{color:var(--muted);font-size:13.5px;margin-bottom:10px}
-.final{margin-top:10px;font-size:14.5px;color:var(--berry);font-weight:700;opacity:0;animation:pop .3s ease forwards}
+.problem p + p{margin-top:18px}
 
 /* ---------- GLOBAL ---------- */
 .globe-band{background:var(--ink);color:var(--bg)}
 .globe h2{color:#fff;max-width:640px}
-.globe .cityline{margin-top:26px;font-family:var(--display);font-weight:700;font-size:clamp(22px,3.4vw,34px);color:var(--gold)}
 .globe p{font-size:17px;color:#CBB9A8;max-width:480px;margin-top:26px;line-height:1.65}
+
+/* Contrast on the dark band. Berry on ink is 2.89:1 — below the 3:1 floor
+   for a UI component, never mind readable. Both fixes land on gold: ink on
+   #D79C3A measures 5.58, and gold on ink measures the same. Body copy stays
+   #CBB9A8, which is already 7.08. */
+.globe-band .eyebrow{color:var(--gold)}
+.globe-band .cta{background:var(--gold);color:var(--ink)}
+.globe-band .cta:hover{box-shadow:0 6px 18px rgba(215,156,58,.35)}
+.globe-band .cta:focus-visible{outline-color:var(--gold)}
+
+/* ---------- FIGURES ---------- */
+/* Three drawings, each showing a mechanism the prose has to describe in the
+   negative. Narrow screens get a redrawn figure, not a scaled one: squeezing
+   a wide viewBox into 350px drops 14px labels under 10px. Both drawings sit
+   in the DOM, so the label lives on the <figure> and both <svg>s are hidden
+   from assistive tech — otherwise a screen reader announces the claim twice. */
+.fig{margin:34px 0 0}
+/* both selectors are scoped to .fig so the show/hide pair keeps a higher
+   specificity than the display:block above it and actually wins */
+.fig svg{width:100%;height:auto}
+.fig .fig-wide{display:block}
+.fig .fig-narrow{display:none}
+.fig text{font-family:'Karla',sans-serif}
+.fig .t-label{font-size:13px;fill:var(--ink)}
+/* 12px, not 11.5: these viewBoxes render slightly under 1:1 in their
+   containers, and 11.5 was landing at 10.8 on screen. */
+.fig .t-small{font-size:12px;fill:var(--muted)}
+.fig .t-lead{font-family:var(--display);font-weight:700;font-size:13px;fill:var(--berry-deep);
+  letter-spacing:.06em;text-transform:uppercase}
+.fig .t-strong{font-family:var(--display);font-weight:700;font-size:13px;fill:var(--berry-deep)}
+.fig-narrow .t-strong{font-size:14px}
+figcaption{margin-top:16px;font-size:14.5px;color:var(--muted);line-height:1.55}
+
+/* ---------- 2 — THE NOTE ---------- */
+.note-wrap{max-width:720px;margin:0 auto;text-align:center}
+.note-wrap h2{margin:0 auto}
+.note{background:var(--card);border:1.5px solid var(--ink);border-radius:20px;
+  padding:32px;box-shadow:8px 8px 0 var(--berry-soft);
+  margin:38px auto 0;text-align:left}
+/* Contents, not steps — so no numbered badge. The coloured left edge is what
+   separates them. */
+.note-row{background:var(--bg);border:1px solid var(--line);
+  border-left:4px solid var(--berry);border-radius:12px;
+  padding:18px 20px;margin-bottom:14px}
+.note-row:last-child{margin-bottom:0}
+.note-row:nth-child(2){border-left-color:var(--gold)}
+.note-row:nth-child(3){border-left-color:var(--rust)}
+.note-row b{font-family:var(--display);font-weight:700;font-size:17px;display:block;margin-bottom:6px}
+.note-row p{font-size:15.5px;line-height:1.55;color:var(--muted)}
+
+/* ---------- 3 — THE LEDGER ---------- */
+.ask-side p{font-size:19px;line-height:1.65;max-width:540px;margin-bottom:18px}
+.ledger{background:var(--card);border:1.5px solid var(--ink);border-radius:20px;
+  padding:26px 28px;box-shadow:8px 8px 0 var(--berry-soft);margin-top:34px;max-width:540px}
+.ledger-head{font-family:var(--display);font-weight:700;font-size:16px;
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+/* A promise about visibility is more convincing when you can see the thing
+   being made visible — but these are sample values on a page with no member
+   behind them, so they say so. */
+.ledger-tag{font-family:var(--display);font-weight:700;font-size:10px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);background:var(--bg);
+  border:1px solid var(--line);border-radius:7px;padding:3px 8px}
+.ledger-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;
+  margin-top:20px;padding-top:20px;border-top:1px solid var(--line)}
+.ledger-field span{display:block;font-family:var(--display);font-weight:700;font-size:11px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.ledger-field b{font-family:var(--display);font-weight:700;font-size:19px;color:var(--berry-deep)}
+
+/* ---------- 4 — THE TURN ---------- */
+/* No card here. The turn works because the page goes quiet around it. */
+.narrow{max-width:640px;margin:0 auto;text-align:center}
+.narrow h2{margin:0 auto}
+.narrow p{font-size:17px;line-height:1.65;margin-bottom:16px}
+.turn{font-family:var(--display);font-weight:700;font-size:clamp(22px,3vw,28px);
+  line-height:1.2;margin:26px 0 34px}
+
+/* ---------- 5 — THE OFFER ---------- */
+.offer{text-align:center}
+.offer h2{margin:0 auto}
+.beats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;margin-top:44px;
+  text-align:left}
+/* All three beats stay at 17px. "It won't be our best work" is the best line
+   on the band and it still must not be the loudest thing on it — the CTA is. */
+.beats p{font-size:17px;line-height:1.6;color:#CBB9A8;max-width:none;margin-top:0}
+.sharpen{font-size:17px;line-height:1.65;color:#CBB9A8;max-width:620px;margin:40px auto 0}
+.start{font-family:var(--display);font-weight:700;font-size:20px;color:var(--gold);
+  max-width:620px;margin:22px auto 34px}
+
+/* ---------- 6 — TESTIMONIAL (dormant until there is a real quote) ---------- */
+.quote-band{background:#fff}
+.quote{max-width:760px;margin:0 auto;text-align:center}
+.quote blockquote{font-family:var(--display);font-weight:700;font-size:clamp(24px,3.2vw,34px);
+  line-height:1.25;letter-spacing:-0.012em;margin:0}
+.quote cite{display:block;margin-top:24px;font-style:normal;font-size:15px;color:var(--muted)}
 
 /* ---------- CLOSER ---------- */
 .closer{text-align:center;padding-bottom:170px}
-.closer h2{margin-bottom:38px}
+/* balance keeps "alone." — which carries the gold underline — off a line
+   of its own on narrow screens */
+.closer h2{margin-bottom:38px;text-wrap:balance}
 .fine{margin-top:18px;font-size:13px;color:var(--muted)}
 
 /* ---------- 404 ---------- */
@@ -179,9 +220,6 @@ nav{position:sticky;top:0;z-index:50;background:rgba(248,245,238,.92);
 .notfound .code{font-family:var(--display);font-weight:800;font-size:clamp(56px,12vw,120px);
   color:var(--berry);line-height:1}
 .notfound p{font-size:18px;color:var(--muted);max-width:420px}
-
-@keyframes pop{to{opacity:1;transform:translateY(0)}}
-@keyframes blink{0%,80%,100%{opacity:.3}40%{opacity:1}}
 
 /* ============================================================
    RESPONSIVE — desktop-first.
@@ -193,23 +231,14 @@ nav{position:sticky;top:0;z-index:50;background:rgba(248,245,238,.92);
      <=380px  small phone (iPhone SE) — final tightening
    ============================================================ */
 
-/* ---------- Small laptop: 3 columns still, but tight ----------
-   Reclaim horizontal room so the waveform doesn't thin to hairlines. */
-@media (min-width:961px) and (max-width:1100px){
-  .steps{gap:22px}
-  .step{padding:26px 22px}
-  .vn{padding:9px 12px;gap:10px}
-  .bars{gap:1.5px}
-}
-
 /* ---------- Tablet / small laptop ---------- */
 @media (max-width:960px){
-  .steps{grid-template-columns:minmax(0,1fr);gap:36px}
-  .hero-grid{grid-template-columns:minmax(0,1fr);gap:44px;text-align:left}
   .split{grid-template-columns:minmax(0,1fr);gap:28px}
-  .split h2{position:static}
   section{padding-top:96px;padding-bottom:96px}
   .hero{padding-top:64px;padding-bottom:96px}
+  .beats{grid-template-columns:minmax(0,1fr);gap:20px;margin-top:34px;
+    max-width:540px;margin-left:auto;margin-right:auto}
+  .ledger,.ask-side p{max-width:none}
 }
 
 /* ---------- Phone ---------- */
@@ -217,7 +246,6 @@ nav{position:sticky;top:0;z-index:50;background:rgba(248,245,238,.92);
   .shell{padding-left:20px;padding-right:20px}
   section{padding-top:72px;padding-bottom:72px}
   .hero{padding-top:40px;padding-bottom:72px}
-  .hero-grid{gap:34px}
 
   h1{font-size:clamp(34px,9vw,44px)}
   h2{font-size:clamp(26px,7.4vw,34px)}
@@ -225,6 +253,11 @@ nav{position:sticky;top:0;z-index:50;background:rgba(248,245,238,.92);
 
   .hero .sub{font-size:17px;margin:20px 0 28px}
   .tagline{margin-top:24px;font-size:13px;letter-spacing:.06em}
+
+  .ask{box-shadow:5px 5px 0 var(--berry-soft)}
+  .ask:focus-within{box-shadow:5px 5px 0 var(--berry-soft),0 0 0 3px rgba(192,82,53,.22)}
+  .ask input{font-size:17px;padding:18px 8px 18px 18px}
+  .ask-note{font-size:14.5px}
 
   /* full-width buttons: comfortable thumb targets */
   .cta{width:100%;max-width:330px;text-align:center;padding:17px 24px}
@@ -234,27 +267,41 @@ nav{position:sticky;top:0;z-index:50;background:rgba(248,245,238,.92);
   .nav-link{font-size:11.5px;letter-spacing:.08em}
   .nav-cta{padding:11px 18px;font-size:12.5px}
 
-  .convo{padding:18px;box-shadow:5px 5px 0 var(--berry-soft)}
-  .chip{padding:12px 18px}                 /* ~45px tall */
-  .bubble{max-width:94%}
+  h1.h-sentence{font-size:clamp(29px,7.6vw,36px)}
+  h2.h-sentence{font-size:clamp(23px,6vw,29px)}
 
   .problem p{font-size:17px}
-  .problem .kicker{font-size:18px;margin-top:22px}
+  .kicker{font-size:18px;margin-top:22px}
 
-  .how-head{margin-bottom:44px}
-  .how-head p{font-size:16px}
-  .steps{gap:32px}
-  .step{padding:24px 20px}
-  .step:nth-child(2){box-shadow:5px 5px 0 var(--berry-soft)}
-  .step h3{font-size:21px}
-  .step .desc{font-size:14.5px}
+  /* the redrawn figures take over here */
+  .fig .fig-wide{display:none}
+  .fig .fig-narrow{display:block}
+  /* The narrow viewBoxes are ~320 units. Left uncapped they stretch to the
+     full 600px column at the top of this range and the labels balloon to
+     22px — bigger than the body copy. Capped, they sit at roughly 1:1. */
+  .fig{margin:26px auto 0;max-width:360px}
+  figcaption{font-size:13.5px}
 
-  /* tighter player chrome; the bars flex down on their own */
-  .vn{padding:9px 12px;gap:10px}
-  .bars{gap:1.5px}
+  .note{padding:24px 20px;box-shadow:5px 5px 0 var(--berry-soft);margin-top:30px}
+  .note-row{padding:16px 17px}
+  .note-row b{font-size:16px}
+  .note-row p{font-size:15px}
+
+  .ask-side p{font-size:17px;margin-bottom:15px}
+  .ledger{padding:22px 20px;box-shadow:5px 5px 0 var(--berry-soft);margin-top:28px}
+  .ledger-fields{grid-template-columns:minmax(0,1fr);gap:15px;margin-top:17px;padding-top:17px}
+  .ledger-field span{margin-bottom:3px}
+  .ledger-field b{font-size:18px}
+
+  .narrow p{font-size:16px}
+  .turn{margin:22px 0 28px}
 
   .globe p{font-size:16px}
-  .globe .cityline{margin-top:20px}
+  .beats p,.sharpen{font-size:16px}
+  .sharpen{margin-top:30px}
+  .start{font-size:18px;margin-bottom:28px}
+  /* the closing CTA is long enough to wrap at this width */
+  .cta{line-height:1.35}
 
   .closer{padding-bottom:104px}
   .notfound{min-height:58vh}
@@ -262,7 +309,7 @@ nav{position:sticky;top:0;z-index:50;background:rgba(248,245,238,.92);
 
 /* ---------- Narrow phone ---------- */
 @media (max-width:520px){
-  .nav-link{display:none}                  /* the Apply CTA carries the nav */
+  .nav-link{display:none}                  /* the CTA carries the nav */
   .nav-inner{padding:12px 18px;gap:14px}
   .shell{padding-left:18px;padding-right:18px}
 }
@@ -274,12 +321,11 @@ nav{position:sticky;top:0;z-index:50;background:rgba(248,245,238,.92);
   .logo{font-size:19px}
   .nav-cta{padding:10px 14px;font-size:12px}
   h1{font-size:32px}
-  .step{padding:20px 16px}
-  .chip{font-size:14px;padding:11px 15px}
   .cta{padding:16px 20px}
+  /* never below 16px — iOS zooms the viewport on focus under that */
+  .ask input{font-size:16px;padding:17px 6px 17px 16px}
+  .ask button{width:44px;height:44px}
 }
 @media (prefers-reduced-motion:reduce){
-  .bubble,.member,.after,.help,.vn-lead,.commit-card,.nudge,.outcome,.grad,.final{animation:none;opacity:1;transform:none}
-  .typing b{animation:none}
   html{scroll-behavior:auto}
 }

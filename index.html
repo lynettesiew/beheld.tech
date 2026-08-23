@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BeHeld — Nobody should build alone</title>
-<meta name="description" content="Small circles of founders, matched by what you're stuck on — with people who push you, and who remember what you said you'd do.">
+<title>BeHeld — We find the people who can help, and ask them for you</title>
+<meta name="description" content="Tell us where you're stuck. We find the people who can help — and we ask them for you. Your first note is free.">
 <link rel="canonical" href="https://beheld.tech/">
 <meta name="theme-color" content="#F8F5EE">
 
@@ -12,15 +12,15 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BeHeld">
 <meta property="og:url" content="https://beheld.tech/">
-<meta property="og:title" content="BeHeld — Nobody should build alone">
-<meta property="og:description" content="Small circles of founders, matched by what you're stuck on — with people who push you, and who remember what you said you'd do.">
+<meta property="og:title" content="BeHeld — We find the people who can help, and ask them for you">
+<meta property="og:description" content="Tell us where you're stuck. We find the people who can help — and we ask them for you. Your first note is free.">
 <meta property="og:image" content="https://beheld.tech/assets/img/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="BeHeld — be seen, be held, move forward together.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="BeHeld — Nobody should build alone">
-<meta name="twitter:description" content="Small circles of founders, matched by what you're stuck on — with people who push you, and who remember what you said you'd do.">
+<meta name="twitter:title" content="BeHeld — We find the people who can help, and ask them for you">
+<meta name="twitter:description" content="Tell us where you're stuck. We find the people who can help — and we ask them for you. Your first note is free.">
 <meta name="twitter:image" content="https://beheld.tech/assets/img/og-image.png">
 
 <!-- Icons -->
@@ -40,98 +40,248 @@
 <nav>
   <div class="nav-inner">
     <a class="logo" href="#top">Be<span>Held</span></a>
-    <a class="nav-link" href="#how">How it works</a>
-    <a class="nav-link" href="#who">Who it's for</a>
-    <a class="nav-cta" href="https://tally.so/r/QK9bQG">Apply</a>
+    <a class="nav-link" href="#note">What we send</a>
+    <a class="nav-link" href="#why">Why it works</a>
+    <a class="nav-cta" href="https://tally.so/r/QK9bQG">Start free</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <header class="hero" id="top">
-  <div class="shell hero-grid">
-    <div>
-      <h1>Nobody should build <span class="hl">alone.</span></h1>
-      <p class="sub">Small circles of founders, matched by what you're stuck on, with people who push you, and who remember what you said you'd do.</p>
-      <a class="cta" href="https://tally.so/r/QK9bQG">Apply to join</a>
-      <p class="tagline">BE SEEN. BE HELD. MOVE FORWARD TOGETHER.</p>
-    </div>
-    <div class="convo" id="convo" aria-live="polite">
-      <p class="prompt">What are you stuck on? Tap it:</p>
-      <div class="chips" id="chips" role="group" aria-label="Pick what you're stuck on"></div>
-    </div>
+  <div class="shell hero-col">
+    <h1 class="h-sentence">The person who could change everything doesn't know you exist.</h1>
+    <p class="sub">Tell us where you're stuck, and we'll find them and ask them for you.</p>
+
+    <!-- The input name MUST stay `initial_ask` — it is the Tally hidden field
+         that pre-fills question 1. Case-sensitive. This is the only place the
+         field name is written; the browser builds ?initial_ask=… from it, so
+         the form works with JavaScript disabled. For links written by hand
+         (QR codes, email, social bios) the parameter needs a value:
+         https://tally.so/r/QK9bQG?initial_ask=get%20my%20first%20ten%20customers -->
+    <form class="ask" id="ask" action="https://tally.so/r/QK9bQG" method="get">
+      <label class="sr-only" for="initial_ask">Tell us where you're stuck</label>
+      <input id="initial_ask" name="initial_ask" type="text" placeholder="I'm trying to&hellip;"
+             autocomplete="off" enterkeyhint="go" maxlength="180">
+      <button type="submit" aria-label="Send">&rarr;</button>
+    </form>
+    <p class="ask-note">In three days we&rsquo;ll tell you who to talk to, and it costs nothing to start.</p>
+
+    <p class="tagline">BE SEEN. BE HELD. MOVE FORWARD TOGETHER.</p>
   </div>
 </header>
 
-<!-- PROBLEM -->
+<!-- 1 — THE PROBLEM -->
 <section class="problem-band">
   <div class="shell split problem">
-    <h2>Advice is easy to find.</h2>
     <div>
-      <p>What's hard is finding someone who's already made the mistakes you're about to make, has exactly the skill or intro you need, or will sit with you through the part you're dreading.</p>
-      <p class="kicker">That's what a circle is for.</p>
+      <h2 class="h-sentence">Every founder gets stuck on the same thing. It&rsquo;s not the work.</h2>
+
+      <figure class="fig" role="img"
+              aria-label="You on one side, and on the other a customer, a partner, and someone who has already done it. The line reaching towards them stops short of the boundary — you can't get to any of them.">
+        <svg class="fig-wide" viewBox="0 0 460 250" aria-hidden="true" focusable="false">
+          <rect x="8" y="99" width="90" height="52" rx="13" fill="var(--card)" stroke="var(--berry-deep)" stroke-width="1.8"/>
+          <text class="t-label" x="53" y="130" text-anchor="middle">you</text>
+          <path d="M104 125 H186" stroke="var(--berry-deep)" stroke-width="1.8" stroke-dasharray="6 7" stroke-linecap="round"/>
+          <path d="M206 14 V236" stroke="var(--fig-line)" stroke-width="1.8" stroke-dasharray="2 9" stroke-linecap="round"/>
+          <rect x="232" y="14" width="222" height="52" rx="13" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
+          <text class="t-label" x="343" y="45" text-anchor="middle">a customer</text>
+          <rect x="232" y="99" width="222" height="52" rx="13" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
+          <text class="t-label" x="343" y="130" text-anchor="middle">a partner</text>
+          <rect x="232" y="184" width="222" height="52" rx="13" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
+          <text class="t-label" x="343" y="215" text-anchor="middle">someone who&rsquo;s done it</text>
+        </svg>
+        <svg class="fig-narrow" viewBox="0 0 320 306" aria-hidden="true" focusable="false">
+          <rect x="110" y="6" width="100" height="46" rx="12" fill="var(--card)" stroke="var(--berry-deep)" stroke-width="1.8"/>
+          <text class="t-label" x="160" y="34" text-anchor="middle">you</text>
+          <path d="M160 56 V102" stroke="var(--berry-deep)" stroke-width="1.8" stroke-dasharray="6 7" stroke-linecap="round"/>
+          <path d="M8 122 H312" stroke="var(--fig-line)" stroke-width="1.8" stroke-dasharray="2 9" stroke-linecap="round"/>
+          <rect x="8" y="142" width="304" height="46" rx="12" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
+          <text class="t-label" x="160" y="170" text-anchor="middle">a customer</text>
+          <rect x="8" y="198" width="304" height="46" rx="12" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
+          <text class="t-label" x="160" y="226" text-anchor="middle">a partner</text>
+          <rect x="8" y="254" width="304" height="46" rx="12" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
+          <text class="t-label" x="160" y="282" text-anchor="middle">someone who&rsquo;s done it</text>
+        </svg>
+      </figure>
+    </div>
+    <div>
+      <p>There&rsquo;s someone who could unlock your next step. A customer. A partner. Someone who&rsquo;s already done it.</p>
+      <p>You don&rsquo;t know them. And you don&rsquo;t know how to reach them.</p>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section id="how">
-  <div class="shell">
-    <div class="how-head">
-      <div class="eyebrow">The rhythm</div>
-      <h2>How a circle works</h2>
-      <p>Three small habits — and every one of them is something a real person does for you. Try them:</p>
+<!-- 2 — WHAT WE SEND YOU -->
+<section id="note">
+  <div class="shell note-wrap">
+    <h2 class="h-sentence">Every three weeks, a short note written only for you.</h2>
+    <div class="note">
+      <div class="note-row">
+        <b>Who to talk to.</b>
+        <p>Three to five people. And why each one.</p>
+      </div>
+      <div class="note-row">
+        <b>What&rsquo;s working elsewhere.</b>
+        <p>How other people solved the thing you&rsquo;re solving now.</p>
+      </div>
+      <div class="note-row">
+        <b>What fundable looks like.</b>
+        <p>What investors in your space are actually backing this month. No names. Just the pattern.</p>
+      </div>
     </div>
-    <div class="steps">
+    <p class="kicker">You decide what to do with it. We don&rsquo;t chase you.</p>
+  </div>
+</section>
 
-      <div class="step">
-        <h3>Get matched by a human.</h3>
-        <p class="desc">Every application is read and matched by hand — by what you're stuck on, not by industry or follower count.</p>
-        <div class="ring">
-          <div class="avatar">Y</div><div class="avatar">K</div><div class="avatar">C</div>
+<!-- 3 — WE GO AND ASK -->
+<section class="problem-band">
+  <div class="shell split">
+    <div>
+      <div class="eyebrow">We don&rsquo;t just tell you who</div>
+      <h2>We go and ask.</h2>
+
+      <figure class="fig" role="img"
+              aria-label="Your ask splits two ways. If we know them, we introduce you and both sides say yes first. If we don't, we ask them in your words. Either way you see the date we stop.">
+        <svg class="fig-wide" viewBox="0 0 460 320" aria-hidden="true" focusable="false">
+          <rect x="8" y="118" width="104" height="52" rx="13" fill="var(--card)" stroke="var(--berry-deep)" stroke-width="1.8"/>
+          <text class="t-label" x="60" y="149" text-anchor="middle">your ask</text>
+          <path d="M114 132 C 152 132, 150 62, 186 62" fill="none" stroke="var(--berry-deep)" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M114 156 C 152 156, 150 226, 186 226" fill="none" stroke="var(--berry-deep)" stroke-width="1.8" stroke-linecap="round"/>
+          <rect x="190" y="30" width="262" height="64" rx="13" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
+          <text class="t-lead" x="208" y="53">We know them</text>
+          <text class="t-label" x="208" y="76">We introduce you. Both say yes first.</text>
+          <rect x="190" y="194" width="262" height="64" rx="13" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
+          <text class="t-lead" x="208" y="217">We don&rsquo;t</text>
+          <text class="t-label" x="208" y="240">We ask them, in your words.</text>
+          <path d="M190 282 H452" stroke="var(--fig-line)" stroke-width="1.8" stroke-linecap="round"/>
+          <text class="t-small" x="321" y="304" text-anchor="middle">Either way, you see the date we stop.</text>
+        </svg>
+        <svg class="fig-narrow" viewBox="0 0 320 312" aria-hidden="true" focusable="false">
+          <rect x="6" y="6" width="130" height="44" rx="12" fill="var(--card)" stroke="var(--berry-deep)" stroke-width="1.8"/>
+          <text class="t-label" x="71" y="33" text-anchor="middle">your ask</text>
+          <path d="M30 52 V202" fill="none" stroke="var(--berry-deep)" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M30 110 H62" fill="none" stroke="var(--berry-deep)" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M30 202 H62" fill="none" stroke="var(--berry-deep)" stroke-width="1.8" stroke-linecap="round"/>
+          <rect x="64" y="82" width="250" height="58" rx="12" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
+          <text class="t-lead" x="78" y="103">We know them</text>
+          <text class="t-small" x="78" y="124">We introduce you. Both say yes first.</text>
+          <rect x="64" y="174" width="250" height="58" rx="12" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
+          <text class="t-lead" x="78" y="195">We don&rsquo;t</text>
+          <text class="t-small" x="78" y="216">We ask them, in your words.</text>
+          <path d="M64 262 H314" stroke="var(--fig-line)" stroke-width="1.8" stroke-linecap="round"/>
+          <text class="t-small" x="189" y="284" text-anchor="middle">Either way, you see the date we stop.</text>
+        </svg>
+      </figure>
+    </div>
+    <div class="ask-side">
+      <p>If we know them, we introduce you. Both sides say yes first.</p>
+      <p>If we don&rsquo;t know them, we ask them &mdash; with your blessing, in your words.</p>
+      <p>You always see who we asked, how many times, and when we stop.</p>
+      <p>We never pretend to know someone we don&rsquo;t.</p>
+
+      <div class="ledger">
+        <p class="ledger-head">What that looks like <span class="ledger-tag">Example</span></p>
+        <div class="ledger-fields">
+          <div class="ledger-field"><span>Asked</span><b>4 people</b></div>
+          <div class="ledger-field"><span>Tried</span><b>7 times</b></div>
+          <div class="ledger-field"><span>We stop</span><b>12 September</b></div>
         </div>
-        <p class="ring-caption">Two or three founders, same wall, complementary strengths — plus the wider community behind them.</p>
-        <p class="more">You already tried this in the box above ↑</p>
       </div>
-
-      <div class="step">
-        <h3>Ask.</h3>
-        <p class="desc">Tell your circle what you're stuck on — a voice note or a few lines of text, on your own time. Press play to hear how the help comes back:</p>
-        <div class="vn">
-          <button class="play" id="playBtn" aria-label="Play a sample ask"><span></span></button>
-          <div class="bars" id="bars" aria-hidden="true"></div>
-          <div class="vn-time" id="vnTime">0:00</div>
-        </div>
-        <p class="vn-script" id="vnScript">&ldquo;I make organic snack boxes for new moms&hellip; and I can't get them into stores without living on social media. I don't know where to start.&rdquo;</p>
-        <div class="vn-replies" id="vnReplies"></div>
-      </div>
-
-      <div class="step">
-        <h3>Make each other move.</h3>
-        <p class="desc">Every three weeks you each commit to one next step. One circle-mate is assigned to check on you personally, and the group follows up. Pick a next move:</p>
-        <div class="commit-chips" id="commitChips"></div>
-        <div id="commitOut" aria-live="polite"></div>
-      </div>
-
     </div>
   </div>
 </section>
 
-<!-- GLOBAL -->
-<section class="globe-band" id="who">
-  <div class="shell globe">
-    <div class="eyebrow" style="color:var(--gold)">Who it's for</div>
-    <h2>Women building something real, in every timezone.</h2>
-    <div class="cityline">Right now: <span id="cities">New York</span></div>
-    <p>Six countries and counting — which is exactly why everything here works async, around your real life.</p>
+<!-- 4 — WHY PEOPLE SAY YES -->
+<section id="why">
+  <div class="shell narrow">
+    <h2 class="h-sentence">Nobody gives their contacts to a stranger.</h2>
+    <p class="turn">So we <span class="hl">don&rsquo;t ask them to.</span></p>
+    <p>You start by helping your group with what you know. Small things. The thing you happen to have done before.</p>
+    <p>That&rsquo;s how people see what you&rsquo;re good at.</p>
+    <p>Then the introductions start &mdash; from us, and from them. People say yes when they can picture how the meeting will go.</p>
+
+    <figure class="fig" role="img"
+            aria-label="A chain: you help with a small thing you already know, people see what you're good at, they can picture how a meeting with you will go, and then they introduce you.">
+      <svg class="fig-wide" viewBox="0 0 620 110" aria-hidden="true" focusable="false">
+        <rect x="1" y="1" width="132" height="80" rx="13" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
+        <text class="t-label" x="67" y="30" text-anchor="middle">You help with a<tspan x="67" dy="15">small thing you</tspan><tspan x="67" dy="15">already know</tspan></text>
+        <path d="M139 41 H154" stroke="var(--fig-line)" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M152 36 L158 41 L152 46" fill="none" stroke="var(--fig-line)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <rect x="163" y="1" width="132" height="80" rx="13" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
+        <text class="t-label" x="229" y="37" text-anchor="middle">People see what<tspan x="229" dy="15">you&rsquo;re good at</tspan></text>
+        <path d="M301 41 H316" stroke="var(--fig-line)" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M314 36 L320 41 L314 46" fill="none" stroke="var(--fig-line)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <rect x="325" y="1" width="132" height="80" rx="13" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
+        <text class="t-label" x="391" y="37" text-anchor="middle">They can picture<tspan x="391" dy="15">how it will go</tspan></text>
+        <path d="M463 41 H478" stroke="var(--berry-deep)" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M476 36 L482 41 L476 46" fill="none" stroke="var(--berry-deep)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <rect x="487" y="1" width="132" height="80" rx="13" fill="var(--fig-tint)" stroke="var(--berry-deep)" stroke-width="1.8"/>
+        <text class="t-strong" x="553" y="37" text-anchor="middle">They introduce<tspan x="553" dy="15">you</tspan></text>
+      </svg>
+      <svg class="fig-narrow" viewBox="0 0 300 330" aria-hidden="true" focusable="false">
+        <rect x="1" y="1" width="298" height="64" rx="13" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
+        <text class="t-label" x="150" y="38" text-anchor="middle">You help with a small thing you know</text>
+        <path d="M150 69 V80" stroke="var(--fig-line)" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M145 76 L150 82 L155 76" fill="none" stroke="var(--fig-line)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <rect x="1" y="89" width="298" height="64" rx="13" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
+        <text class="t-label" x="150" y="126" text-anchor="middle">People see what you&rsquo;re good at</text>
+        <path d="M150 157 V168" stroke="var(--fig-line)" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M145 164 L150 170 L155 164" fill="none" stroke="var(--fig-line)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <rect x="1" y="177" width="298" height="64" rx="13" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
+        <text class="t-label" x="150" y="214" text-anchor="middle">They can picture how it will go</text>
+        <path d="M150 245 V256" stroke="var(--berry-deep)" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M145 252 L150 258 L155 252" fill="none" stroke="var(--berry-deep)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <rect x="1" y="265" width="298" height="64" rx="13" fill="var(--fig-tint)" stroke="var(--berry-deep)" stroke-width="1.8"/>
+        <text class="t-strong" x="150" y="302" text-anchor="middle">They introduce you</text>
+      </svg>
+    </figure>
   </div>
 </section>
+
+<!-- 5 — THE OFFER -->
+<section class="globe-band">
+  <div class="shell globe offer">
+    <div class="eyebrow">The offer</div>
+    <h2 class="h-sentence">Your first note is free. The next one is better.</h2>
+    <!-- A/B alternate, parked until there is analytics to read it with:
+         "The first one is free. It's also the worst one you'll get." -->
+
+    <div class="beats">
+      <p>Tell us where you&rsquo;re stuck. It takes five minutes.</p>
+      <p>We send your first note three days later.</p>
+      <p>It won&rsquo;t be our best work &mdash; we&rsquo;ve only just met you.</p>
+    </div>
+
+    <p class="sharpen">Each one after that gets sharper, because you tell us what you tried and what happened.</p>
+    <p class="start">Start with one. If it&rsquo;s not useful, stop there.</p>
+
+    <a class="cta" href="https://tally.so/r/QK9bQG">Tell us where you&rsquo;re stuck &rarr;</a>
+  </div>
+</section>
+
+<!-- 6 — TESTIMONIAL. Uncomment when a real quote exists.
+     Styles are already in styles.css (.quote-band, .quote). Replace both placeholders.
+<section class="quote-band">
+  <div class="shell quote">
+    <blockquote>&ldquo;One founder. One conversation. What happened.&rdquo;</blockquote>
+    <cite>Name, Company</cite>
+  </div>
+</section>
+-->
 
 <!-- CLOSER -->
-<section class="closer" id="apply">
+<section class="closer">
   <div class="shell">
-    <h2>Because someone should be<br>watching you <span class="hl">win.</span></h2>
-    <a class="cta" href="https://tally.so/r/QK9bQG">Apply to join</a>
-    <p class="fine">Free to join. Read by a human, always.</p>
+    <h2>Nobody should build <span class="hl">alone.</span></h2>
+    <a class="cta" href="https://tally.so/r/QK9bQG">Tell us where you&rsquo;re stuck &rarr;</a>
+    <p class="fine">A global community of founders.</p>
+    <p class="tagline">Someone should be watching you win.</p>
   </div>
 </section>
 

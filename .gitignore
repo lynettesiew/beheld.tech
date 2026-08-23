@@ -14,3 +14,7 @@ npm-debug.log*
 # Local env
 .env
 .env.local
+
+# Internal working docs. The repo root is the published site root, so anything
+# committed here is served at beheld.tech/<filename>.
+DESIGN-PLAN-*.md
