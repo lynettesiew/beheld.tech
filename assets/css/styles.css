@@ -96,9 +96,6 @@ p { margin: 0; }
 .btn--gold:hover { background: var(--gold-soft); color: #3A2A05; }
 .btn-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 34px; }
 
-.note-line { display: flex; align-items: flex-start; gap: 10px; margin-top: 24px; font-size: 15px; color: var(--muted); }
-.note-line svg { margin-top: 3px; }
-
 /* ---------- nav ---------- */
 .nav { border-bottom: 1.5px solid var(--line); background: var(--paper); }
 .nav__inner { display: flex; align-items: center; gap: 24px; padding-block: 20px; flex-wrap: wrap; }
