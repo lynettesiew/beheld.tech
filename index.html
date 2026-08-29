@@ -3,300 +3,540 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BeHeld — We find the people who can help, and ask them for you</title>
-<meta name="description" content="Tell us where you're stuck. We find the people who can help — and we ask them for you. Your first note is free.">
+<title>BeHeld — Stop guessing where your next customers will come from</title>
+<meta name="description" content="BeHeld helps early-stage founders and lean businesses identify the next customer path worth pursuing, put approved work into action, and learn what deserves more attention, change, or investment.">
 <link rel="canonical" href="https://beheld.tech/">
-<meta name="theme-color" content="#F8F5EE">
+<meta name="theme-color" content="#FBF9F5">
 
 <!-- Social sharing -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BeHeld">
 <meta property="og:url" content="https://beheld.tech/">
-<meta property="og:title" content="BeHeld — We find the people who can help, and ask them for you">
-<meta property="og:description" content="Tell us where you're stuck. We find the people who can help — and we ask them for you. Your first note is free.">
+<meta property="og:title" content="BeHeld — Stop guessing where your next customers will come from">
+<meta property="og:description" content="Identify the next customer path worth pursuing, put approved work into action, and learn what deserves more attention, change, or investment.">
 <meta property="og:image" content="https://beheld.tech/assets/img/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="BeHeld — be seen, be held, move forward together.">
+<meta property="og:image:alt" content="BeHeld — your personalized acquisition blueprint.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="BeHeld — We find the people who can help, and ask them for you">
-<meta name="twitter:description" content="Tell us where you're stuck. We find the people who can help — and we ask them for you. Your first note is free.">
+<meta name="twitter:title" content="BeHeld — Stop guessing where your next customers will come from">
+<meta name="twitter:description" content="Identify the next customer path worth pursuing, put approved work into action, and learn what deserves more attention, change, or investment.">
 <meta name="twitter:image" content="https://beheld.tech/assets/img/og-image.png">
 
-<!-- Icons -->
-<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 
-<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
-
-<!-- ?v= is a cache buster. Pages serves assets with max-age=600, so without a
-     changed URL a returning visitor pairs new HTML with an old stylesheet.
-     Bump the number in BOTH files whenever styles.css or main.js changes. -->
-<link rel="stylesheet" href="assets/css/styles.css?v=9">
-<script src="assets/js/main.js?v=9" defer></script>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/styles.css?v=10">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-<nav>
-  <div class="nav-inner">
-    <a class="logo" href="#top">Be<span>Held</span></a>
-    <a class="nav-link" href="#note">What we send</a>
-    <a class="nav-link" href="#why">Why it works</a>
-    <a class="nav-cta" href="https://tally.so/r/QK9bQG">Start free</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<header class="hero" id="top">
-  <div class="shell">
-   <div class="hero-col">
-    <h1 class="h-sentence">The person who could change everything doesn't know you exist.</h1>
-    <p class="sub">Tell us where you're stuck, and we'll find them and ask them for you.</p>
-
-    <!-- The input name MUST stay `initial_ask` — it is the Tally hidden field
-         that pre-fills question 1. Case-sensitive. This is the only place the
-         field name is written; the browser builds ?initial_ask=… from it, so
-         the form works with JavaScript disabled. For links written by hand
-         (QR codes, email, social bios) the parameter needs a value:
-         https://tally.so/r/QK9bQG?initial_ask=get%20my%20first%20ten%20customers -->
-    <form class="ask" id="ask" action="https://tally.so/r/QK9bQG" method="get">
-      <label class="sr-only" for="initial_ask">Tell us where you're stuck</label>
-      <input id="initial_ask" name="initial_ask" type="text" placeholder="I'm trying to&hellip;"
-             autocomplete="off" enterkeyhint="go" maxlength="180">
-      <button type="submit" aria-label="Send">&rarr;</button>
-    </form>
-    <p class="ask-note">In three days we&rsquo;ll tell you who to talk to, and it costs nothing to start.</p>
-
-    <p class="tagline">BE SEEN. BE HELD. MOVE FORWARD TOGETHER.</p>
-   </div>
+<!-- ══ NAV ══ -->
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="logo" href="#top"><b>Be</b><i>Held</i></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#how">How it works</a>
+      <a href="#fit">Is it a fit?</a>
+      <a href="#pilot">Founding pilot</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="nav__cta" href="https://tally.so/r/QK9bQG">Apply</a>
   </div>
 </header>
 
-<!-- 1 — THE PROBLEM -->
-<section class="problem-band">
-  <div class="shell split problem">
-    <div>
-      <h2 class="h-sentence">Every founder gets stuck on the same thing. It&rsquo;s not the work.</h2>
+<main id="main">
 
-      <figure class="fig" role="img"
-              aria-label="You on one side, and on the other a customer, a partner, and someone who has already done it. The line reaching towards them stops short of the boundary — you can't get to any of them.">
-        <svg class="fig-wide" viewBox="0 0 460 250" aria-hidden="true" focusable="false">
-          <rect x="8" y="99" width="90" height="52" rx="13" fill="var(--card)" stroke="var(--berry-deep)" stroke-width="1.8"/>
-          <text class="t-label" x="53" y="130" text-anchor="middle">you</text>
-          <path d="M104 125 H186" stroke="var(--berry-deep)" stroke-width="1.8" stroke-dasharray="6 7" stroke-linecap="round"/>
-          <path d="M206 14 V236" stroke="var(--fig-line)" stroke-width="1.8" stroke-dasharray="2 9" stroke-linecap="round"/>
-          <rect x="232" y="14" width="222" height="52" rx="13" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
-          <text class="t-label" x="343" y="45" text-anchor="middle">a customer</text>
-          <rect x="232" y="99" width="222" height="52" rx="13" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
-          <text class="t-label" x="343" y="130" text-anchor="middle">a partner</text>
-          <rect x="232" y="184" width="222" height="52" rx="13" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
-          <text class="t-label" x="343" y="215" text-anchor="middle">someone who&rsquo;s done it</text>
-        </svg>
-        <svg class="fig-narrow" viewBox="0 0 320 306" aria-hidden="true" focusable="false">
-          <rect x="110" y="6" width="100" height="46" rx="12" fill="var(--card)" stroke="var(--berry-deep)" stroke-width="1.8"/>
-          <text class="t-label" x="160" y="34" text-anchor="middle">you</text>
-          <path d="M160 56 V102" stroke="var(--berry-deep)" stroke-width="1.8" stroke-dasharray="6 7" stroke-linecap="round"/>
-          <path d="M8 122 H312" stroke="var(--fig-line)" stroke-width="1.8" stroke-dasharray="2 9" stroke-linecap="round"/>
-          <rect x="8" y="142" width="304" height="46" rx="12" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
-          <text class="t-label" x="160" y="170" text-anchor="middle">a customer</text>
-          <rect x="8" y="198" width="304" height="46" rx="12" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
-          <text class="t-label" x="160" y="226" text-anchor="middle">a partner</text>
-          <rect x="8" y="254" width="304" height="46" rx="12" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
-          <text class="t-label" x="160" y="282" text-anchor="middle">someone who&rsquo;s done it</text>
-        </svg>
-      </figure>
-    </div>
+<!-- ══ 1 · HERO ══ -->
+<section class="section" id="top">
+  <div class="wrap hero__inner">
     <div>
-      <p>There&rsquo;s someone who could unlock your next step. A customer. A partner. Someone who&rsquo;s already done it.</p>
-      <p>You don&rsquo;t know them. And you don&rsquo;t know how to reach them.</p>
+      <p class="hero__kicker">For early-stage founders and lean businesses</p>
+      <h1>Stop guessing where your next customers will come from.</h1>
+      <p class="hero__lede">BeHeld helps you identify the next customer path worth pursuing, put approved work into action, and learn what deserves more attention, change, or investment.</p>
+
+      <div class="btn-row">
+        <a class="btn btn--primary" href="https://tally.so/r/QK9bQG">Apply for your Blueprint
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
+        <a class="btn btn--ghost" href="#how">See how it works</a>
+      </div>
+
+      <p class="note-line">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 8l9 6 9-6"/></svg>
+        Have an invitation code? Add it to your application for priority review.
+      </p>
+    </div>
+
+    <div class="bp" role="img" aria-label="Example Personalized Acquisition Blueprint: a recommended path, two alternatives, three people or companies to approach, and a clear first action.">
+      <div class="bp__spine"></div>
+      <div class="bp__body">
+        <p class="bp__title">Personalized Acquisition Blueprint</p>
+
+        <div class="bp__row">
+          <p class="bp__label">Recommended path</p>
+          <div class="bp__line">
+            <div class="bp__icons">
+              <span class="icon-tile"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg></span>
+              <svg width="14" height="12" viewBox="0 0 17 12" fill="none"><path d="M1 6h11" stroke="#9A8D82" stroke-width="1.8" stroke-linecap="round"/><path d="M11.5 2L15.5 6l-4 4" stroke="#9A8D82" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="icon-tile"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20v-1.5a3.5 3.5 0 00-3.5-3.5h-5A3.5 3.5 0 004 18.5V20"/><circle cx="10" cy="8" r="3.2"/><path d="M17.5 15.2A3.5 3.5 0 0120 18.5V20"/><path d="M16 5.3a3.2 3.2 0 010 5.4"/></svg></span>
+              <svg width="14" height="12" viewBox="0 0 17 12" fill="none"><path d="M1 6h11" stroke="#9A8D82" stroke-width="1.8" stroke-linecap="round"/><path d="M11.5 2L15.5 6l-4 4" stroke="#9A8D82" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="icon-tile"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19V14"/><path d="M12 19V9"/><path d="M19 19V5"/></svg></span>
+            </div>
+            <div class="bp__bars"><span></span><span></span></div>
+          </div>
+        </div>
+
+        <div class="bp__row">
+          <p class="bp__label">2 alternatives</p>
+          <div class="bp__line">
+            <div class="bp__icons">
+              <span class="icon-tile"><svg width="24" height="26" viewBox="0 0 30 36" fill="none"><path d="M3 18h6" stroke="#A9750E" stroke-width="2.2" stroke-linecap="round"/><path d="M9 18V9c0-2 1.6-3.5 3.5-3.5H19" stroke="#A9750E" stroke-width="2.2" stroke-linecap="round"/><path d="M9 18v9c0 2 1.6 3.5 3.5 3.5H19" stroke="#A9750E" stroke-width="2.2" stroke-linecap="round"/><path d="M16.5 2.5L20 5.5l-3.5 3" stroke="#A9750E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.5 27.5L20 30.5l-3.5 3" stroke="#A9750E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+            <div class="bp__bars"><span></span><span style="width:84%"></span></div>
+          </div>
+        </div>
+
+        <div class="bp__row">
+          <p class="bp__label">3 people or companies</p>
+          <div class="bp__line">
+            <div class="bp__icons">
+              <span class="avatar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7A6C62" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M19 20v-1.5a4 4 0 00-4-4H9a4 4 0 00-4 4V20"/><circle cx="12" cy="7.5" r="3.6"/></svg></span>
+              <span class="avatar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7A6C62" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M19 20v-1.5a4 4 0 00-4-4H9a4 4 0 00-4 4V20"/><circle cx="12" cy="7.5" r="3.6"/></svg></span>
+              <span class="avatar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7A6C62" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M19 20v-1.5a4 4 0 00-4-4H9a4 4 0 00-4 4V20"/><circle cx="12" cy="7.5" r="3.6"/></svg></span>
+            </div>
+            <div class="bp__bars"><span></span><span style="width:62%"></span></div>
+          </div>
+        </div>
+
+        <div class="bp__row">
+          <p class="bp__label">First action</p>
+          <div class="bp__first">
+            <span class="icon-tile"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7A5A12" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="4" width="15" height="17" rx="2"/><path d="M9 3h6v3H9z"/><path d="M8.5 12.5l2 2 4-4.4"/></svg></span>
+            <div class="bp__bars"><span></span><span style="width:58%"></span></div>
+          </div>
+        </div>
+
+        <p class="bp__foot">
+          <span>Get clear</span>
+          <svg width="15" height="10" viewBox="0 0 15 10" fill="none"><path d="M1 5h9" stroke="#B5462E" stroke-width="1.8" stroke-linecap="round"/><path d="M9.5 1.5L13 5l-3.5 3.5" stroke="#B5462E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Put it to work</span>
+          <svg width="15" height="10" viewBox="0 0 15 10" fill="none"><path d="M1 5h9" stroke="#B5462E" stroke-width="1.8" stroke-linecap="round"/><path d="M9.5 1.5L13 5l-3.5 3.5" stroke="#B5462E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Learn what works</span>
+        </p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- 2 — WHAT WE SEND YOU -->
-<section id="note">
-  <div class="shell">
-   <div class="note-wrap">
-    <h2 class="h-sentence">Every three weeks, a short note written only for you.</h2>
-    <div class="note">
-      <div class="note-row">
-        <b>Who to talk to.</b>
-        <p>Three to five people. And why each one.</p>
-      </div>
-      <div class="note-row">
-        <b>What&rsquo;s working elsewhere.</b>
-        <p>How other people solved the thing you&rsquo;re solving now.</p>
-      </div>
-      <div class="note-row">
-        <b>What fundable looks like.</b>
-        <p>What investors in your space are actually backing this month. No names. Just the pattern.</p>
-      </div>
-    </div>
-    <p class="kicker">You decide what to do with it. We don&rsquo;t chase you.</p>
-   </div>
+<!-- ══ 2 · THE PROBLEM ══ -->
+<section class="section band band--top problem">
+  <div class="wrap">
+    <h2>You may already be winning customers<span style="color:var(--brand)">—but not predictably.</span></h2>
+    <p>You need to know which customer, offer, message, or channel to pursue next—and have the capacity to follow through.</p>
   </div>
 </section>
 
-<!-- 3 — WE GO AND ASK -->
-<section class="problem-band">
-  <div class="shell split">
-    <div>
-      <div class="eyebrow">We don&rsquo;t just tell you who</div>
-      <h2>We go and ask.</h2>
+<!-- ══ 3 · THE BLUEPRINT ══ -->
+<section class="section" id="how">
+  <div class="wrap">
+    <p class="eyebrow">Step one</p>
+    <h2 style="margin-top:14px;max-width:20em">Get clear on your next path to customers.</h2>
+    <p class="lede" style="margin-top:20px;max-width:46em">We pressure-test your assumptions about who to target, what to offer, and where to reach them—then recommend the next path worth pursuing.</p>
 
-      <figure class="fig" role="img"
-              aria-label="Your ask splits two ways. If we know them, we introduce you and both sides say yes first. If we don't, we ask them in your words. Either way you see the date we stop.">
-        <svg class="fig-wide" viewBox="0 0 460 320" aria-hidden="true" focusable="false">
-          <rect x="8" y="118" width="104" height="52" rx="13" fill="var(--card)" stroke="var(--berry-deep)" stroke-width="1.8"/>
-          <text class="t-label" x="60" y="149" text-anchor="middle">your ask</text>
-          <path d="M114 132 C 152 132, 150 62, 186 62" fill="none" stroke="var(--berry-deep)" stroke-width="1.8" stroke-linecap="round"/>
-          <path d="M114 156 C 152 156, 150 226, 186 226" fill="none" stroke="var(--berry-deep)" stroke-width="1.8" stroke-linecap="round"/>
-          <rect x="190" y="30" width="262" height="64" rx="13" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
-          <text class="t-lead" x="208" y="53">We know them</text>
-          <text class="t-label" x="208" y="76">We introduce you. Both say yes first.</text>
-          <rect x="190" y="194" width="262" height="64" rx="13" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
-          <text class="t-lead" x="208" y="217">We don&rsquo;t</text>
-          <text class="t-label" x="208" y="240">We ask them, in your words.</text>
-          <path d="M190 282 H452" stroke="var(--fig-line)" stroke-width="1.8" stroke-linecap="round"/>
-          <text class="t-small" x="321" y="304" text-anchor="middle">Either way, you see the date we stop.</text>
-        </svg>
-        <svg class="fig-narrow" viewBox="0 0 320 312" aria-hidden="true" focusable="false">
-          <rect x="6" y="6" width="130" height="44" rx="12" fill="var(--card)" stroke="var(--berry-deep)" stroke-width="1.8"/>
-          <text class="t-label" x="71" y="33" text-anchor="middle">your ask</text>
-          <path d="M30 52 V202" fill="none" stroke="var(--berry-deep)" stroke-width="1.8" stroke-linecap="round"/>
-          <path d="M30 110 H62" fill="none" stroke="var(--berry-deep)" stroke-width="1.8" stroke-linecap="round"/>
-          <path d="M30 202 H62" fill="none" stroke="var(--berry-deep)" stroke-width="1.8" stroke-linecap="round"/>
-          <rect x="64" y="82" width="250" height="58" rx="12" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
-          <text class="t-lead" x="78" y="103">We know them</text>
-          <text class="t-small" x="78" y="124">We introduce you. Both say yes first.</text>
-          <rect x="64" y="174" width="250" height="58" rx="12" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
-          <text class="t-lead" x="78" y="195">We don&rsquo;t</text>
-          <text class="t-small" x="78" y="216">We ask them, in your words.</text>
-          <path d="M64 262 H314" stroke="var(--fig-line)" stroke-width="1.8" stroke-linecap="round"/>
-          <text class="t-small" x="189" y="284" text-anchor="middle">Either way, you see the date we stop.</text>
-        </svg>
-      </figure>
+    <h3 style="margin-top:38px">Your Personalized Acquisition Blueprint includes:</h3>
+    <div class="grid grid--4" style="margin-top:20px">
+      <div class="card">
+        <p style="font-family:var(--display);font-size:44px;font-weight:700;color:var(--brand);line-height:1;margin-bottom:16px">1</p>
+        <p style="font-size:17px;line-height:1.45;font-weight:600">Recommended path to pursue first</p>
+      </div>
+      <div class="card">
+        <p style="font-family:var(--display);font-size:44px;font-weight:700;color:var(--gold-dark);line-height:1;margin-bottom:16px">2</p>
+        <p style="font-size:17px;line-height:1.45;font-weight:600">Alternative paths worth considering</p>
+      </div>
+      <div class="card">
+        <p style="font-family:var(--display);font-size:44px;font-weight:700;color:var(--brand);line-height:1;margin-bottom:16px">3</p>
+        <p style="font-size:17px;line-height:1.45;font-weight:600">Relevant people, companies, or partners to approach—and why</p>
+      </div>
+      <div class="card" style="background:var(--ink);border-color:var(--ink)">
+        <p style="font-family:var(--display);font-size:44px;font-weight:700;color:var(--gold);line-height:1;margin-bottom:16px">4</p>
+        <p style="font-size:17px;line-height:1.45;font-weight:600;color:#FFFFFF">Clear first action</p>
+      </div>
     </div>
-    <div class="ask-side">
-      <p>If we know them, we introduce you. Both sides say yes first.</p>
-      <p>If we don&rsquo;t know them, we ask them &mdash; with your blessing, in your words.</p>
-      <p>You always see who we asked, how many times, and when we stop.</p>
-      <p>We never pretend to know someone we don&rsquo;t.</p>
 
-      <div class="ledger">
-        <p class="ledger-head">What that looks like <span class="ledger-tag">Example</span></p>
-        <div class="ledger-fields">
-          <div class="ledger-field"><span>Asked</span><b>4 people</b></div>
-          <div class="ledger-field"><span>Tried</span><b>7 times</b></div>
-          <div class="ledger-field"><span>We stop</span><b>12 September</b></div>
+    <div class="grid grid--2" style="margin-top:22px">
+      <div class="card card--tint" style="display:flex;gap:14px;align-items:flex-start">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/></svg>
+        <p style="font-size:16px;line-height:1.55;color:var(--muted)"><span style="color:var(--ink);font-weight:600">What we need to create it:</span> one diagnosis call and an honest view of what you sell, who you want to reach, what you have tried, and what constraints you are working with.</p>
+      </div>
+      <div class="card card--tint" style="display:flex;gap:14px;align-items:flex-start">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+        <p style="font-size:16px;line-height:1.55;color:var(--muted)"><span style="color:var(--ink);font-weight:600">No obligation.</span> You can use the blueprint yourself. There is no obligation to purchase ongoing support or execution.</p>
+      </div>
+    </div>
+
+    <div class="btn-row"><a class="btn btn--primary" href="https://tally.so/r/QK9bQG">Apply for your Blueprint
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M12 5l7 7-7 7"/></svg></a></div>
+  </div>
+</section>
+
+<!-- ══ 4 · BLUEPRINT TO ACTION ══ -->
+<section class="section band">
+  <div class="wrap">
+    <p class="eyebrow">Step two — your choice</p>
+    <h2 style="margin-top:14px">From blueprint to action.</h2>
+    <p class="lede" style="margin-top:20px;max-width:40em">Your blueprint is yours to use. If you want help carrying it out, BeHeld takes on only the work you approve, within a clear budget.</p>
+
+    <div class="grid grid--3" style="margin-top:44px">
+      <div class="card stack">
+        <span class="icon-circle icon-circle--gold"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7A5A12" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 00-4-4H9a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+        <h3>Use it yourself</h3>
+        <p style="font-size:16.5px;line-height:1.55;color:var(--muted)">Run the plan on your own.</p>
+        <ul class="bullets">
+          <li><span class="dot"></span>Your team</li>
+          <li><span class="dot"></span>Your tools</li>
+          <li><span class="dot"></span>Your network</li>
+        </ul>
+      </div>
+
+      <div class="card stack">
+        <span class="icon-circle icon-circle--gold"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7A5A12" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 01-9 8.4 8.9 8.9 0 01-4-.9L3 20.5l1.5-4.4A8.4 8.4 0 0112 3.1a8.4 8.4 0 019 8.4z"/></svg></span>
+        <h3>Stay supported</h3>
+        <p style="font-size:16.5px;line-height:1.55;color:var(--muted)">Keep BeHeld alongside you.</p>
+        <ul class="bullets">
+          <li><span class="dot"></span>Weekly review</li>
+          <li><span class="dot"></span>Progress tracking</li>
+          <li><span class="dot"></span>Ongoing strategy support</li>
+        </ul>
+      </div>
+
+      <div class="card card--featured stack">
+        <span class="badge">MOST SUPPORT</span>
+        <span class="icon-circle icon-circle--brand"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.2l2.4 2.4 4.6-4.9"/></svg></span>
+        <h3>Put your plan to work</h3>
+        <p style="font-size:16.5px;line-height:1.55;color:var(--muted)">BeHeld takes on approved work.</p>
+        <ul class="bullets">
+          <li><span class="dot"></span>Most effort behind the recommended path</li>
+          <li><span class="dot"></span>Small tests when useful</li>
+          <li><span class="dot"></span>Adjusted as evidence comes in</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 5 · WAYS BEHELD CAN HELP ══ -->
+<section class="section">
+  <div class="wrap">
+    <h2>A few ways BeHeld can help.</h2>
+    <p class="lede" style="margin-top:20px;max-width:40em">Every business needs a different path. Depending on yours, BeHeld may help you:</p>
+
+    <div class="grid grid--3" style="margin-top:44px">
+      <div class="card card--top-brand stack">
+        <span class="icon-circle icon-circle--tint"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg></span>
+        <h3>Find the right buyers</h3>
+        <ul class="bullets">
+          <li><span class="dot"></span>Who is likely to need what you offer</li>
+          <li><span class="dot"></span>Why the timing may matter</li>
+          <li><span class="dot"></span>Who is most worth speaking with</li>
+        </ul>
+      </div>
+
+      <div class="card card--top-gold stack">
+        <span class="icon-circle icon-circle--tint"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#A9750E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h8v6H7l-3 2.5V5z"/><path d="M13 20V9"/><path d="M13 9l6-3v4l-6 3"/></svg></span>
+        <h3>Figure out how to sell to them</h3>
+        <ul class="bullets">
+          <li><span class="dot"></span>The reason to reach out</li>
+          <li><span class="dot"></span>Message, channel or partnership</li>
+          <li><span class="dot"></span>Approved work put into action</li>
+        </ul>
+      </div>
+
+      <div class="card card--top-coral stack">
+        <span class="icon-circle icon-circle--tint"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12a8.5 8.5 0 11-2.6-6.1"/><path d="M20.8 4.5v4.6h-4.6"/><path d="M9 12.3l2 2 4-4.2"/></svg></span>
+        <h3>Keep opportunities moving</h3>
+        <ul class="bullets">
+          <li><span class="dot"></span>Engagement and questions</li>
+          <li><span class="dot"></span>Objections and follow-ups</li>
+          <li><span class="dot"></span>Nothing promising goes cold</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid grid--2" style="margin-top:26px">
+      <div class="card">
+        <p class="eyebrow" style="margin-bottom:16px">Every approved path has</p>
+        <ul class="chips">
+          <li class="chip">A clear goal</li>
+          <li class="chip">A reason for pursuing it</li>
+          <li class="chip">A defined set of actions</li>
+          <li class="chip">A timeframe</li>
+          <li class="chip">A success measure</li>
+          <li class="chip">A spending limit</li>
+        </ul>
+      </div>
+      <div class="card card--gold" style="display:flex;gap:16px;align-items:flex-start">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7A5A12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top:3px" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><path d="M12 16.5h.01"/></svg>
+        <p style="font-size:17px;line-height:1.55"><strong>We do not assume cold outreach is the answer.</strong> Your path could involve referrals, partnerships, events, communities, focused outreach, or another approach that fits your business.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 6 · DECISIONS ══ -->
+<section class="section dark">
+  <div class="wrap">
+    <h2 style="max-width:20em">Know what&rsquo;s worth doing again—and what to stop.</h2>
+    <p style="margin-top:20px;font-family:var(--display);font-size:clamp(20px,2vw,24px);line-height:1.35;font-weight:600;color:var(--gold);letter-spacing:-0.02em">The goal is not more activity. It is better decisions.</p>
+
+    <p class="eyebrow eyebrow--dark" style="margin:44px 0 18px">After each run, BeHeld recommends</p>
+    <div class="decisions">
+      <div class="decision">
+        <span class="decision__ring" style="background:var(--brand)"><svg width="26" height="26" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M9 6.5l9 5.5-9 5.5z"/></svg></span>
+        <p class="decision__label">CONTINUE</p>
+        <p>Evidence supports continuing.</p>
+      </div>
+      <div class="decision">
+        <span class="decision__ring" style="background:var(--gold-mid)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3A2A05" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5a8 8 0 01-13.7 5.4"/><path d="M4 12.5a8 8 0 0113.7-5.4"/><path d="M4 4.5v4h4"/><path d="M20 19.5v-4h-4"/></svg></span>
+        <p class="decision__label">CHANGE</p>
+        <p>Promising, but needs adjustment.</p>
+      </div>
+      <div class="decision">
+        <span class="decision__ring" style="background:#FFFFFF"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1F1815" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10"/><path d="M17 7L7 17"/></svg></span>
+        <p class="decision__label">STOP</p>
+        <p>Not worth more investment.</p>
+      </div>
+      <div class="decision">
+        <span class="decision__ring" style="background:var(--coral-soft)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4A1A08" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18V13"/><path d="M12 18V9"/><path d="M19 18V5"/></svg></span>
+        <p class="decision__label">INCREASE</p>
+        <p>Results support more attention.</p>
+      </div>
+      <div class="decision">
+        <span class="decision__ring" style="background:#6E6259"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.2 9a2.9 2.9 0 015.6 1c0 2-2.8 2.6-2.8 4"/><path d="M12 17.5h.01"/></svg></span>
+        <p class="decision__label">NEED MORE DATA</p>
+        <p>Too early to decide honestly.</p>
+      </div>
+    </div>
+
+    <div class="playbook">
+      <div class="playbook__spine"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#EEB44D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5h6a2.5 2.5 0 012.5 2.5v11A2 2 0 009.5 17.5H3z"/><path d="M21 5.5h-6A2.5 2.5 0 0012.5 8v11a2 2 0 012-1.5H21z"/></svg></div>
+      <div class="playbook__body">
+        <div>
+          <h3 style="font-size:clamp(21px,2vw,26px);margin-bottom:12px">Your sales playbook</h3>
+          <p style="font-size:16.5px;line-height:1.55;color:var(--muted);margin-bottom:16px">Over time, those decisions become the buyers, offers, messages and channels worth investing in.</p>
+          <ul class="chips">
+            <li class="chip">Buyers</li>
+            <li class="chip">Offers</li>
+            <li class="chip">Messages</li>
+            <li class="chip">Channels</li>
+          </ul>
+        </div>
+        <div class="bars" aria-hidden="true">
+          <i style="height:26%;background:var(--gold-soft)"></i>
+          <i style="height:38%;background:var(--gold)"></i>
+          <i style="height:34%;background:var(--gold-soft)"></i>
+          <i style="height:58%;background:var(--coral-soft)"></i>
+          <i style="height:76%;background:var(--brand)"></i>
+          <i style="height:100%;background:var(--brand)"></i>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 4 — WHY PEOPLE SAY YES -->
-<section id="why">
-  <div class="shell">
-   <div class="narrow">
-    <h2 class="h-sentence">Nobody gives their contacts to a stranger.</h2>
-    <p class="turn">So we <span class="hl">don&rsquo;t ask them to.</span></p>
-    <p>You start by helping your group with what you know. Small things. The thing you happen to have done before.</p>
-    <p>That&rsquo;s how people see what you&rsquo;re good at.</p>
-    <p>Then the introductions start &mdash; from us, and from them. People say yes when they can picture how the meeting will go.</p>
-
-    <figure class="fig" role="img"
-            aria-label="A chain: you help with a small thing you already know, people see what you're good at, they can picture how a meeting with you will go, and then they introduce you.">
-      <svg class="fig-wide" viewBox="0 0 620 110" aria-hidden="true" focusable="false">
-        <rect x="1" y="1" width="132" height="80" rx="13" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
-        <text class="t-label" x="67" y="30" text-anchor="middle">You help with a<tspan x="67" dy="15">small thing you</tspan><tspan x="67" dy="15">already know</tspan></text>
-        <path d="M139 41 H154" stroke="var(--fig-line)" stroke-width="1.8" stroke-linecap="round"/>
-        <path d="M152 36 L158 41 L152 46" fill="none" stroke="var(--fig-line)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-
-        <rect x="163" y="1" width="132" height="80" rx="13" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
-        <text class="t-label" x="229" y="37" text-anchor="middle">People see what<tspan x="229" dy="15">you&rsquo;re good at</tspan></text>
-        <path d="M301 41 H316" stroke="var(--fig-line)" stroke-width="1.8" stroke-linecap="round"/>
-        <path d="M314 36 L320 41 L314 46" fill="none" stroke="var(--fig-line)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-
-        <rect x="325" y="1" width="132" height="80" rx="13" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
-        <text class="t-label" x="391" y="37" text-anchor="middle">They can picture<tspan x="391" dy="15">how it will go</tspan></text>
-        <path d="M463 41 H478" stroke="var(--berry-deep)" stroke-width="1.8" stroke-linecap="round"/>
-        <path d="M476 36 L482 41 L476 46" fill="none" stroke="var(--berry-deep)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-
-        <rect x="487" y="1" width="132" height="80" rx="13" fill="var(--fig-tint)" stroke="var(--berry-deep)" stroke-width="1.8"/>
-        <text class="t-strong" x="553" y="37" text-anchor="middle">They introduce<tspan x="553" dy="15">you</tspan></text>
-      </svg>
-      <svg class="fig-narrow" viewBox="0 0 300 330" aria-hidden="true" focusable="false">
-        <rect x="1" y="1" width="298" height="64" rx="13" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
-        <text class="t-label" x="150" y="38" text-anchor="middle">You help with a small thing you know</text>
-        <path d="M150 69 V80" stroke="var(--fig-line)" stroke-width="1.8" stroke-linecap="round"/>
-        <path d="M145 76 L150 82 L155 76" fill="none" stroke="var(--fig-line)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-
-        <rect x="1" y="89" width="298" height="64" rx="13" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
-        <text class="t-label" x="150" y="126" text-anchor="middle">People see what you&rsquo;re good at</text>
-        <path d="M150 157 V168" stroke="var(--fig-line)" stroke-width="1.8" stroke-linecap="round"/>
-        <path d="M145 164 L150 170 L155 164" fill="none" stroke="var(--fig-line)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-
-        <rect x="1" y="177" width="298" height="64" rx="13" fill="var(--card)" stroke="var(--fig-line)" stroke-width="1.8"/>
-        <text class="t-label" x="150" y="214" text-anchor="middle">They can picture how it will go</text>
-        <path d="M150 245 V256" stroke="var(--berry-deep)" stroke-width="1.8" stroke-linecap="round"/>
-        <path d="M145 252 L150 258 L155 252" fill="none" stroke="var(--berry-deep)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-
-        <rect x="1" y="265" width="298" height="64" rx="13" fill="var(--fig-tint)" stroke="var(--berry-deep)" stroke-width="1.8"/>
-        <text class="t-strong" x="150" y="302" text-anchor="middle">They introduce you</text>
-      </svg>
-    </figure>
-   </div>
+<!-- ══ 7 · BEFORE YOU BUY ══ -->
+<section class="section" style="padding-block:clamp(36px,3.4vw,48px)">
+  <div class="wrap">
+    <h3>Before you buy, hire, or automate.</h3>
+    <p style="margin-top:12px;font-size:16.5px;line-height:1.6;color:var(--muted);max-width:70ch">Lead lists, sales tools, AI SDRs, agencies, consultants, and sales hires can all help. BeHeld does not replace them — it helps you decide what should be <strong style="color:var(--ink)">built</strong>, <strong style="color:var(--ink)">bought</strong>, <strong style="color:var(--ink)">delegated</strong>, or <strong style="color:var(--ink)">stopped</strong> next.</p>
   </div>
 </section>
 
-<!-- 5 — THE OFFER -->
-<section class="globe-band">
-  <div class="shell globe">
-   <div class="offer">
-    <div class="eyebrow">The offer</div>
-    <h2 class="h-sentence">Your first note is free. The next one is better.</h2>
-    <!-- A/B alternate, parked until there is analytics to read it with:
-         "The first one is free. It's also the worst one you'll get." -->
+<!-- ══ 8 · HUMAN-LED ══ -->
+<section class="section band">
+  <div class="wrap">
+    <h2>Human-led. <span style="color:var(--brand)">Agent-assisted.</span></h2>
+    <p class="lede" style="margin-top:20px;max-width:40em">Human strategy and weekly review, with agents that support research, monitoring and approved execution.</p>
 
-    <div class="beats">
-      <p>Five minutes to tell us.</p>
-      <p>First note in three days.</p>
-      <p>It won&rsquo;t be our best yet.</p>
+    <div class="flow">
+      <div class="flow__step flow__step--first">
+        <span class="icon-circle icon-circle--brand" style="width:42px;height:42px"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.2l2.4 2.4 4.6-4.9"/></svg></span>
+        <p>Founder<br>approval</p>
+      </div>
+      <svg class="flow__arrow" width="42" height="14" viewBox="0 0 42 14" fill="none" aria-hidden="true"><path d="M1 7h32" stroke="#B5462E" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 5"/><path d="M33 2.5L38.5 7 33 11.5" stroke="#B5462E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="flow__step">
+        <span class="icon-circle icon-circle--gold" style="width:42px;height:42px"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#7A5A12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 00-4-4H9a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+        <p>Human<br>strategy</p>
+      </div>
+      <svg class="flow__arrow" width="42" height="14" viewBox="0 0 42 14" fill="none" aria-hidden="true"><path d="M1 7h32" stroke="#B5462E" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 5"/><path d="M33 2.5L38.5 7 33 11.5" stroke="#B5462E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="flow__step">
+        <span class="icon-circle icon-circle--gold" style="width:42px;height:42px"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#7A5A12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="12" r="2.5"/><path d="M8.2 7.2l7.6 3.6"/><path d="M8.2 16.8l7.6-3.6"/></svg></span>
+        <p>Agent-supported<br>work</p>
+      </div>
+      <svg class="flow__arrow" width="42" height="14" viewBox="0 0 42 14" fill="none" aria-hidden="true"><path d="M1 7h32" stroke="#B5462E" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 5"/><path d="M33 2.5L38.5 7 33 11.5" stroke="#B5462E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="flow__step">
+        <span class="icon-circle icon-circle--gold" style="width:42px;height:42px"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#7A5A12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5a8 8 0 01-13.7 5.4"/><path d="M4 12.5a8 8 0 0113.7-5.4"/><path d="M4 4.5v4h4"/><path d="M20 19.5v-4h-4"/></svg></span>
+        <p>Review and<br>iterate</p>
+      </div>
     </div>
 
-    <p class="sharpen">Each one gets sharper, because you tell us what worked.</p>
-    <p class="start">Start with one. If it&rsquo;s not useful, stop there.</p>
+    <div class="flow__loop">
+      <i></i>
+      <svg width="16" height="13" viewBox="0 0 16 13" fill="none" aria-hidden="true"><path d="M2.5 7L8 2l5.5 5" stroke="#B5462E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Repeat weekly</span>
+    </div>
 
-    <a class="cta" href="https://tally.so/r/QK9bQG">Tell us where you&rsquo;re stuck &rarr;</a>
-   </div>
+    <div class="grid grid--2" style="margin-top:16px">
+      <div class="card">
+        <p class="eyebrow" style="margin-bottom:16px">You approve</p>
+        <ul class="chips">
+          <li class="chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>The paths we pursue</li>
+          <li class="chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>External actions before they happen</li>
+          <li class="chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>The execution budget</li>
+          <li class="chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Whether a path continues, changes or stops</li>
+        </ul>
+      </div>
+      <div class="card" style="display:flex;gap:14px;align-items:flex-start">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7A6C62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><path d="M12 16.5h.01"/></svg>
+        <p style="font-size:16px;line-height:1.55;color:var(--muted)">During the founding pilot, some workflows are delivered manually as we refine the service. <span style="color:var(--ink);font-weight:600">We do not use high-volume, unreviewed outreach.</span></p>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- 6 — TESTIMONIAL. Uncomment when a real quote exists.
-     Styles are already in styles.css (.quote-band, .quote). Replace both placeholders.
-<section class="quote-band">
-  <div class="shell quote">
-    <blockquote>&ldquo;One founder. One conversation. What happened.&rdquo;</blockquote>
-    <cite>Name, Company</cite>
-  </div>
-</section>
--->
+<!-- ══ 9 · FIT ══ -->
+<section class="section" id="fit">
+  <div class="wrap">
+    <h2>Is BeHeld right for your business?</h2>
 
-<!-- CLOSER -->
-<section class="closer">
-  <div class="shell">
-   <div class="closer-col">
-    <h2>Nobody should build <span class="hl">alone.</span></h2>
-    <a class="cta" href="https://tally.so/r/QK9bQG">Get your first note &rarr;</a>
-    <p class="fine">A global community of founders.</p>
-    <p class="tagline">Someone should be watching you win.</p>
-   </div>
+    <div class="grid grid--2" style="margin-top:34px">
+      <div class="fit__col">
+        <p class="eyebrow">Designed for founders and lean teams that</p>
+        <ul>
+          <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="margin-top:3px"><path d="M20 6L9 17l-5-5"/></svg>Have a defined offer</li>
+          <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="margin-top:3px"><path d="M20 6L9 17l-5-5"/></svg>Can identify—or research—potential customers</li>
+          <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="margin-top:3px"><path d="M20 6L9 17l-5-5"/></svg>Have not yet found a dependable acquisition process</li>
+          <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="margin-top:3px"><path d="M20 6L9 17l-5-5"/></svg>Want more than a one-time strategy report</li>
+          <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="margin-top:3px"><path d="M20 6L9 17l-5-5"/></svg>Are willing to take action and measure what happens</li>
+          <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="margin-top:3px"><path d="M20 6L9 17l-5-5"/></svg>Can serve the opportunities the work may create</li>
+        </ul>
+      </div>
+
+      <div class="fit__col">
+        <p class="eyebrow">Not a fit if you</p>
+        <ul>
+          <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#9A8D82" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="margin-top:3px"><path d="M7 7l10 10"/><path d="M17 7L7 17"/></svg>Want a guaranteed sale by a particular date</li>
+          <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#9A8D82" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="margin-top:3px"><path d="M7 7l10 10"/><path d="M17 7L7 17"/></svg>Want AI to act without your approval</li>
+          <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#9A8D82" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="margin-top:3px"><path d="M7 7l10 10"/><path d="M17 7L7 17"/></svg>Want high-volume, unreviewed outreach</li>
+          <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#9A8D82" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="margin-top:3px"><path d="M7 7l10 10"/><path d="M17 7L7 17"/></svg>Only want a generic lead list</li>
+          <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#9A8D82" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="margin-top:3px"><path d="M7 7l10 10"/><path d="M17 7L7 17"/></svg>Are not able to follow up with interested prospects</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:22px">
+      <p class="eyebrow" style="margin-bottom:16px">Potential fits include</p>
+      <ul class="chips">
+        <li class="chip">B2B SaaS and AI startups</li>
+        <li class="chip">Consultancies, agencies, and fractional services</li>
+        <li class="chip">Recruiting and staffing firms</li>
+        <li class="chip">Commercial real estate and PropTech</li>
+        <li class="chip">Cybersecurity, IT, accounting, and financial services</li>
+        <li class="chip">Logistics, industrial suppliers, and B2B hospitality products</li>
+        <li class="chip">Wholesale brands and selected direct-to-consumer businesses</li>
+      </ul>
+    </div>
   </div>
 </section>
+
+<!-- ══ 10 · FOUNDING PILOT ══ -->
+<section class="section band" id="pilot">
+  <div class="wrap">
+    <h2>The founding pilot</h2>
+
+    <div class="grid grid--3" style="margin-top:34px">
+      <div class="card stack">
+        <h3>Invitation &amp; selection</h3>
+        <p style="font-size:16.5px;line-height:1.55;color:var(--muted)">The founding pilot focuses on customer acquisition. The first step is your Personalized Acquisition Blueprint. Complimentary blueprints are available to invited and selected qualifying businesses during the founding pilot.</p>
+      </div>
+      <div class="card stack">
+        <h3>Base subscription</h3>
+        <p style="font-size:16.5px;line-height:1.55;color:var(--muted)">Covers ongoing strategy support, progress tracking, workflow maintenance, and a weekly decision report.</p>
+      </div>
+      <div class="card stack">
+        <h3>Optional execution budget</h3>
+        <p style="font-size:16.5px;line-height:1.55;color:var(--muted)">Covers clearly scoped, approved work through execution credits or a capped budget.</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:22px">
+      <p class="eyebrow" style="margin-bottom:16px">Before you approve execution, you will know</p>
+      <ul class="chips">
+        <li class="chip">What BeHeld will do</li>
+        <li class="chip">The expected scope of work</li>
+        <li class="chip">The estimated cost</li>
+        <li class="chip">The spending cap</li>
+        <li class="chip">How progress will be evaluated</li>
+      </ul>
+      <p style="margin-top:18px;font-size:16.5px;color:var(--muted)">If you want support beyond the blueprint, BeHeld will provide a clear proposal before paid work begins. There is no open-ended execution commitment.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 11 · FAQ ══ -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <h2>Frequently asked questions</h2>
+    <div class="faq">
+      <details>
+        <summary>Does BeHeld guarantee customers or sales?</summary>
+        <p><strong style="color:var(--ink)">No.</strong> Buyer decisions, market conditions, sales cycles, pricing, and closing ability are not fully within BeHeld&rsquo;s control. BeHeld commits to clear recommendations, bounded work, transparent tracking, and honest decisions.</p>
+      </details>
+      <details>
+        <summary>What will paid support cost?</summary>
+        <p>Pricing is shared after the blueprint because ongoing support and execution needs vary. You will see the base scope and any execution estimate before committing.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 12 · CLOSING CTA ══ -->
+<section class="section dark closing" id="apply">
+  <div class="wrap closing__inner">
+    <svg class="closing__art" width="440" height="300" viewBox="0 0 440 300" fill="none" aria-hidden="true">
+      <path d="M0 300L118 128l58 62 74-118 92 128 98-62V300z" fill="#2C2320"/>
+      <path d="M0 300L118 128l58 62 74-118 92 128" stroke="#3A302B" stroke-width="2" stroke-linejoin="round" fill="none"/>
+      <path d="M52 300c46-14 58-52 44-84-13-30 6-56 44-64 40-9 58-32 52-62" stroke="#B5462E" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="1 13" fill="none"/>
+      <circle cx="52" cy="288" r="7" fill="#FF8559"/>
+      <path d="M192 90V28" stroke="#EEB44D" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M192 30h44l-12 15 12 15h-44z" fill="#EEB44D"/>
+    </svg>
+
+    <div>
+      <h2>Get clear on your next customer move.</h2>
+      <p>Tell us what you sell, who you want to reach, and where customer acquisition feels stuck.</p>
+      <div class="btn-row">
+        <a class="btn btn--gold" href="https://tally.so/r/QK9bQG">Apply for your Blueprint
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
+        <p style="font-size:16px;color:var(--muted-3)">Have an invitation code? Add it to your application.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <span class="logo"><b>Be</b><i style="color:var(--gold)">Held</i></span>
+    <small>Founding pilot · Customer acquisition</small>
+  </div>
+</footer>
 
 </body>
 </html>
