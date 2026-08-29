@@ -32,6 +32,11 @@
 
   --display: 'Bricolage Grotesque', 'Trebuchet MS', system-ui, sans-serif;
   --body: Karla, 'Helvetica Neue', Arial, sans-serif;
+  --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  /* the page's underlying column ratio — heads and lists share it */
+  --col-a: minmax(0, 7fr);
+  --col-b: minmax(0, 11fr);
+  --col-gap: clamp(24px, 4vw, 72px);
 
   --gutter: clamp(20px, 6.4vw, 96px);
   --section-y: clamp(52px, 6vw, 88px);
@@ -102,7 +107,7 @@ p { margin: 0; }
 /* Wordmark: a serif logotype, two-tone. Deeper gold on paper so it holds up
    at nav size; the lighter gold takes over on the dark footer. */
 .logo {
-  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-family: var(--serif);
   font-size: 28px; font-weight: 700; letter-spacing: -0.005em; line-height: 1;
   --logo-1: var(--brand);
   --logo-2: #D19A28;
@@ -126,9 +131,8 @@ p { margin: 0; }
 .grid--4 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 .stack { display: flex; flex-direction: column; gap: 16px; }
 
-.icon-circle { display: inline-flex; align-items: center; justify-content: center; width: 54px; height: 54px; border-radius: 50%; }
-.icon-circle--gold { background: var(--gold-soft); }
-.icon-circle--tint { background: var(--band); }
+.icon-circle { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 11px; }
+.icon-circle--gold { background: var(--band); border: 1.5px solid var(--line); }
 .icon-circle--brand { background: var(--brand); }
 .icon-tile { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 10px; background: var(--band); }
 
@@ -191,12 +195,6 @@ ul.bullets { list-style: none; margin: 0; padding: 0; }
   padding: 8px 15px; font-size: 11px; font-weight: 700; letter-spacing: 0.09em;
 }
 
-.card--top-brand { border-top: 5px solid var(--brand); }
-.card--top-gold  { border-top: 5px solid var(--gold-mid); }
-.card--top-coral { border-top: 5px solid var(--coral-soft); }
-.card--top-brand .dot { background: var(--brand); }
-.card--top-gold  .dot { background: var(--gold-mid); }
-.card--top-coral .dot { background: var(--coral-soft); }
 
 /* ---------- decisions ---------- */
 .decisions { display: grid; grid-template-columns: repeat(auto-fit, minmax(178px, 1fr)); gap: 16px; }
@@ -232,10 +230,6 @@ ul.bullets { list-style: none; margin: 0; padding: 0; }
   .flow__loop { display: none; }
 }
 
-/* ---------- fit ---------- */
-.fit__col { background: var(--card); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 26px 26px 28px; }
-.fit__col ul { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
-.fit__col li { display: flex; gap: 12px; align-items: flex-start; font-size: 16.5px; line-height: 1.5; color: var(--muted); }
 
 /* ---------- FAQ ---------- */
 .faq { display: flex; flex-direction: column; gap: 14px; margin-top: 34px; }
@@ -262,3 +256,47 @@ ul.bullets { list-style: none; margin: 0; padding: 0; }
 
 .skip { position: absolute; left: -9999px; }
 .skip:focus { left: var(--gutter); top: 12px; z-index: 10; background: var(--brand); color: #FFF; padding: 12px 18px; border-radius: 8px; }
+
+
+/* ---------- editorial layer ----------
+   The page was all cards. These give it a second register: an asymmetric
+   two-column grid, hairline rules instead of boxes, and the logotype serif
+   carrying numerals and the one pull-quote. */
+
+.sec-head { display: grid; grid-template-columns: var(--col-a) var(--col-b); gap: var(--col-gap); align-items: end; }
+.sec-head .lede { max-width: 46ch; }
+@media (max-width: 860px) { .sec-head { grid-template-columns: minmax(0, 1fr); gap: 16px; align-items: start; } }
+
+/* §3 — what the blueprint includes, as ruled columns rather than four boxes */
+.includes { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0 clamp(20px, 2.6vw, 40px); margin-top: 26px; }
+.include { border-top: 3px solid var(--ink); padding-top: 20px; }
+.include__n { display: block; font-family: var(--serif); font-size: clamp(44px, 4.4vw, 60px); line-height: 0.9; margin-bottom: 14px; }
+.include p { font-size: 17px; line-height: 1.45; font-weight: 600; max-width: 22ch; }
+
+/* §5 — an editorial list on the same grid as its heading */
+.ways { margin-top: clamp(32px, 3.4vw, 48px); border-top: 1.5px solid var(--line); }
+.way { display: grid; grid-template-columns: var(--col-a) var(--col-b); gap: var(--col-gap); padding-block: clamp(26px, 2.8vw, 38px); border-bottom: 1.5px solid var(--line); align-items: start; }
+.way h3 { font-size: clamp(21px, 2.1vw, 29px); text-wrap: balance; }
+.way__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.way__list li { display: grid; grid-template-columns: 22px 1fr; align-items: baseline; font-size: clamp(16px, 1.35vw, 17.5px); line-height: 1.5; color: var(--muted); }
+.way__list li::before { content: ""; width: 13px; height: 1.5px; background: var(--brand); transform: translateY(-0.35em); }
+@media (max-width: 860px) { .way { grid-template-columns: minmax(0, 1fr); gap: 14px; } }
+
+/* a ruled list, so pills are not the answer to every list on the page */
+.ruled { list-style: none; margin: 16px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0 clamp(20px, 2.4vw, 32px); }
+.ruled li { padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 15.5px; font-weight: 600; }
+
+/* the one pull-quote — the serif earning its place beyond the logo */
+.pull { margin-top: 26px; font-family: var(--serif); font-style: italic; font-weight: 700; font-size: clamp(25px, 2.7vw, 36px); line-height: 1.2; letter-spacing: -0.01em; color: var(--gold); max-width: 20ch; }
+
+/* rag and rhythm */
+.lede, .way__list li, .include p { text-wrap: pretty; }
+.hero__inner { padding-block: clamp(8px, 1.6vw, 26px) 0; }
+
+/* §9 — fit, on the same rule-over-column device as §3 */
+.fit { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0 clamp(28px, 4vw, 72px); margin-top: clamp(30px, 3vw, 42px); }
+.fit-col { border-top: 3px solid var(--brand); padding-top: 18px; }
+.fit-col ul { list-style: none; margin: 12px 0 0; padding: 0; }
+.fit-col li { display: grid; grid-template-columns: 26px 1fr; align-items: start; gap: 0; padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 16.5px; line-height: 1.45; color: var(--muted); }
+.fit-col li svg { margin-top: 2px; }
+.fit-ind { margin-top: clamp(28px, 3vw, 40px); }
