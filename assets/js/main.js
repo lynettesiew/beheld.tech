@@ -28,20 +28,16 @@ if (rotator && !stillness.matches) {
   let i = PHRASES.indexOf(rotator.textContent.trim());
   if (i < 0) i = PHRASES.length - 1;
 
-  // One pass through the list, then it rests on the phrase it started with.
-  // A permanent loop would compete with the headline and the call to action
-  // for as long as anyone stayed on the page — the motion has a point to
-  // make, and once it has made it, it should stop.
-  let remaining = PHRASES.length;
-
-  const timer = setInterval(() => {
+  // It keeps cycling for as long as the page is open. An earlier version
+  // stopped after one pass so the motion would not compete with the headline,
+  // but a line that freezes after twenty seconds reads as broken rather than
+  // as restraint, and the five alternatives it names are the argument.
+  setInterval(() => {
     rotator.classList.add('is-out');
     setTimeout(() => {
       i = (i + 1) % PHRASES.length;
       rotator.textContent = PHRASES[i];
       rotator.classList.remove('is-out');
     }, FADE);
-
-    if (--remaining === 0) clearInterval(timer);
   }, HOLD);
 }

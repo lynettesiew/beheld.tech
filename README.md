@@ -140,20 +140,28 @@ the size.
 
 ### The rotating hero clause
 
-`main.js` rotates the question that sits **above** the `h1`: *"Hire an SDR?
-Buy a lead list? Run ads? Post on LinkedIn? Do it all yourself?"* Five phrases,
-4.2 seconds each, with a 400ms fade that must stay in step with `.rotator`'s
-`transition` in the stylesheet — change one, change the other.
+`main.js` rotates the clause inside the line that sits **above** the `h1`:
+*"Everyone tells you to hire an SDR / buy a lead list / run ads / post on
+LinkedIn / do it all yourself."* Five phrases, 4.2 seconds each, with a 400ms
+fade that must stay in step with `.rotator`'s `transition` in the stylesheet:
+change one, change the other. The phrases are lower case because they sit
+inside a sentence now, and the frame puts the doubt on the advice rather than
+on the reader.
 
 It sits above the headline on purpose. Motion beats size for attention, so the
 moving element has to pose the problem the headline answers; below the `h1` it
-competed with it instead. For the same reason it runs **one pass and stops**,
-resting on "Do it all yourself" — a permanent loop competes with the headline
-and the CTA for as long as anyone stays on the page.
+competed with it instead.
+
+It **loops for as long as the page is open**. An earlier version ran one pass
+and stopped, on the reasoning that permanent motion competes with the headline
+and the CTA. In practice a line that freezes after twenty seconds reads as
+broken rather than as restraint, and the five alternatives it names are the
+argument the section is making, so a visitor who arrives late should still see
+them.
 
 It is decorative, and it degrades on purpose. The markup ships with the last
-phrase already in the DOM, so with JavaScript off the line still reads "Do it
-all yourself?" The script also does nothing at all under
+phrase already in the DOM, so with JavaScript off the line still reads
+"Everyone tells you to do it all yourself." The script also does nothing under
 `prefers-reduced-motion: reduce`, leaving that same static phrase. **If macOS
 "Reduce motion" is on, you will never see it move** — that is correct
 behaviour, not a bug.
