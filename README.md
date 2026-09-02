@@ -38,8 +38,17 @@ check that page.)
 ## Page order
 
 Hero → your Blueprint → contrast → how it works → you approve everything →
-every run teaches the next → findings so far → what this costs you → packages
-→ is this for you → FAQ → close.
+every run teaches the next → findings so far → what this costs you → is this
+for you → FAQ → close.
+
+**Pricing is currently hidden.** The packages section sat between "what this
+costs you" and "is this for you". It was removed rather than commented out, so
+that no price sits in the page source for a crawler to find, and it is kept in
+git instead: `git show 9342ec7:index.html`. Hiding it also meant taking the
+price out of the nav, step 4 of "how it works", the closing paragraph and the
+four meta descriptions, and swapping the band backgrounds on "is this for you"
+and the FAQ so the alternation still holds. The `.pkg`, `.promise` and `.pkgs`
+rules stay in the stylesheet, dormant.
 
 Two sections carry the weight the old page missed. **Every run teaches the
 next** (the dark band) absorbed the old verdicts strip, because five verdicts
@@ -98,14 +107,18 @@ literally true. The salary figure carries its basis in a `.src` line directly
 underneath, because a sourced number survives an argument and a bare one does
 not. Localise both if you sell outside the US.
 
-Prices appear in four places and must agree: the `<title>`, the meta and OG
-descriptions, the package cards (`.pkg__price`), and the closing paragraph.
+While pricing is hidden, no price should appear anywhere on the page. This
+should return nothing:
 
 ```bash
 grep -n '1,200\|\$900\|6,000' index.html
 ```
 
-### The package cards
+When it comes back, prices appear in four places and must agree: the
+`<title>`, the meta and OG descriptions, the package cards (`.pkg__price`),
+and the closing paragraph.
+
+### The package cards (currently hidden)
 
 `.pkg` replaced a real `<table>`, which reverses an earlier decision, so the
 reasoning is worth keeping. The table was right that the plans need **one
