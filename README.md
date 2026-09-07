@@ -23,7 +23,7 @@ Static site: no build step, no dependencies, **and no JavaScript**. Open
     └── img/
         ├── favicon.svg
         ├── apple-touch-icon.png
-        └── og-image.png    # 1200×630 social preview
+        └── og-customer-finder.png   # 1200×630 social preview
 ```
 
 ## Local preview
@@ -133,6 +133,33 @@ its own carries nothing:
 ```
 https://tally.so/r/QK9bQG?initial_ask=get%20my%20first%20ten%20customers
 ```
+
+### The social preview image
+
+`assets/img/og-customer-finder.png` is what Slack, LinkedIn and iMessage show
+when someone pastes the link. It is a **hand-built asset, not generated from
+the page**, so changing the headline in `index.html` does not change it — the
+old one sat there for two positionings before anyone noticed.
+
+It is rebuilt by rendering a 1200×630 HTML card in headless Chrome at 2x and
+downscaling, which keeps the real fonts and the real palette:
+
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless \
+  --force-device-scale-factor=2 --window-size=1200,630 --virtual-time-budget=8000 \
+  --screenshot=og-2x.png file://$PWD/card.html
+sips -z 630 1200 og-2x.png
+```
+
+**Give it a new filename whenever the artwork changes.** Scrapers cache by
+URL, so overwriting the same path leaves stale previews in circulation for
+weeks. That is why the old `og-image.png` is gone rather than replaced.
+
+After deploying, re-scrape so existing shares update:
+[LinkedIn](https://www.linkedin.com/post-inspector/) ·
+[Facebook](https://developers.facebook.com/tools/debug/) ·
+[X](https://cards-dev.twitter.com/validator). Slack re-fetches on its own
+after roughly 30 minutes.
 
 ### Headlines
 
