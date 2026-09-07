@@ -1,10 +1,12 @@
 # beheld.tech
 
-Landing page for **BeHeld** — we find the people already looking for what you
-sell, tell you which path to try first, and run it with you. The first
-Blueprint is free.
+Landing page for **BeHeld** — an always-on customer finder for early-stage
+founders. It works out who might buy what they made, finds the actual people,
+tries a few ways of reaching them, and reports on Thursday which one worked.
+The first run is free.
 
-Static site: no build step, no dependencies. Open `index.html` and it works.
+Static site: no build step, no dependencies, **and no JavaScript**. Open
+`index.html` and it works.
 
 ## Structure
 
@@ -18,7 +20,6 @@ Static site: no build step, no dependencies. Open `index.html` and it works.
 ├── .nojekyll               # serve files as-is on GitHub Pages
 └── assets/
     ├── css/styles.css      # all styles
-    ├── js/main.js          # the hero's rotating clause (~35 lines; the only JS)
     └── img/
         ├── favicon.svg
         ├── apple-touch-icon.png
@@ -37,188 +38,149 @@ check that page.)
 
 ## Page order
 
-Hero → your Blueprint → contrast → how it works → you approve everything →
-every run teaches the next → findings so far → what this costs you → is this
-for you → FAQ → close.
+Hero → what it does while you build → an example week → questions → close.
 
-**Pricing is currently hidden.** The packages section sat between "what this
-costs you" and "is this for you". It was removed rather than commented out, so
-that no price sits in the page source for a crawler to find, and it is kept in
-git instead: `git show 9342ec7:index.html`. Hiding it also meant taking the
-price out of the nav, step 4 of "how it works", the closing paragraph and the
-four meta descriptions, and swapping the band backgrounds on "is this for you"
-and the FAQ so the alternation still holds. The `.pkg`, `.promise` and `.pkgs`
-rules stay in the stylesheet, dormant.
+Five sections, and a reader can finish the page in four screens. That is the
+point: the earlier version explained the process, and the process is not what
+a founder is buying. They are buying not having to be the salesperson.
 
-Two sections carry the weight the old page missed. **Every run teaches the
-next** (the dark band) absorbed the old verdicts strip, because five verdicts
-listed on their own never said what happens to the verdict; the loop that
-spends it does. **What this costs you** sits immediately above the prices so
-that $1,200 lands against 30 minutes a week and the cost of a first sales
-hire, rather than against nothing.
+Backgrounds alternate paper / band down the page, with the closing CTA as the
+one dark beat.
 
-The prices moved down, behind the approval mechanism and the pilot findings.
-A reader used to meet $6,000 at section six, before any evidence. The trust
-strip came out entirely: three hand-counted numbers at the top of the page
-start an argument about scale, which is the one argument a pilot cannot win.
+## There is no JavaScript
 
-"How it works" carries a fourth step (`.step--run`, the only one in the brand
-colour) on purpose: with three steps the journey ended at a document, and
-readers concluded the Blueprint *was* the product. The hero now says the same
-thing again on its own line (`.hero__run`).
+`assets/js/main.js` is gone, and so is the rotating hero clause it drove. The
+page has two interactive pieces and both are done in HTML and CSS:
 
-Backgrounds alternate paper / band down the page, with the loop section and
-the closing CTA as the two dark beats.
+- **The weekly report card** in the hero is a **radio group**. Four
+  `<input type="radio" name="week">` elements sit before the tabs and the
+  panels so `:checked ~` sibling selectors can light the right label and
+  reveal the right panel. The inputs are visually hidden but still focusable,
+  so the card is keyboard-navigable with the arrow keys.
+- **The FAQ** is `<details>` / `<summary>`. The browser handles the open
+  state, the keyboard and the semantics; the stylesheet only hides the default
+  marker and rotates the chevron.
 
-## Responsive approach
+Both work with scripting disabled, which is why they were built this way. If
+you ever add a third interactive piece, try to keep this property.
 
-Desktop-first. The base rules in `assets/css/styles.css` **are** the desktop
-design; every media query is `max-width` and only scales things down. Most
-sections reflow on their own through `repeat(auto-fit, minmax(…))` and need no
-breakpoint at all. The explicit ones, each sitting with the component it
-belongs to:
-
-| Breakpoint | What changes |
-| --- | --- |
-| `≤1100px` | Hero stacks: the Blueprint card drops below the headline |
-| `≤1000px` | Closing CTA stacks |
-| `≤940px` | Trust strip — the numeral moves above its sentence so three facts stay on one row |
-| `≤880px` | "You approve everything" stacks the chat mock above the checklist |
-| `≤860px` | Nav links give way to the CTA |
-| `≤900px` | Packages table stacks **by attribute**, not by plan — see below |
-| `≤760px` | Contrast table stacks; the column headings hide and each cell grows its own Elsewhere/BeHeld label |
-| `≤520px` | Blueprint card rows stack label over text |
-| `≤400px` | Small phones — nav wordmark and CTA tighten |
-
-To change the desktop design, edit the base rules.
+**Do not re-add a script tag without also adding the cache-buster reference
+back to the checklist below.**
 
 ## Editing
 
 - **Copy and layout** → `index.html`
 - **Colors, type, spacing** → the `:root` variables at the top of `assets/css/styles.css`
-- **The rotating hero clause** → `assets/js/main.js`
 
-### Numbers you edit by hand
+### The example week
 
-The findings cards and the `$70,000` figure in **what this costs you** are
-plain text. Nothing is wired to a data source, on purpose. Update them as the
-numbers change, and **never round up**: they only work while they are
-literally true. The salary figure carries its basis in a `.src` line directly
-underneath, because a sourced number survives an argument and a bare one does
-not. Localise both if you sell outside the US.
+The three-row table is currently **an example**, not a real run. Nothing in it
+is sourced, so nothing in it names a real company.
 
-While pricing is hidden, no price should appear anywhere on the page. This
-should return nothing:
+When a real race produces data, three things change together, and doing one
+without the others is how the page starts lying:
+
+1. Replace the numbers in the three rows with the real ones. **Never round up.**
+2. Change the eyebrow from `An example week` to `A real week`.
+3. Change the hero's second button from `See an example week` to
+   `See a real week`.
+
+The line under the table promises that each row in a real report links out to
+where its tactic came from. That promise rests on an evidence rule worth
+keeping straight, because it is easy to overclaim here:
+
+- **What a company visibly does** — content, events, job posts, partnerships —
+  is observable and linkable. It says nothing about what that route produced.
+- **What a founder says won them customers** — a post, an interview, a launch
+  write-up — is quotable and linkable. It is evidence that they said it.
+- **Connecting a route to an outcome** is inference. It is never presented as
+  fact, on the page or in a report.
+
+"Company X did Y and it worked" is not sourceable and must not appear.
+
+### Price
+
+**No price appears in this page.** The packages section was deleted rather
+than commented out for exactly this reason, and is kept in git instead:
+`git show 9342ec7:index.html`.
+
+The redesign follows the same rule. The copy spec included a "What does it
+cost?" answer with a figure in it, but the figure was unconfirmed and this
+repo is public — and the repo root is the published site root, so this file is
+served too. The whole question was left out rather than shipped as a guess.
+Add it back once the price is settled; the FAQ is a list of `<details>`, so it
+is one block wherever you want it.
+
+This should return nothing:
 
 ```bash
-grep -n '1,200\|\$900\|6,000' index.html
+grep -n '750\|1,200\|\$900\|6,000' index.html
 ```
-
-When it comes back, prices appear in four places and must agree: the
-`<title>`, the meta and OG descriptions, the package cards (`.pkg__price`),
-and the closing paragraph.
-
-### The package cards (currently hidden)
-
-`.pkg` replaced a real `<table>`, which reverses an earlier decision, so the
-reasoning is worth keeping. The table was right that the plans need **one
-shared schema** and it made "your time" comparable across all three. It was
-wrong about what it cost to read: six rows of prose asked a first-time visitor
-to scan a grid before they knew what any plan was, and the founder one-pager,
-which is three cards of short bullets, was consistently read faster.
-
-The cards keep the schema informally: each is **six lines in the same order** —
-what it is, the work, your time, what you get, what happens if it stops, what
-you keep. If you add a fact to one plan, add the line to all three, even when
-the answer is the same, and keep the order. Lines stay under about ten words;
-anything longer belongs in the FAQ.
-
-`.pkg--pick` is the recommended plan, carrying the ink border and the gold
-offset shadow. Only one card gets it.
-
-The grid is `repeat(auto-fit, minmax(280px, 1fr))`, so the cards reflow on
-their own and the layout needs no breakpoint of its own.
-
-### Anonymization
-
-The hero Blueprint card and the findings cards describe real pilots. Product
-category and role only — never a person's name, never a company name.
-
-### Headlines
-
-`h1` and `h2` are set for sentence-length headlines: the type scale is a
-`clamp()` that stays readable at full-sentence length. For anything unusually
-long, cap the measure inline (`style="max-width:20em"`) rather than dropping
-the size.
-
-### The rotating hero clause
-
-`main.js` rotates the clause inside the line that sits **above** the `h1`:
-*"Everyone tells you to hire an SDR / buy a lead list / run ads / post on
-LinkedIn / do it all yourself."* Five phrases, 4.2 seconds each, with a 400ms
-fade that must stay in step with `.rotator`'s `transition` in the stylesheet:
-change one, change the other. The phrases are lower case because they sit
-inside a sentence now, and the frame puts the doubt on the advice rather than
-on the reader.
-
-It sits above the headline on purpose. Motion beats size for attention, so the
-moving element has to pose the problem the headline answers; below the `h1` it
-competed with it instead.
-
-It **loops for as long as the page is open**. An earlier version ran one pass
-and stopped, on the reasoning that permanent motion competes with the headline
-and the CTA. In practice a line that freezes after twenty seconds reads as
-broken rather than as restraint, and the five alternatives it names are the
-argument the section is making, so a visitor who arrives late should still see
-them.
-
-It is decorative, and it degrades on purpose. The markup ships with the last
-phrase already in the DOM, so with JavaScript off the line still reads
-"Everyone tells you to do it all yourself." The script also does nothing under
-`prefers-reduced-motion: reduce`, leaving that same static phrase. **If macOS
-"Reduce motion" is on, you will never see it move** — that is correct
-behaviour, not a bug.
 
 ### The Tally form
 
-Every CTA points at `https://tally.so/r/QK9bQG` — the nav button and three
-buttons down the page, all reading "Get your free Blueprint".
+Every CTA points at `https://tally.so/r/QK9bQG` — the nav button, the hero
+button and the closing button.
 
 ```bash
-grep -c 'tally.so/r/QK9bQG' index.html   # expect 4
+grep -c 'tally.so/r/QK9bQG' index.html   # expect 3
 ```
 
-There is no hero input on the page any more, so nothing populates Tally's
-`initial_ask` hidden field automatically. For links written by hand (a QR
-code, an email, a social bio) the parameter still works and needs an actual
-value — `?initial_ask` on its own carries nothing:
+The `initial_ask` hidden field still works for links written by hand (a QR
+code, an email, a social bio) and needs an actual value — `?initial_ask` on
+its own carries nothing:
 
 ```
 https://tally.so/r/QK9bQG?initial_ask=get%20my%20first%20ten%20customers
 ```
 
-Open that URL to check the wiring. Question 1 should already contain the text;
-if it doesn't, the hidden field isn't connected to that question's **Default
-answer** in Tally yet.
+### Headlines
+
+`h1` and `h2` are set with `clamp()` so they stay readable at full-sentence
+length. For anything unusually long, cap the measure inline
+(`style="max-width:20em"`) rather than dropping the size.
+
+### Anonymization
+
+If the example week is ever replaced with a real one, describe pilots by
+product category and role only — never a person's name, never a company name,
+unless that company is the *comparable* being linked to as a source.
+
+## Responsive approach
+
+Desktop-first. The base rules in `assets/css/styles.css` **are** the desktop
+design; every media query is `max-width` and only scales things down.
+
+| Breakpoint | What changes |
+| --- | --- |
+| `≤1100px` | Hero stacks: the weekly report card drops below the headline |
+| `≤1000px` | "Four things" goes from four columns to two |
+| `≤900px` | Questions stops being heading-left / list-right and stacks |
+| `≤860px` | Nav links give way to the CTA |
+| `≤820px` | Example-week rows stack |
+| `≤560px` | "Four things" goes to one column |
+| `≤400px` | Small phones — nav wordmark and CTA tighten |
+
+To change the desktop design, edit the base rules.
 
 ## Cache busting — read before you deploy a style change
 
-GitHub Pages serves everything with `Cache-Control: max-age=600`, and this site
-has no build step, so asset filenames never change on their own. That means a
-returning visitor can load **new HTML against an old stylesheet** — which looks
-like the site is broken rather than cached.
+GitHub Pages serves everything with `Cache-Control: max-age=600`, and this
+site has no build step, so asset filenames never change on their own. That
+means a returning visitor can load **new HTML against an old stylesheet** —
+which looks like the site is broken rather than cached.
 
-So: **whenever you change `styles.css` or `main.js`, bump the `?v=` number** on
-every reference to it.
+So: **whenever you change `styles.css`, bump the `?v=` number** on every
+reference to it.
 
-- `index.html` — two references (the stylesheet and the script)
+- `index.html` — one reference (the stylesheet)
 - `404.html` — one reference (the stylesheet)
 
 ```bash
 grep -rn "?v=" index.html 404.html
 ```
 
-Currently at `v=20`. After a bump, the first 10 minutes still serve some
+Currently at `v=22`. After a bump, the first 10 minutes still serve some
 visitors cached HTML pointing at the old URL; after that everyone is
 guaranteed a matched pair.
 

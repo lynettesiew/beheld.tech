@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BeHeld · A free Blueprint in 3 business days.</title>
-<meta name="description" content="We find the people already looking for what you sell, tell you which path to try first, and run it with you. You approve every message. A free Blueprint in 3 business days.">
+<title>BeHeld · Your always-on customer finder.</title>
+<meta name="description" content="It finds people who might buy what you made, and tells you which way of reaching them worked. Nothing goes out unless you have read it and sent it yourself.">
 <link rel="canonical" href="https://beheld.tech/">
 <meta name="theme-color" content="#FBF9F5">
 
@@ -12,15 +12,15 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BeHeld">
 <meta property="og:url" content="https://beheld.tech/">
-<meta property="og:title" content="BeHeld · A free Blueprint in 3 business days.">
-<meta property="og:description" content="We find the people already looking for what you sell, tell you which path to try first, and run it with you. You approve every message. A free Blueprint in 3 business days.">
+<meta property="og:title" content="BeHeld · Your always-on customer finder.">
+<meta property="og:description" content="It finds people who might buy what you made, and tells you which way of reaching them worked. Nothing goes out unless you have read it and sent it yourself.">
 <meta property="og:image" content="https://beheld.tech/assets/img/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="BeHeld · your personalized acquisition blueprint.">
+<meta property="og:image:alt" content="BeHeld · your always-on customer finder.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="BeHeld · A free Blueprint in 3 business days.">
-<meta name="twitter:description" content="We find the people already looking for what you sell, tell you which path to try first, and run it with you. You approve every message. A free Blueprint in 3 business days.">
+<meta name="twitter:title" content="BeHeld · Your always-on customer finder.">
+<meta name="twitter:description" content="It finds people who might buy what you made, and tells you which way of reaching them worked. Nothing goes out unless you have read it and sent it yourself.">
 <meta name="twitter:image" content="https://beheld.tech/assets/img/og-image.png">
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/styles.css?v=21">
+<link rel="stylesheet" href="/assets/css/styles.css?v=22">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -39,424 +39,203 @@
   <div class="wrap nav__inner">
     <a class="logo" href="#top"><b>Be</b><i>Held</i></a>
     <nav class="nav__links" aria-label="Primary">
-      <a href="#blueprint">What you get</a>
-      <a href="#how">How it works</a>
-      <a href="#faq">FAQ</a>
+      <a href="#what">What it does</a>
+      <a href="#week">An example week</a>
+      <a href="#faq">Questions</a>
     </nav>
-    <a class="nav__cta" href="https://tally.so/r/QK9bQG">Get your free Blueprint</a>
+    <a class="nav__cta" href="https://tally.so/r/QK9bQG">Start free</a>
   </div>
 </header>
 
 <main id="main">
 
-<!-- ══ 1 · HERO ══ -->
-<section class="section" id="top">
+<!-- ══ 1 · HERO ══
+     The card on the right is the product doing its one visible job: telling
+     you what happened this week. It is a radio group, not a script — see the
+     .week block in the stylesheet. -->
+<section class="section hero" id="top">
   <div class="wrap hero__inner">
     <div>
-      <p class="hero__kicker">For founders and owners with a team of one to five</p>
-
-      <!-- The doubt belongs on the advice, not on the reader. The phrases in
-           main.js are lower case because they now sit inside a sentence. -->
-      <p class="hero__rotator">Everyone tells you to <span class="rotator" id="rotator">do it all yourself</span>.</p>
-
-      <h1>You know your customer. We find the fastest way to reach them.</h1>
-
-      <p class="hero__lede">Book one 30-minute call, and three business days later the path to try first arrives in writing with the first message already drafted.</p>
-      <p class="hero__run">Then <em>we run it with you</em>.</p>
-
+      <p class="hook">You know what you made. <b>You don’t yet know who’ll buy it.</b></p>
+      <h1>Your always-on customer finder.</h1>
+      <p class="hero__lede">It finds people who might buy what you made, and tells you which way of reaching them worked. <b>Nothing goes out unless you’ve read it and sent it yourself.</b></p>
       <div class="btn-row">
-        <a class="btn btn--primary" href="https://tally.so/r/QK9bQG">Get your free Blueprint
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M12 5l7 7-7 7"/></svg>
-        </a>
-        <a class="btn btn--ghost" href="#blueprint">See a real one ↓</a>
+        <a class="btn btn--primary" href="https://tally.so/r/QK9bQG">Start free</a>
+        <a class="btn btn--ghost" href="#week">See an example week</a>
       </div>
-
-      <ul class="chips chips--hero">
-      <li class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Free, and it stays free</li>
-      <li class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>5 minutes to apply</li>
-      <li class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Yours to keep either way</li>
-      <li class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>You approve every send</li>
-      </ul>
+      <p class="fine">You don’t need to hire a salesperson or buy a list of names.</p>
     </div>
 
-    <!-- A page torn from an actual Blueprint, cut to three beats. Product
-         category and role only, never a person or a company. -->
-    <div class="bp">
-      <div class="bp__spine"></div>
-      <div class="bp__body">
-        <p class="bp__kicker">Blueprint excerpt · day 3</p>
-        <h2 class="bp__title">Someone was already asking for his product.</h2>
+    <div class="week">
+      <input class="week__in" type="radio" name="week" id="wk1" checked>
+      <input class="week__in" type="radio" name="week" id="wk2">
+      <input class="week__in" type="radio" name="week" id="wk3">
+      <input class="week__in" type="radio" name="week" id="wk4">
 
-        <div class="bp__row">
-          <b>Found</b>
-          <p>A public post: he rebuilds <mark>that exact model</mark> ten times a week.</p>
+      <div class="week__bar"><b>Your week</b><span>Thursday</span></div>
+
+      <div class="week__tabs" role="tablist">
+        <label for="wk1">What is working?</label>
+        <label for="wk2">Who replied?</label>
+        <label for="wk3">What should I stop?</label>
+        <label for="wk4">Anything new?</label>
+      </div>
+
+      <div class="week__body">
+        <div class="week__p">
+          <p class="week__q">What is working?</p>
+          <p><b>Replying in threads is working.</b> Four people answered this week, and all four had already posted about the problem.</p>
+          <p>Two said no because of price, not the product.</p>
+          <div class="week__acts"><a href="#week">Do more of this</a><a href="#week">Show me the replies</a></div>
         </div>
-        <div class="bp__row">
-          <b>Path</b>
-          <p>Reply in that thread, then message the twelve who agreed.</p>
+        <div class="week__p">
+          <p class="week__q">Who replied?</p>
+          <p><b>Four people replied, and two are worth a call.</b> Two run operations at small brokerages, one is an owner-operator, and one you already knew.</p>
+          <p>The drafts are written and waiting for you to read.</p>
+          <div class="week__acts"><a href="#week">Read the drafts</a><a href="#week">See all four</a></div>
         </div>
-        <div class="bp__row">
-          <b>First action</b>
-          <p>A draft he approved, sent from his own address.</p>
+        <div class="week__p">
+          <p class="week__q">What should I stop?</p>
+          <p><b>Stop the warm introductions to bookkeepers.</b> Three went out, nothing came back, and nobody in that group talks about this in public.</p>
+          <p>The next group is ready whenever you say so.</p>
+          <div class="week__acts"><a href="#week">Park it</a><a href="#week">Leave it running</a></div>
         </div>
-
-        <p class="bp__foot">
-          <span>Names removed</span>
-          <span class="bp__verdict">Verdict: continue</span>
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ 2 · YOUR BLUEPRINT ══ -->
-<section class="section band" id="blueprint">
-  <div class="wrap">
-    <h2 style="max-width:20em">Your Blueprint is free. It always will be.</h2>
-    <p class="lede" style="margin-top:20px;max-width:46em">One 30-minute call, and three business days later you get four things in writing.</p>
-
-    <div class="includes">
-      <div class="include" style="border-top-color:var(--brand)">
-        <span class="include__n" style="color:var(--brand)">1</span>
-        <p>The path to try first</p>
-        <p class="include__eg">&ldquo;Reply in the thread where someone asked for your product, then message the people who engaged with it.&rdquo;</p>
-      </div>
-      <div class="include" style="border-top-color:var(--gold-dark)">
-        <span class="include__n" style="color:var(--gold-dark)">2</span>
-        <p>Two alternatives</p>
-        <p class="include__eg">&ldquo;Partner with the bookkeeping firms who already serve your buyers.&rdquo; &ldquo;Post one teardown a week in the community where they gather.&rdquo;</p>
-      </div>
-      <div class="include" style="border-top-color:var(--coral)">
-        <span class="include__n" style="color:var(--coral)">3</span>
-        <p>Three to five people or companies worth approaching, and why</p>
-        <p class="include__eg">&ldquo;Founder of a payroll tool. Complained publicly about the software she uses. Same buyer as yours.&rdquo;</p>
-      </div>
-      <div class="include" style="border-top-color:var(--ink)">
-        <span class="include__n" style="color:var(--ink)">4</span>
-        <p>A first action</p>
-        <p class="include__eg">&ldquo;Draft attached. Approve it and we send it from your address.&rdquo;</p>
-      </div>
-    </div>
-
-    <div class="grid grid--2" style="margin-top:34px">
-      <div class="card card--tint" style="display:flex;gap:14px;align-items:flex-start">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/></svg>
-        <p style="font-size:16px;line-height:1.55;color:var(--muted)"><span style="color:var(--ink);font-weight:600">Before the call.</span> Within 48 hours of applying we send you one thing we found. If we find nothing in that time, we tell you that instead.</p>
-      </div>
-      <div class="card card--tint" style="display:flex;gap:14px;align-items:flex-start">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-        <p style="font-size:16px;line-height:1.55;color:var(--muted)"><span style="color:var(--ink);font-weight:600">Yours either way.</span> You can take the Blueprint and run it yourself. Many people do.</p>
-      </div>
-    </div>
-
-    <div class="btn-row"><a class="btn btn--primary" href="https://tally.so/r/QK9bQG">Get your free Blueprint
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M12 5l7 7-7 7"/></svg></a></div>
-  </div>
-</section>
-
-<!-- ══ 3 · CONTRAST ══ -->
-<section class="section">
-  <div class="wrap">
-    <h2 style="max-width:24em">Other tools give you volume. We give you the three people who are already asking.</h2>
-
-    <div class="vs">
-      <p class="vs__col-head">Elsewhere</p>
-      <p class="vs__col-head vs__col-head--us">BeHeld</p>
-
-      <div class="vs__cell">
-        <span class="vs__tag">Elsewhere</span>
-        <p><strong>ChatGPT</strong> tells you to &ldquo;define your ideal customer profile.&rdquo;</p>
-      </div>
-      <div class="vs__cell vs__cell--us">
-        <span class="vs__tag">BeHeld</span>
-        <p>We name the person, the company, and why now.</p>
-      </div>
-
-      <div class="vs__cell">
-        <span class="vs__tag">Elsewhere</span>
-        <p><strong>An AI SDR</strong> sends 500 cold emails from a shared domain.</p>
-      </div>
-      <div class="vs__cell vs__cell--us">
-        <span class="vs__tag">BeHeld</span>
-        <p><b>We find the three people who already said they need this.</b> You approve each message before it goes out from your own address.</p>
-      </div>
-
-      <div class="vs__cell">
-        <span class="vs__tag">Elsewhere</span>
-        <p><strong>A lead list</strong> gives you 2,000 names and no reason to write to any of them.</p>
-      </div>
-      <div class="vs__cell vs__cell--us">
-        <span class="vs__tag">BeHeld</span>
-        <p><b>We give you five names</b> and the sentence that explains why each one might say yes.</p>
-      </div>
-    </div>
-
-    <p class="vs__note">We do not assume cold outreach is the answer. Sometimes the right path is a referral, a past client, or a community you are already in.</p>
-  </div>
-</section>
-
-<!-- ══ 4 · HOW IT WORKS ══ -->
-<section class="section band" id="how">
-  <div class="wrap">
-    <h2>Three steps to your Blueprint. Then we run it with you.</h2>
-    <p class="lede" style="margin-top:20px">The first three take about an hour of your time, and cost nothing.</p>
-
-    <ol class="steps">
-      <li class="step">
-        <span class="step__n">1</span>
-        <h3>Apply <span class="step__time">5 minutes</span></h3>
-        <p>Tell us what you sell, who you want to reach, and what you have tried.</p>
-      </li>
-      <li class="step">
-        <span class="step__n">2</span>
-        <h3>One call <span class="step__time">30 minutes</span></h3>
-        <p>We ask the questions the form cannot.</p>
-      </li>
-      <li class="step">
-        <span class="step__n">3</span>
-        <h3>Blueprint <span class="step__time">3 business days later</span></h3>
-        <p>Written, in your inbox, with the first draft ready to approve.</p>
-      </li>
-      <li class="step step--run">
-        <span class="step__n">4</span>
-        <h3>We run it <span class="step__time">when you are ready</span></h3>
-        <p>We find them, we draft, you approve, and it sends from your address. Only if you want it, because the Blueprint is yours either way.</p>
-      </li>
-    </ol>
-  </div>
-</section>
-
-<!-- ══ 5 · YOU APPROVE EVERYTHING ══ -->
-<section class="section" id="approve">
-  <div class="wrap">
-    <h2>Nothing sends without your yes.</h2>
-
-    <div class="approve">
-      <figure class="chat" role="img" aria-label="Example approval message: BeHeld sends a draft for Priya at Ledgerly, who asked in a finance forum last week whether a tool like yours existed. Three buttons follow: approve, edit, or skip.">
-        <div class="chat__bubble">
-          <p class="chat__meta"><b>BeHeld</b> <span>9:12</span></p>
-          <p>Draft ready for Priya at Ledgerly. She asked in a finance forum last week whether a tool like yours existed.</p>
-          <p class="chat__quote">&ldquo;Hi Priya, saw your question about&nbsp;…&rdquo;</p>
-          <p class="chat__actions">
-            <span class="chat__btn chat__btn--yes">Approve</span>
-            <span class="chat__btn">Edit</span>
-            <span class="chat__btn">Skip</span>
-          </p>
+        <div class="week__p">
+          <p class="week__q">Anything new?</p>
+          <p><b>A kind of customer turned up that you had not listed.</b> Dispatchers at brokerages that outsource their bookkeeping have the same problem, and they decide faster.</p>
+          <p>It can start looking at them next week.</p>
+          <div class="week__acts"><a href="#week">Add it</a><a href="#week">Not now</a></div>
         </div>
-      </figure>
-
-      <ul class="checks">
-        <li>
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-          <span><b>Every outgoing message waits for your tap.</b></span>
-        </li>
-        <li>
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-          <span><b>Sends go from your address, in your name.</b> We warm the domain first and keep volume low.</span>
-        </li>
-        <li>
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-          <span><b>Edit a draft and we learn from the change.</b> The next draft sounds more like you.</span>
-        </li>
-      </ul>
-    </div>
-
-    <div class="card card--tint" style="margin-top:26px;display:flex;gap:14px;align-items:flex-start">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7A6C62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><path d="M12 16.5h.01"/></svg>
-      <p style="font-size:16px;line-height:1.55;color:var(--muted)">During the founding pilot, some of this is done by hand while we refine it. <span style="color:var(--ink);font-weight:600">We do not use high-volume, unreviewed outreach.</span></p>
-    </div>
-  </div>
-</section>
-
-<!-- ══ 6 · EVERY RUN TEACHES THE NEXT ══
-     Absorbs the old verdicts strip: the five verdicts are the mechanism, so
-     they belong with the loop that spends them. -->
-<section class="section dark" id="loop">
-  <div class="wrap">
-    <p class="eyebrow eyebrow--dark" style="margin-bottom:16px">How it compounds</p>
-    <h2 style="max-width:20em">Every run tells us what to do more of, and what to stop.</h2>
-
-    <ol class="loop">
-      <li class="loop__step"><b>We run one path</b><span>from your Blueprint</span></li>
-      <li class="loop__step"><b>We see what came back</b><span>replies, objections, silence</span></li>
-      <li class="loop__step"><b>You get a verdict</b><span>in writing, with the reason</span></li>
-    </ol>
-
-    <p class="loop__back">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#EEB44D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 12a8.5 8.5 0 1 1-2.5-6"/><path d="M20.5 3.5V9H15"/></svg>
-      <span><b>What worked is kept and pushed harder,</b> and what stayed silent is dropped before it costs you again.</span>
-    </p>
-
-    <ul class="chips verdicts">
-      <li class="chip chip--dark">Continue</li>
-      <li class="chip chip--dark">Change</li>
-      <li class="chip chip--dark">Stop</li>
-      <li class="chip chip--dark">Increase</li>
-      <li class="chip chip--dark">Need more data</li>
-    </ul>
-
-    <p class="verdicts__note"><b>Every run ends in one of these five, and the next run starts from it.</b> Your third month should be cheaper and sharper than your first, because by then we are spending your budget only on the things that have already answered.</p>
-  </div>
-</section>
-
-<!-- ══ 7 · FINDINGS SO FAR ══ -->
-<section class="section band" id="findings">
-  <div class="wrap">
-    <h2>What two pilots taught us.</h2>
-
-    <div class="grid grid--2" style="margin-top:34px">
-      <article class="card finding">
-        <span class="finding__tag">FINDING</span>
-        <p class="eyebrow">Pilot 1 · spreadsheet tool</p>
-        <p class="finding__body"><b>We found a public post describing the founder&rsquo;s product almost word for word.</b> Path: reply there, then reach the people who engaged.</p>
-        <p class="finding__verdict">Verdict: <b>continue</b></p>
-      </article>
-      <article class="card finding">
-        <span class="finding__tag">FINDING</span>
-        <p class="eyebrow">Pilot 2 · consultant</p>
-        <p class="finding__body"><b>Cold outreach was the wrong path.</b> The real channel was warm introductions from his own network. We also flagged that the market he was targeting could not afford him.</p>
-        <p class="finding__verdict">Verdict: <b>change</b></p>
-      </article>
-    </div>
-
-    <p class="vs__note">Neither pilot produced a sale. Both founders changed direction because of what we found. That is the job.</p>
-  </div>
-</section>
-
-<!-- ══ 8 · WHAT THIS COSTS YOU ══ -->
-<section class="section" id="cost">
-  <div class="wrap">
-    <p class="eyebrow" style="margin-bottom:16px">What this costs you</p>
-    <h2 style="max-width:18em">You do not have to become a salesperson to get customers.</h2>
-
-    <div class="pair">
-      <div class="stat">
-        <span class="stat__n">30 min</span>
-        <p><b>a week is the whole job.</b> You read what came back and you approve the next drafts.</p>
-      </div>
-      <div class="stat stat--other">
-        <span class="stat__n">$70,000</span>
-        <p><b>is a first sales hire in their first year</b>, and they need about three months before they are useful. You would still be the one writing the strategy.</p>
-        <p class="src">Base salary plus payroll taxes, benefits and tools, for a junior sales hire in the United States.</p>
-      </div>
-    </div>
-
-    <p class="kick">Everything else, the finding, the writing and the following up, <em>is ours</em>.</p>
-  </div>
-</section>
-
-<!-- Pricing is hidden for now. The whole packages section lived here and
-     is kept in git rather than in the markup, so the prices are not in
-     the page source or reachable by a crawler.
-
-     To bring it back:
-       git show 9342ec7:index.html
-     and lift the "9 · PACKAGES" section out of it. Then restore the
-     "Pricing" link in the nav, the price in step 4 of "how it works"
-     and in the closing paragraph, the price line in the title and the
-     four meta descriptions, and swap the band backgrounds on "is
-     this for you" and the FAQ back. The .pkg, .promise and .pkgs rules
-     are still in the stylesheet, untouched. -->
-
-<!-- ══ 10 · IS THIS FOR YOU ══ -->
-<section class="section band" id="fit">
-  <div class="wrap">
-    <h2>Is this for you?</h2>
-
-    <div class="fit">
-      <div class="fit-col" style="border-top-color:var(--brand)">
-        <p class="eyebrow">Yes, if you</p>
-        <ul>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>have something to sell and can say who it is for,</span></li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>have not found a way to get customers you can repeat,</span></li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>can spare 30 minutes a week,</span></li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#B5462E" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>can take a call when someone says yes.</span></li>
-        </ul>
-      </div>
-      <div class="fit-col" style="border-top-color:var(--line-soft)">
-        <p class="eyebrow">No, if you</p>
-        <ul>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9A8D82" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7l10 10"/><path d="M17 7L7 17"/></svg><span>want a sale guaranteed by a date,</span></li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9A8D82" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7l10 10"/><path d="M17 7L7 17"/></svg><span>want AI to send things without reading them,</span></li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9A8D82" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7l10 10"/><path d="M17 7L7 17"/></svg><span>want a thousand cold emails a week,</span></li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9A8D82" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7l10 10"/><path d="M17 7L7 17"/></svg><span>only want a list of names.</span></li>
-        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ 11 · FAQ ══ -->
-<section class="section" id="faq">
+<!-- ══ 2 · WHAT IT DOES WHILE YOU BUILD ══ -->
+<section class="section band" id="what">
   <div class="wrap">
-    <h2>Things people ask before they pay</h2>
-    <div class="faq">
-      <details>
-        <summary>Does this come from my email address?</summary>
-        <p>Yes. Every message goes out from your own address, in your name. We warm the domain first and keep the volume low. Nothing goes out from a shared or rented sending domain.</p>
-      </details>
-      <details>
-        <summary>What do you keep about my customers?</summary>
-        <p>You keep it. Every contact, draft, reply, and objection lands in a spreadsheet that is yours, both during the work and after it ends.</p>
-      </details>
-      <details>
-        <summary>What if the answer is &ldquo;stop&rdquo;?</summary>
-        <p>Then we say so, and we say it early. Every run has a stop rule you agree to before we start. If we hit it, we stop, the rest of your budget is not charged, and you get the next path named in writing.</p>
-      </details>
-      <details>
-        <summary>Do you test the offer, or just the channel?</summary>
-        <p>Both, but not at the same time. A channel test tells you whether these people are reachable. An offer test tells you whether the reason to reply is good enough. We change one at a time, so the verdict means something.</p>
-      </details>
-      <details>
-        <summary>What happens to the people who say yes?</summary>
-        <p>A warm reply comes to you with a booking link attached, or we book the call for you. Nothing promising sits silent for more than a week. Closing the conversation is yours; keeping it alive is ours.</p>
-      </details>
-      <details>
-        <summary>How much of my time does this take?</summary>
-        <p>Five minutes to apply and 30 minutes on the call. After that, about 30 minutes a week to approve drafts and read what came back, and a little more when we are testing several paths at once.</p>
-      </details>
-      <details>
-        <summary>Who is doing the work?</summary>
-        <!-- TODO: add your name, one line about you, and a photo at
-             assets/img/founder.jpg (then wrap the answer in .faq-person). -->
-        <p>One person, working with you directly. There is no account manager and no handoff. Research, monitoring and drafting are agent-assisted; the strategy, the judgement calls, and every message that reaches a real person are not.</p>
-      </details>
-      <details>
-        <summary>Do you guarantee customers?</summary>
-        <p><strong style="color:var(--ink)">No.</strong> Buyer decisions, timing, pricing and your own closing are not ours to control. What we commit to is a written path, work you approved, honest tracking, and a verdict you can act on. Neither pilot so far produced a sale; both founders changed direction because of what we found.</p>
-      </details>
+    <p class="eyebrow">What it does while you build</p>
+    <h2>Four things, every week, without being asked.</h2>
+
+    <div class="four">
+      <div>
+        <span class="four__i"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EEB44D" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg></span>
+        <h3>Works out who might buy</h3>
+        <p>It keeps looking, and if it finds a kind of customer you hadn’t thought of, it tells you.</p>
+      </div>
+      <div>
+        <span class="four__i"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EEB44D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20c1.2-3.7 4-5.6 7.5-5.6s6.3 1.9 7.5 5.6"/></svg></span>
+        <h3>Finds the actual people</h3>
+        <p>Real names, and a reason each one might say yes.</p>
+      </div>
+      <div>
+        <span class="four__i"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EEB44D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20V9"/><path d="M12 9 5 3.5"/><path d="M12 9l7-5.5"/><circle cx="12" cy="20" r="1.6"/></svg></span>
+        <h3>Tries ways to reach them</h3>
+        <p>A few at a time. Each one is based on how a company like yours found its customers, and you can see where that came from. The agents write the message, a person checks it, and you send it.</p>
+      </div>
+      <div>
+        <span class="four__i"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EEB44D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 15V11"/><path d="M13 15V7"/><path d="M18 15v-6"/></svg></span>
+        <h3>Shows you what worked</h3>
+        <p>One line every Thursday, and what to do next.</p>
+      </div>
     </div>
+
+    <p class="four__foot">You get the customers. <em>Selling them shouldn’t be your second full-time job.</em></p>
   </div>
 </section>
 
-<!-- ══ 12 · CLOSING CTA ══ -->
-<section class="section dark closing" id="apply">
-  <div class="wrap closing__inner">
-    <svg class="closing__art" width="440" height="300" viewBox="0 0 440 300" fill="none" aria-hidden="true">
-      <path d="M0 300L118 128l58 62 74-118 92 128 98-62V300z" fill="#2C2320"/>
-      <path d="M0 300L118 128l58 62 74-118 92 128" stroke="#3A302B" stroke-width="2" stroke-linejoin="round" fill="none"/>
-      <path d="M52 300c46-14 58-52 44-84-13-30 6-56 44-64 40-9 58-32 52-62" stroke="#B5462E" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="1 13" fill="none"/>
-      <circle cx="52" cy="288" r="7" fill="#FF8559"/>
-      <path d="M192 90V28" stroke="#EEB44D" stroke-width="3.5" stroke-linecap="round"/>
-      <path d="M192 30h44l-12 15 12 15h-44z" fill="#EEB44D"/>
-    </svg>
+<!-- ══ 3 · AN EXAMPLE WEEK ══
+     The eyebrow says "An example week" and no real company is named, because
+     no race has produced data yet. When one has, swap in the real numbers,
+     change the eyebrow to "A real week", and change the hero button above to
+     match. Do not do one without the others. -->
+<section class="section" id="week">
+  <div class="wrap">
+    <p class="eyebrow">An example week</p>
+    <h2>Three ways of reaching people. One of them is working.</h2>
 
+    <div class="board">
+      <div class="board__r board__r--lead">
+        <div><p class="board__n">Ops leads at small brokerages</p><p class="board__t">Replying in threads</p></div>
+        <p class="board__res">4 of 14 replied, 2 meetings booked.</p>
+        <div><span class="verd verd--go">Do more</span></div>
+      </div>
+      <div class="board__r">
+        <div><p class="board__n">Owner-operators</p><p class="board__t">Direct messages</p></div>
+        <p class="board__res">1 of 9 replied, no meetings yet, week 1.</p>
+        <div><span class="verd verd--keep">Keep going</span></div>
+      </div>
+      <div class="board__r">
+        <div><p class="board__n">Bookkeepers</p><p class="board__t">Warm introductions</p></div>
+        <p class="board__res">0 of 3 replied.</p>
+        <div><span class="verd verd--park">Park it</span></div>
+      </div>
+    </div>
+
+    <p class="board__foot">In your report, every row also shows where the tactic came from — a link to how a company like yours reached the same buyers.</p>
+  </div>
+</section>
+
+<!-- ══ 4 · QUESTIONS ══ -->
+<section class="section band" id="faq">
+  <div class="wrap qa__inner">
     <div>
-      <h2>Start free, and pay only if you want us to keep going.</h2>
-      <p><b>One 30-minute call, and your written Blueprint arrives three business days later.</b> It costs you nothing and commits you to nothing. If you want us to run the path with you afterwards, we will talk about what that looks like when you have read it.</p>
-      <div class="btn-row">
-        <a class="btn btn--gold" href="https://tally.so/r/QK9bQG">Get your free Blueprint
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-      <p class="closing__sig">Nobody should <em>build alone</em>.</p>
+      <p class="eyebrow">Questions</p>
+      <h2>Things people ask before they start.</h2>
     </div>
+
+    <div class="faq">
+      <details open>
+        <summary>Can I do this on Claude or ChatGPT?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <p class="faq__a">Some of it. They’ll give you a confident guess about who to sell to. This doesn’t guess. It tries three ways of reaching people at once, says up front what it expects, and tells you on Thursday what really happened. It argues with you when your idea of the customer looks wrong. Every name comes with a link so you can check.</p>
+      </details>
+      <details>
+        <summary>Will I get customers?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <p class="faq__a">Nobody can promise that, and you should be wary of anyone who does. What you’ll get is real people who fit, a way of reaching them that you’ve seen work, and a clear answer if it isn’t working — so you change the offer or the customer instead of guessing for another month.</p>
+      </details>
+      <details>
+        <summary>What do I have to do?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <p class="faq__a">About twenty minutes a week. You read what it found, say yes or no, and send the messages yourself.</p>
+      </details>
+      <details>
+        <summary>Why do I send them?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <p class="faq__a">Because it’s your name. Nothing goes out that you haven’t read.</p>
+      </details>
+      <details>
+        <summary>What do I need to give you to start?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <p class="faq__a">What you built, who you think will buy it, and any customers or contacts you already have. If you have none, that’s fine — it starts from your website.</p>
+      </details>
+      <details>
+        <summary>How long until I see something?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <p class="faq__a">The first list within a couple of days. The first Thursday report a week after that. Two weeks to know which way of reaching people works.</p>
+      </details>
+      <details>
+        <summary>What if it can’t find anyone?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <p class="faq__a">It tells you. A customer nobody’s talking about is worth knowing early, and it’ll suggest who to look at instead.</p>
+      </details>
+      <details>
+        <summary>Does it use my customer list for other founders?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <p class="faq__a">No. What it learns about your customers stays with you. What it learns about which tactics work is shared without names.</p>
+      </details>
+      <details>
+        <summary>Can I stop?<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <p class="faq__a">Any time. It stops when you say so, and you keep everything it found.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 5 · CLOSE ══ -->
+<section class="section close">
+  <div class="wrap">
+    <h2>Nobody should build alone.</h2>
+    <p>Your first run is free. Tell it what you sell, and it starts looking this week.</p>
+    <div class="btn-row"><a class="btn btn--gold" href="https://tally.so/r/QK9bQG">Start free</a></div>
   </div>
 </section>
 
 </main>
 
-<!-- ══ FOOTER ══ -->
 <footer class="footer">
   <div class="wrap footer__inner">
     <span class="logo"><b>Be</b><i>Held</i></span>
@@ -464,6 +243,5 @@
   </div>
 </footer>
 
-<script src="/assets/js/main.js?v=21"></script>
 </body>
 </html>
