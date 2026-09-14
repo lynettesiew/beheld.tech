@@ -3,7 +3,7 @@
 Landing page for **BeHeld** — an always-on customer finder for early-stage
 founders. It works out who might buy what they made, finds the actual people,
 tries a few ways of reaching them, and reports on Thursday which one worked.
-The first run is free.
+Places are opening a few at a time, through a waitlist.
 
 Static site: no build step, no dependencies, **and no JavaScript**. Open
 `index.html` and it works.
@@ -23,7 +23,7 @@ Static site: no build step, no dependencies, **and no JavaScript**. Open
     └── img/
         ├── favicon.svg
         ├── apple-touch-icon.png
-        └── og-customer-finder.png   # 1200×630 social preview
+        └── og-waitlist.png           # 1200×630 social preview
 ```
 
 ## Local preview
@@ -136,7 +136,7 @@ https://tally.so/r/QK9bQG?initial_ask=get%20my%20first%20ten%20customers
 
 ### The social preview image
 
-`assets/img/og-customer-finder.png` is what Slack, LinkedIn and iMessage show
+`assets/img/og-waitlist.png` is what Slack, LinkedIn and iMessage show
 when someone pastes the link. It is a **hand-built asset, not generated from
 the page**, so changing the headline in `index.html` does not change it — the
 old one sat there for two positionings before anyone noticed.
