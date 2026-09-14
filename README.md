@@ -38,7 +38,8 @@ check that page.)
 
 ## Page order
 
-Hero → what it does while you build → an example week → questions → close.
+Hero → what you get → the page they land on → a round inside → questions →
+close.
 
 Five sections, and a reader can finish the page in four screens. That is the
 point: the earlier version explained the process, and the process is not what
@@ -72,18 +73,18 @@ back to the checklist below.**
 - **Copy and layout** → `index.html`
 - **Colors, type, spacing** → the `:root` variables at the top of `assets/css/styles.css`
 
-### The example week
+### The round inside
 
-The three-row table is currently **an example**, not a real run. Nothing in it
-is sourced, so nothing in it names a real company.
+The table is currently **an example**, not a real run. Nothing in it is
+sourced, so nothing in it names a real company. Each customer type has two
+rows, one outbound and one inbound, so the two can be read against each other.
 
-When a real race produces data, three things change together, and doing one
+When a real round produces data, three things change together, and doing one
 without the others is how the page starts lying:
 
-1. Replace the numbers in the three rows with the real ones. **Never round up.**
-2. Change the eyebrow from `An example week` to `A real week`.
-3. Change the hero's second button from `See an example week` to
-   `See a real week`.
+1. Replace the numbers in the six rows with the real ones. **Never round up.**
+2. Change the eyebrow from `A round inside` to name the founder or the round.
+3. Change the hero's second button from `See a round` to match.
 
 The line under the table promises that each row in a real report links out to
 where its tactic came from. That promise rests on an evidence rule worth
@@ -169,7 +170,7 @@ length. For anything unusually long, cap the measure inline
 
 ### Anonymization
 
-If the example week is ever replaced with a real one, describe pilots by
+If the round is ever replaced with a real one, describe pilots by
 product category and role only — never a person's name, never a company name,
 unless that company is the *comparable* being linked to as a source.
 
