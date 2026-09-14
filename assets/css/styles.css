@@ -209,28 +209,53 @@ p { margin: 0; }
 @media (max-width: 560px) { .four { grid-template-columns: minmax(0, 1fr); } }
 
 /* ---------- a round inside ----------
-   A real table, so the columns are announced with the cells. Below 860px
-   each customer type becomes one card and the column heads move onto the
-   cells as labels, which is what the data-l attributes are for. */
+   A real table, so the columns are announced with the cells. The eye is
+   meant to land on the channel tag, then the number, then the pill — so
+   the prose in between is the quietest thing in the row. Below 900px each
+   customer type becomes one card and the column heads move onto the cells
+   as labels, which is what the data-l attributes are for. */
 .round__wrap { margin-top: clamp(30px, 3.4vw, 44px); overflow-x: auto; }
-.round { width: 100%; border-collapse: collapse; text-align: left; }
+.round { width: 100%; max-width: 1140px; border-collapse: collapse; text-align: left; }
+.c-who { width: 19%; } .c-ran { width: 38%; } .c-res { width: 27%; } .c-call { width: 16%; }
+
 .round thead th {
-  font-family: var(--display); font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--muted-2); padding: 0 26px 14px 0;
+  font-family: var(--display); font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--muted-3); padding: 0 28px 12px 0;
   border-bottom: 2px solid var(--ink); white-space: nowrap;
 }
 .round thead th:last-child, .round td:last-child { padding-right: 0; }
+
 .round tbody { border-bottom: 1.5px solid var(--line-soft); }
-.round td { padding: 19px 26px 19px 0; vertical-align: top; font-size: 16.5px; line-height: 1.5; text-wrap: pretty; }
+.round tbody:first-of-type tr:first-child td, .round tbody:first-of-type tr:first-child .round__who { padding-top: 22px; }
+.round tbody tr:last-child td, .round tbody tr:last-child .round__who { padding-bottom: 22px; }
+.round td { padding: 19px 28px 19px 0; vertical-align: top; }
 .round tbody tr + tr td { border-top: 1.5px solid var(--line); }
+
 .round__who {
-  font-family: var(--display); font-weight: 700; font-size: clamp(17px, 1.4vw, 19px);
-  letter-spacing: -0.025em; line-height: 1.22; vertical-align: top;
-  padding: 19px 26px 19px 0; width: 17%; min-width: 9em;
+  font-family: var(--display); font-weight: 700; font-size: clamp(17px, 1.35vw, 19px);
+  letter-spacing: -0.025em; line-height: 1.22; color: var(--ink);
+  vertical-align: middle; padding: 18px 28px 18px 0; text-wrap: balance;
 }
+
+/* the channel is the thing you scan down, so it gets the colour */
+.chan {
+  display: block; margin-bottom: 5px; font-family: var(--display);
+  font-size: 11px; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase;
+}
+.chan::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 999px; margin-right: 7px; vertical-align: 1.5px; background: currentColor; }
+.chan--out { color: var(--brand); }
+.chan--in { color: var(--gold-dark); }
+.round__ran { font-size: 15.5px; line-height: 1.5; color: var(--muted); text-wrap: pretty; }
+
+/* the number first, the detail under it and quieter */
+.round__res { font-size: 15.5px; line-height: 1.5; font-variant-numeric: tabular-nums; }
+.round__res b { display: block; font-family: var(--display); font-weight: 700; font-size: 17px; letter-spacing: -0.015em; color: var(--ink); }
+.round__res span { display: block; margin-top: 3px; color: var(--muted-2); text-wrap: pretty; }
+
+.round__call { vertical-align: middle; }
 .verd {
-  font-family: var(--display); font-size: 11.5px; font-weight: 700; letter-spacing: 0.09em;
-  text-transform: uppercase; border-radius: 999px; padding: 8px 15px; display: inline-block;
+  font-family: var(--display); font-size: 11px; font-weight: 700; letter-spacing: 0.09em;
+  text-transform: uppercase; border-radius: 999px; padding: 8px 14px; display: inline-block;
   white-space: nowrap;
 }
 .verd--go { background: var(--brand); color: #FFF; }
@@ -238,22 +263,24 @@ p { margin: 0; }
 .verd--park { background: var(--gold-soft); color: var(--gold-ink); }
 .board__foot { margin-top: 28px; font-size: 17px; line-height: 1.55; color: var(--muted); max-width: 52em; text-wrap: pretty; }
 
-@media (max-width: 860px) {
+@media (max-width: 900px) {
   .round__wrap { overflow-x: visible; }
-  .round, .round tbody, .round tr, .round td, .round__who { display: block; width: auto; }
+  .round, .round tbody, .round tr, .round td, .round__who { display: block; width: auto; max-width: none; }
   .round thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-  .round tbody { border-bottom: 0; border-top: 2px solid var(--ink); padding-block: 20px 24px; }
-  .round__who { min-width: 0; padding: 0 0 4px; font-size: 21px; }
-  .round tr { padding-top: 16px; }
-  .round td { padding: 0 0 8px; border-top: 0; }
+  .round tbody { border-bottom: 0; border-top: 2px solid var(--ink); padding-block: 20px 26px; }
+  .round__who { padding: 0 0 12px; font-size: 21px; }
+  .round tbody:first-of-type tr:first-child td, .round tbody:first-of-type tr:first-child .round__who { padding-top: 0; }
+  .round tbody tr:last-child td, .round tbody tr:last-child .round__who { padding-bottom: 9px; }
+  .round tr { padding-top: 18px; }
+  .round td { padding: 0 0 9px; border-top: 0; }
   .round tbody tr + tr td { border-top: 0; }
   .round td[data-l]::before {
-    content: attr(data-l) ""; display: block; margin-bottom: 2px;
-    font-family: var(--display); font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    content: attr(data-l); display: block; margin-bottom: 2px;
+    font-family: var(--display); font-size: 10.5px; font-weight: 700; letter-spacing: 0.11em;
     text-transform: uppercase; color: var(--muted-3);
   }
+  .round td.round__ran[data-l]::before { display: none; }
   .round td:last-child { padding-bottom: 0; }
-  .verd { margin-top: 2px; }
 }
 
 /* ---------- questions ----------

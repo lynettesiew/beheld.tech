@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/styles.css?v=22">
+<link rel="stylesheet" href="/assets/css/styles.css?v=23">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -172,6 +172,7 @@
 
     <div class="round__wrap">
       <table class="round">
+        <colgroup><col class="c-who"><col class="c-ran"><col class="c-res"><col class="c-call"></colgroup>
         <thead>
           <tr>
             <th scope="col">Customer type</th>
@@ -183,40 +184,40 @@
         <tbody>
           <tr>
             <th class="round__who" scope="rowgroup" rowspan="2">Ops leads at small brokerages</th>
-            <td data-l="What ran">Outbound: emails that mention each company’s recent hire</td>
-            <td data-l="After 14 days">4 of 14 replied, 2 meetings booked</td>
-            <td data-l="The call"><span class="verd verd--go">Send more here</span></td>
+            <td class="round__ran" data-l="What ran"><span class="chan chan--out">Outbound</span>emails that mention each company’s recent hire</td>
+            <td class="round__res" data-l="After 14 days"><b>4 of 14 replied</b><span>2 meetings booked</span></td>
+            <td class="round__call" data-l="The call"><span class="verd verd--go">Send more here</span></td>
           </tr>
           <tr>
-            <td data-l="What ran">Inbound: a page written for brokerages, with posts pointing to it</td>
-            <td data-l="After 14 days">31 visits, 3 filled in the form</td>
-            <td data-l="The call"><span class="verd verd--keep">Keep going</span></td>
+            <td class="round__ran" data-l="What ran"><span class="chan chan--in">Inbound</span>a page written for brokerages, with posts pointing to it</td>
+            <td class="round__res" data-l="After 14 days"><b>31 visits</b><span>3 filled in the form</span></td>
+            <td class="round__call" data-l="The call"><span class="verd verd--keep">Keep going</span></td>
           </tr>
         </tbody>
         <tbody>
           <tr>
             <th class="round__who" scope="rowgroup" rowspan="2">Owner-operators</th>
-            <td data-l="What ran">Outbound: calls from our team to a screened list, using the card it wrote for you</td>
-            <td data-l="After 14 days">2 of 12 picked up, 1 meeting booked</td>
-            <td data-l="The call"><span class="verd verd--keep">Keep going</span></td>
+            <td class="round__ran" data-l="What ran"><span class="chan chan--out">Outbound</span>calls from our team to a screened list, using the card it wrote for you</td>
+            <td class="round__res" data-l="After 14 days"><b>2 of 12 picked up</b><span>1 meeting booked</span></td>
+            <td class="round__call" data-l="The call"><span class="verd verd--keep">Keep going</span></td>
           </tr>
           <tr>
-            <td data-l="What ran">Inbound: replies in the forums where they ask for help, linking to your page</td>
-            <td data-l="After 14 days">6 visits, nobody filled in the form, 2 of your hours</td>
-            <td data-l="The call"><span class="verd verd--park">Park it</span></td>
+            <td class="round__ran" data-l="What ran"><span class="chan chan--in">Inbound</span>replies in the forums where they ask for help, linking to your page</td>
+            <td class="round__res" data-l="After 14 days"><b>6 visits</b><span>nobody filled in the form, 2 of your hours</span></td>
+            <td class="round__call" data-l="The call"><span class="verd verd--park">Park it</span></td>
           </tr>
         </tbody>
         <tbody>
           <tr>
             <th class="round__who" scope="rowgroup" rowspan="2">Bookkeepers</th>
-            <td data-l="What ran">Outbound: warm introductions through people you already know</td>
-            <td data-l="After 14 days">1 of 3 replied, 1 meeting booked</td>
-            <td data-l="The call"><span class="verd verd--go">Send more here</span></td>
+            <td class="round__ran" data-l="What ran"><span class="chan chan--out">Outbound</span>warm introductions through people you already know</td>
+            <td class="round__res" data-l="After 14 days"><b>1 of 3 replied</b><span>1 meeting booked</span></td>
+            <td class="round__call" data-l="The call"><span class="verd verd--go">Send more here</span></td>
           </tr>
           <tr>
-            <td data-l="What ran">Inbound: a demo they can try on their own, with a small ad budget behind it</td>
-            <td data-l="After 14 days">18 visits, 1 booked a call</td>
-            <td data-l="The call"><span class="verd verd--keep">Keep going</span></td>
+            <td class="round__ran" data-l="What ran"><span class="chan chan--in">Inbound</span>a demo they can try on their own, with a small ad budget behind it</td>
+            <td class="round__res" data-l="After 14 days"><b>18 visits</b><span>1 booked a call</span></td>
+            <td class="round__call" data-l="The call"><span class="verd verd--keep">Keep going</span></td>
           </tr>
         </tbody>
       </table>
