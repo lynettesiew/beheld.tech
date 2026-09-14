@@ -191,8 +191,11 @@ p { margin: 0; }
 @keyframes rise { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .week__p { animation: none !important; } }
 
-/* ---------- what it does while you build ---------- */
-.four { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px; margin-top: clamp(34px, 4vw, 52px); }
+/* ---------- the page ---------- */
+.stmt { margin-top: 22px; max-width: 54ch; }
+
+/* ---------- what you get ---------- */
+.four { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 30px; margin-top: clamp(34px, 4vw, 52px); }
 .four__i { width: 46px; height: 46px; border-radius: 12px; background: var(--ink); display: flex; align-items: center; justify-content: center; }
 .four h3 { font-size: clamp(20px, 1.7vw, 23px); line-height: 1.15; letter-spacing: -0.028em; margin-top: 22px; text-wrap: balance; }
 .four p { font-size: 16.5px; line-height: 1.5; color: var(--muted); margin-top: 11px; text-wrap: pretty; }
