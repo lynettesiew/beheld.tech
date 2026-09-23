@@ -392,3 +392,13 @@ p { margin: 0; }
 
 .footer__cta { color: var(--gold); font-weight: 700; font-size: 15px; margin-left: auto; }
 .footer__cta:hover { color: var(--gold-soft); }
+
+/* The case against, and "This one" on each hypothesis (2026-09-23). */
+.scan-block .scan-against { margin-top: 10px; }
+.scan-pick {
+  margin-top: 12px; min-height: 44px; padding: 8px 16px;
+  font: 700 15px/1.2 var(--body); color: var(--ink);
+  background: var(--card); border: 2px solid var(--ink); border-radius: 8px; cursor: pointer;
+}
+.scan-pick:hover { background: var(--band); }
+.scan-pick[aria-pressed="true"] { background: var(--ink); color: var(--paper); }

@@ -235,7 +235,7 @@ reference to it.
 grep -rn "?v=" index.html 404.html
 ```
 
-Currently at `v=25` for the stylesheet and `v=1` for the script. After a bump, the first 10 minutes still serve some
+Currently at `v=26` for the stylesheet and `v=2` for the script. After a bump, the first 10 minutes still serve some
 visitors cached HTML pointing at the old URL; after that everyone is
 guaranteed a matched pair.
 

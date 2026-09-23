@@ -28,6 +28,8 @@
 
   var current = null;   // the scan id on show
   var run = 0;          // bumps on every new scan, so a stale poll stops
+  var picked = null;    // the hypothesis the visitor said "this one" to
+  var shown = null;     // the result on show
 
   function el(tag, cls, text) {
     var e = document.createElement(tag);
@@ -77,7 +79,8 @@
     block('What you sell').appendChild(el('p', null, r.summary || ''));
   }
   function renderSignals(r) {
-    var sigs = r.signals || [];
+    // A demo signal counts toward no buyer and is not shown.
+    var sigs = (r.signals || []).filter(function (g) { return g.counts_toward_icp !== false; });
     var s = block('What we found');
     if (!sigs.length) { s.appendChild(el('p', 'scan-aside', 'Nothing we could count this time.')); return; }
     var ul = el('ul', 'scan-signals');
@@ -87,12 +90,18 @@
       var src = el('span', 'scan-src');
       src.appendChild(link(g.source_url, 'source'));
       li.appendChild(src);
-      if (g.counts_toward_icp === false) {
-        li.appendChild(el('span', 'scan-aside', " (from the site's own demo, so it counts toward no buyer)"));
-      }
       ul.appendChild(li);
     });
     s.appendChild(ul);
+  }
+  // The case against, under the primary buyer or the first hypothesis only.
+  function caseAgainst(parent, x) {
+    if (!x || !x.case_against) return;
+    var c = el('p', 'scan-against');
+    c.appendChild(el('span', 'scan-label', 'The case against: '));
+    c.appendChild(document.createTextNode(page(x.case_against)));
+    parent.appendChild(c);
+    parent.appendChild(el('p', 'scan-aside', 'The full argument, and what it means for how many to contact, is in your report.'));
   }
   function renderBuyers(r) {
     var icps = r.icps || [];
@@ -104,6 +113,7 @@
       b.appendChild(el('p', 'scan-aside',
         'Confidence ' + Math.round((p.confidence || 0) * 100) + '%, based on ' +
         (p.signal_kinds_matched || 0) + ' of the 10 kinds of signal we look for.'));
+      caseAgainst(b, p);
     }
     if (icps.length > 1) {
       var a = block('Also worth testing');
@@ -122,7 +132,7 @@
     if (!hyps.length) return;
     var h = block('Buyers your copy points at');
     h.appendChild(el('p', 'scan-aside', 'Hypotheses from your site, not yet evidence. Here is what would confirm each.'));
-    hyps.forEach(function (x) {
+    hyps.forEach(function (x, i) {
       var d = el('div', 'scan-hyp');
       d.appendChild(el('p', 'scan-buyer', buyerLine(x)));
       if (x.suggested_by) d.appendChild(el('p', null, x.suggested_by));
@@ -132,6 +142,13 @@
         c.appendChild(document.createTextNode(page(x.would_confirm)));
         d.appendChild(c);
       }
+      if (i === 0) caseAgainst(d, x);
+      var pick = el('button', 'scan-pick', 'This one');
+      pick.type = 'button';
+      pick.setAttribute('aria-pressed', 'false');
+      pick.setAttribute('aria-label', 'This one: ' + buyerLine(x));
+      pick.addEventListener('click', function () { choose(i); });
+      d.appendChild(pick);
       h.appendChild(d);
     });
   }
@@ -155,8 +172,9 @@
     var box = el('div', 'scan-tactic');
     box.appendChild(el('h3', null, t.label));
     box.appendChild(el('p', 'scan-tactic__name', t.name));
-    box.appendChild(el('p', null, t.why));
+    box.appendChild(el('p', null, t.why_short));
     if (t.minimum_sample) box.appendChild(el('p', 'scan-aside', 'Try it with at least ' + t.minimum_sample + ' people before judging it.'));
+    box.appendChild(el('p', 'scan-aside', 'Your first three steps and the message angle are in the report.'));
     box.appendChild(el('p', 'scan-aside', t.note));
     s.appendChild(box);
   }
@@ -166,6 +184,7 @@
   }
 
   function render(r) {
+    shown = r;
     out.textContent = '';
     renderSummary(r);
     renderSignals(r);
@@ -173,9 +192,41 @@
     renderExample(r);
     renderTactic(r);
     renderSharpen(r);
+    fillCard(r);
     section.hidden = false;
     card.hidden = false;
     section.scrollIntoView({ block: 'start' });
+  }
+
+  // ------------------------------------------------ the card, from the result
+  function cardTitle() {
+    var t = document.getElementById('scan-card-title');
+    if (!t || !shown) return;
+    t.textContent = picked === null
+      ? page('Get the full picture for ' + (shown.company_name || 'your site'))
+      : 'Tell us where to look and we\u2019ll go count them';
+  }
+  function fillCard(r) {
+    cardTitle();
+    var ul = document.getElementById('scan-card-adds');
+    if (!ul) return;
+    ul.textContent = '';
+    if (r.examples_found > 0) {
+      ul.appendChild(el('li', null, 'See all ' + r.examples_found + ' companies like your first buyer, with their signals.'));
+    }
+    ul.appendChild(el('li', null, 'The case against each buyer, beside the case for.'));
+    ul.appendChild(el('li', null, 'How many of each buyer exist, and which to contact first.'));
+  }
+  // "This one" on a hypothesis: remember it, say so on the card, go there.
+  function choose(i) {
+    picked = i;
+    Array.prototype.forEach.call(out.querySelectorAll('.scan-pick'), function (b, j) {
+      b.setAttribute('aria-pressed', j === i ? 'true' : 'false');
+      b.textContent = j === i ? 'Picked' : 'This one';
+    });
+    cardTitle();
+    card.scrollIntoView({ block: 'center' });
+    if (email && !email.disabled && document.body.contains(email)) email.focus({ preventScroll: true });
   }
 
   // ------------------------------------------------------ the scan and poll
@@ -211,6 +262,8 @@
 
   function start(id) {
     run += 1;
+    picked = null;
+    shown = null;
     err.hidden = true;
     out.textContent = '';
     section.hidden = true;
@@ -269,7 +322,7 @@
     fetch(API + '/scan/' + encodeURIComponent(current) + '/interest', {
       method: 'POST', credentials: 'omit',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ email: v })
+      body: JSON.stringify({ email: v, picked: picked })
     })
       .then(function (res) { return res.json().then(function (j) { return { code: res.status, j: j }; }); })
       .then(function (x) {

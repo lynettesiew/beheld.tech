@@ -29,8 +29,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css?v=25">
-<script src="assets/js/scan.js?v=1" defer></script>
+<link rel="stylesheet" href="assets/css/styles.css?v=26">
+<script src="assets/js/scan.js?v=2" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -131,11 +131,10 @@
     </div>
     <aside class="scan-aside-col">
       <div class="scan-card" id="scan-card" hidden>
-        <h3>Get the full picture</h3>
-        <ul class="scan-card__adds">
-          <li>How many of each buyer exist, counted.</li>
-          <li>Live signals from this month, each with its source.</li>
+        <h3 id="scan-card-title">Get the full picture</h3>
+        <ul class="scan-card__adds" id="scan-card-adds">
           <li>The case against each buyer, beside the case for.</li>
+          <li>How many of each buyer exist, and which to contact first.</li>
         </ul>
         <form class="scan-card__form" id="interest-form" novalidate>
           <label class="scan-card__label" for="interest-email">Your email</label>
