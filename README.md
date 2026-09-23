@@ -5,8 +5,8 @@ founders. It works out who might buy what they made, finds the actual people,
 tries a few ways of reaching them, and reports on Thursday which one worked.
 Places are opening a few at a time, through a waitlist.
 
-Static site: no build step, no dependencies, **and no JavaScript**. Open
-`index.html` and it works.
+Static site: no build step, no dependencies, and **one script**: the scan in
+the hero (`assets/js/scan.js`). Open `index.html` and everything else works.
 
 ## Structure
 
@@ -20,6 +20,7 @@ Static site: no build step, no dependencies, **and no JavaScript**. Open
 ├── .nojekyll               # serve files as-is on GitHub Pages
 └── assets/
     ├── css/styles.css      # all styles
+    ├── js/scan.js          # the scan in the hero, the only script
     └── img/
         ├── favicon.svg
         ├── apple-touch-icon.png
@@ -38,7 +39,7 @@ check that page.)
 
 ## Page order
 
-Hero → what you get → the page they land on → a round inside → questions →
+Hero (with the scan) → the scan result, hidden until there is one → what you get → the page they land on → a round inside → questions →
 close.
 
 Five sections, and a reader can finish the page in four screens. That is the
@@ -48,10 +49,31 @@ a founder is buying. They are buying not having to be the salesperson.
 Backgrounds alternate paper / band down the page, with the closing CTA as the
 one dark beat.
 
-## There is no JavaScript
+## One script: the scan
 
-`assets/js/main.js` is gone, and so is the rotating hero clause it drove. The
-page has two interactive pieces and both are done in HTML and CSS:
+The hero's form is the BeHeld scan. A visitor pastes their website;
+`assets/js/scan.js` sends it to `POST https://api.beheld.tech/scan`, reads
+`GET /scan/:id/summary` every 3 seconds with the three progress steps showing,
+and draws the result in the `#scan` section under the hero. The blocks, their
+order and their wording follow the working page at
+<https://api.beheld.tech/scan>; change that page and this one together.
+
+- **The id goes in the address** (`#scan=<id>`), so a reload or a shared link
+  shows the same result without a new scan.
+- **"Get the full picture"** posts the visitor's email to
+  `POST /scan/:id/interest`. The first address on a scan is the one kept.
+- **Everything the scan wrote goes on the page as text**, never as HTML: it is
+  model output about somebody else's website. Keep it that way.
+- **No other scripts.** No analytics, no pixels, no cookies, nothing loaded
+  from a third party. Fonts from Google are the only outside request.
+- **Without scripts** the form still works: it opens the scan page on
+  api.beheld.tech with the address filled in the URL.
+- **The server only answers this page from `https://beheld.tech` and
+  `https://www.beheld.tech`** (and from itself, for the preview at
+  `https://api.beheld.tech/preview/`). Any other host needs adding to the
+  bridge's list first.
+
+The two other interactive pieces are still HTML and CSS only:
 
 - **The weekly report card** in the hero is a **radio group**. Four
   `<input type="radio" name="week">` elements sit before the tabs and the
@@ -62,11 +84,15 @@ page has two interactive pieces and both are done in HTML and CSS:
   state, the keyboard and the semantics; the stylesheet only hides the default
   marker and rotates the chevron.
 
-Both work with scripting disabled, which is why they were built this way. If
-you ever add a third interactive piece, try to keep this property.
+### Wording on this page
 
-**Do not re-add a script tag without also adding the cache-buster reference
-back to the checklist below.**
+No exclamation marks, no long dashes, and the word "free" does not appear.
+The scan's own text is held to the same rule by the bridge (it rewrites a
+sentence that breaks it). This should return nothing:
+
+```bash
+grep -n -i -w 'free' index.html assets/js/scan.js; grep -n '—' index.html assets/js/scan.js
+```
 
 ## Editing
 
@@ -120,11 +146,12 @@ grep -n '750\|1,200\|\$900\|6,000' index.html
 
 ### The Tally form
 
-Every CTA points at `https://tally.so/r/QK9bQG` — the nav button, the hero
-button and the closing button.
+Every "Get on the list" points at `https://tally.so/r/QK9bQG`: the nav
+button, the link under the scan's "Get the full picture" card, the closing
+button and the footer. The hero's main action is the scan now.
 
 ```bash
-grep -c 'tally.so/r/QK9bQG' index.html   # expect 3
+grep -c 'tally.so/r/QK9bQG' index.html   # expect 4
 ```
 
 The `initial_ask` hidden field still works for links written by hand (a QR
@@ -201,14 +228,14 @@ which looks like the site is broken rather than cached.
 So: **whenever you change `styles.css`, bump the `?v=` number** on every
 reference to it.
 
-- `index.html` — one reference (the stylesheet)
+- `index.html` — two references (the stylesheet, and `scan.js`: bump that one when the script changes)
 - `404.html` — one reference (the stylesheet)
 
 ```bash
 grep -rn "?v=" index.html 404.html
 ```
 
-Currently at `v=22`. After a bump, the first 10 minutes still serve some
+Currently at `v=25` for the stylesheet and `v=1` for the script. After a bump, the first 10 minutes still serve some
 visitors cached HTML pointing at the old URL; after that everyone is
 guaranteed a matched pair.
 
