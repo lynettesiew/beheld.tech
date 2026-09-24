@@ -29,8 +29,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css?v=26">
-<script src="assets/js/scan.js?v=2" defer></script>
+<link rel="stylesheet" href="assets/css/styles.css?v=27">
+<script src="assets/js/scan.js?v=3" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -53,28 +53,36 @@
 <!-- ══ 1 · HERO ══
      The form is the scan: paste a website, see who its copy is talking to.
      assets/js/scan.js runs it; without scripts the form opens the scan page
-     on api.beheld.tech instead. The card on the right is still a radio group,
-     not a script (see the .week block in the stylesheet). -->
+     on api.beheld.tech instead. When a scan finishes, the form gives way to
+     the scan card (#scan-result), built by the script in the "Your week"
+     card's style, and the "Your week" card is hidden until "Scan another
+     site". The "Your week" card is still a radio group, not a script (see
+     the .week block in the stylesheet). -->
 <section class="section hero" id="top">
   <div class="wrap hero__inner">
     <div>
       <h1>Stop guessing how to reach your customers.</h1>
       <p class="hero__lede">BeHeld finds the people who fit, reaches them two ways, and shows you what’s working.</p>
+      <div id="scan-start">
       <form class="scan-form" id="scan-form" action="https://api.beheld.tech/scan" method="get" novalidate>
         <input class="scan-input" id="scan-url" name="url" type="text" inputmode="url" autocomplete="url" autocapitalize="off" spellcheck="false" placeholder="yourcompany.com" aria-label="Your website">
         <button class="btn btn--primary" id="scan-go" type="submit">Paste your website</button>
       </form>
       <p class="fine">We read your site and the public sources around it, and tell you who your copy is talking to.</p>
-      <p class="scan-error" id="scan-error" role="alert" hidden></p>
-      <ol class="scan-steps" id="scan-steps" hidden aria-live="polite">
+      <ol class="scan-steps" id="scan-steps" hidden>
         <li>Reading your site</li>
         <li>Checking public sources</li>
         <li>Ranking buyers</li>
       </ol>
+      <p class="scan-error" id="scan-error" hidden></p>
       <p class="hero__more"><a href="#week">See a round</a></p>
+      </div>
+      <div class="scan-result" id="scan-result" hidden></div>
+      <!-- Everything the page changes on its own is also said here, once. -->
+      <p class="visually-hidden" id="scan-live" aria-live="polite"></p>
     </div>
 
-    <div class="week">
+    <div class="week" id="week-card">
       <input class="week__in" type="radio" name="week" id="wk1" checked>
       <input class="week__in" type="radio" name="week" id="wk2">
       <input class="week__in" type="radio" name="week" id="wk3">
@@ -116,35 +124,6 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ══ THE SCAN RESULT ══
-     Empty until a scan finishes. Blocks and wording follow the working page
-     at api.beheld.tech/scan. The id sits in the address (#scan=...), so a
-     reload shows the same result without a new scan. -->
-<section class="section band scan" id="scan" hidden aria-live="polite">
-  <div class="wrap scan__inner">
-    <div>
-      <p class="eyebrow">Your scan</p>
-      <div class="scan-out" id="scan-out"></div>
-    </div>
-    <aside class="scan-aside-col">
-      <div class="scan-card" id="scan-card" hidden>
-        <h3 id="scan-card-title">Get the full picture</h3>
-        <ul class="scan-card__adds" id="scan-card-adds">
-          <li>The case against each buyer, beside the case for.</li>
-          <li>How many of each buyer exist, and which to contact first.</li>
-        </ul>
-        <form class="scan-card__form" id="interest-form" novalidate>
-          <label class="scan-card__label" for="interest-email">Your email</label>
-          <input class="scan-input" id="interest-email" name="email" type="email" autocomplete="email" autocapitalize="off" spellcheck="false">
-          <button class="btn btn--primary" type="submit">Send me the full report</button>
-          <p class="scan-error" id="interest-error" role="alert" hidden></p>
-        </form>
-      </div>
-      <p class="scan-list"><a href="https://tally.so/r/QK9bQG">Get on the list</a></p>
-    </aside>
   </div>
 </section>
 

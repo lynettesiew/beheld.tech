@@ -321,8 +321,15 @@ p { margin: 0; }
 .footer small { font-size: 13.5px; color: var(--muted-3); }
 
 /* ---------- the scan ----------
-   The hero form and the result under it. Blocks and wording follow the
-   working page at api.beheld.tech/scan; type and colour are this site's. */
+   The hero form, then the scan card in its place. The card is the "Your
+   week" card (.week, .week__bar, .week__tabs, .week__body, .week__q) with
+   script-built tabs: buttons with role="tab" instead of radio labels,
+   because the result only exists once the script has it. */
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
 .scan-form { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; max-width: 34em; }
 .scan-input {
   flex: 1 1 14em; min-width: 0; min-height: 56px;
@@ -339,7 +346,7 @@ p { margin: 0; }
 .hero__more a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
 .hero__more a:hover { color: var(--brand-dark); }
 
-.scan-error { margin-top: 14px; color: var(--brand-dark); font-weight: 600; font-size: 16px; }
+.scan-error { margin-top: 18px; color: var(--brand-dark); font-weight: 600; font-size: 16px; }
 .scan-steps { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 8px; font-size: 16px; color: var(--muted-3); }
 /* The steps set display, so [hidden] needs saying again or they show before a scan. */
 .scan-steps[hidden], .scan-error[hidden] { display: none; }
@@ -353,48 +360,42 @@ p { margin: 0; }
 .scan-steps li.done { color: var(--muted); }
 .scan-steps li.done::before { border-color: var(--brand); background: var(--brand); }
 
-.scan__inner { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: clamp(32px, 4.4vw, 72px); align-items: start; }
-@media (max-width: 1000px) { .scan__inner { grid-template-columns: minmax(0, 1fr); } }
-.scan-out { max-width: 44em; }
-.scan-block { margin-top: 30px; }
-.scan-block h3, .scan-card h3 { font-size: clamp(21px, 1.9vw, 25px); line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 10px; }
-.scan-block p, .scan-signals li { font-size: 17px; line-height: 1.6; color: var(--ink-2); overflow-wrap: anywhere; }
-.scan-block p + p { margin-top: 6px; }
-.scan-plain { font-weight: 600; }
-.scan-buyer { font-weight: 700; color: var(--ink); }
-.scan-aside { color: var(--muted); font-size: 15.5px; }
-.scan-block .scan-aside { font-size: 15.5px; color: var(--muted); }
-.scan-label { font-weight: 700; }
+/* the card */
+.scan-result { margin-top: 32px; }
+.scan-card { max-width: 40em; }
+.scan-card .week__bar { gap: 16px; }
+.scan-card .week__bar b { overflow-wrap: anywhere; }
+.scan-card .week__bar span { flex: none; }
+/* The result has arrived: the bar lights up once, briefly. */
+.week__bar.is-new { animation: bar-flash 1.6s ease-out; }
+@keyframes bar-flash {
+  0%, 25% { background: var(--brand); }
+  100% { background: var(--ink); }
+}
+
+.scan-tab {
+  font: 700 14px/1.2 var(--body); color: var(--muted); background: var(--band);
+  border: 1.5px solid var(--line); border-radius: 999px; padding: 9px 15px;
+  cursor: pointer; min-height: 40px;
+}
+.scan-tab:hover { border-color: var(--line-soft); color: var(--ink); }
+.scan-tab[aria-selected="true"] { background: var(--brand); border-color: var(--brand); color: #FFF; }
+.scan-panel[hidden] { display: none; }
+.scan-panel { animation: rise .24s ease-out; }
+@media (prefers-reduced-motion: reduce) { .scan-panel { animation: none; } }
+.scan-panel:focus-visible { outline: 3px solid var(--brand); outline-offset: 6px; }
+.scan-panel .week__q { color: var(--ink); }
+.scan-panel p, .scan-signals li { font-size: 16.5px; line-height: 1.55; color: var(--muted); margin-top: 14px; text-wrap: pretty; overflow-wrap: anywhere; }
+.scan-panel .scan-buyer { color: var(--ink); font-weight: 700; }
+.scan-panel .scan-plain { color: var(--ink); font-weight: 600; }
+.scan-panel .scan-sub { color: var(--ink); font-family: var(--display); font-weight: 700; font-size: 18px; letter-spacing: -0.02em; }
+.scan-panel .scan-aside { font-size: 15px; color: var(--muted-2); margin-top: 8px; }
+.scan-label { font-weight: 700; color: var(--ink); }
 .scan-src { font-size: 14px; }
-.scan-src a { text-decoration: underline; text-underline-offset: 2px; }
-.scan-signals { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
-.scan-hyp { padding-top: 14px; margin-top: 14px; border-top: 1.5px solid var(--line); }
-.scan-hyp:first-of-type { border-top: 0; padding-top: 0; }
-.scan-tactic {
-  background: var(--card); border: 1.5px solid var(--line); border-left: 4px solid var(--brand);
-  border-radius: var(--radius); padding: 20px 22px;
-}
-.scan-tactic__name { font-weight: 700; color: var(--ink); font-size: 18px; }
-
-.scan-card {
-  background: var(--card); border: 2px solid var(--ink); border-radius: var(--radius);
-  box-shadow: 4px 4px 0 var(--ink); padding: 26px 24px;
-}
-.scan-card__adds { margin: 6px 0 0; padding-left: 1.2em; display: grid; gap: 6px; font-size: 16px; line-height: 1.5; color: var(--ink-2); }
-.scan-card__form { display: grid; gap: 10px; margin-top: 22px; }
-.scan-card__label { font-size: 15px; font-weight: 700; }
-.scan-card__form .scan-error { margin-top: 0; }
-.scan-card__thanks { font-size: 18px; font-weight: 700; color: var(--ink); }
-.scan-card__thanks:focus { outline: none; }
-.scan-list { margin-top: 18px; font-size: 15px; }
-.scan-list a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
-.scan-list a:hover { color: var(--brand-dark); }
-
-.footer__cta { color: var(--gold); font-weight: 700; font-size: 15px; margin-left: auto; }
-.footer__cta:hover { color: var(--gold-soft); }
-
-/* The case against, and "This one" on each hypothesis (2026-09-23). */
-.scan-block .scan-against { margin-top: 10px; }
+.scan-src a, .scan-inline { text-decoration: underline; text-underline-offset: 2px; }
+.scan-signals { margin: 6px 0 0; padding-left: 1.2em; }
+.scan-signals li { margin-top: 8px; }
+.scan-hyp { padding-top: 16px; margin-top: 16px; border-top: 1.5px solid var(--line); }
 .scan-pick {
   margin-top: 12px; min-height: 44px; padding: 8px 16px;
   font: 700 15px/1.2 var(--body); color: var(--ink);
@@ -402,3 +403,36 @@ p { margin: 0; }
 }
 .scan-pick:hover { background: var(--band); }
 .scan-pick[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+
+/* greyed rows: what the report holds, with nothing made up in them */
+.scan-ghost { height: 12px; border-radius: 6px; background: var(--line); }
+.scan-ghosts { display: grid; gap: 10px; margin-top: 18px; }
+.scan-ghosts .scan-ghost:nth-child(2) { width: 72%; }
+.scan-locked-list { display: grid; gap: 10px; margin-top: 20px; }
+.scan-locked {
+  display: grid; gap: 8px; width: 100%; text-align: left; cursor: pointer;
+  background: var(--band); border: 1.5px dashed var(--line-soft); border-radius: 10px;
+  padding: 12px 14px; font: 700 15px/1.3 var(--body); color: var(--muted);
+}
+.scan-locked:hover { border-color: var(--muted-3); color: var(--ink); }
+.scan-locked .scan-ghost { width: 80%; }
+
+.scan-ask { margin-top: 24px; padding-top: 20px; border-top: 1.5px solid var(--line); }
+.scan-ask__title { font-size: clamp(20px, 1.8vw, 23px); line-height: 1.2; letter-spacing: -0.02em; }
+.scan-ask__form { display: grid; gap: 10px; margin-top: 14px; }
+.scan-ask__label { font-size: 15px; font-weight: 700; }
+.scan-ask__form .scan-error { margin-top: 0; }
+.scan-panel .scan-thanks { font-size: 18px; font-weight: 700; color: var(--ink); margin-top: 0; }
+.scan-panel .scan-list { margin-top: 16px; font-size: 15px; }
+.scan-list a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+.scan-list a:hover { color: var(--brand-dark); }
+
+.scan-sharpen { margin-top: 18px; font-size: 14.5px; line-height: 1.55; color: var(--muted-2); max-width: 40em; }
+.scan-again {
+  margin-top: 14px; background: none; border: 0; padding: 8px 0; min-height: 44px; cursor: pointer;
+  font: 700 15px/1.2 var(--body); color: var(--ink); text-decoration: underline; text-underline-offset: 3px;
+}
+.scan-again:hover { color: var(--brand-dark); }
+
+.footer__cta { color: var(--gold); font-weight: 700; font-size: 15px; margin-left: auto; }
+.footer__cta:hover { color: var(--gold-soft); }

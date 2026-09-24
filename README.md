@@ -54,12 +54,18 @@ one dark beat.
 The hero's form is the BeHeld scan. A visitor pastes their website;
 `assets/js/scan.js` sends it to `POST https://api.beheld.tech/scan`, reads
 `GET /scan/:id/summary` every 3 seconds with the three progress steps showing,
-and draws the result in the `#scan` section under the hero. The blocks, their
+and, when it finishes, puts the scan card in the form's place: four tabs in
+the "Your week" card's style (What you sell, Who buys, Who’s out there,
+Where to start), with the "Your week" card hidden until "Scan another site". The blocks, their
 order and their wording follow the working page at
 <https://api.beheld.tech/scan>; change that page and this one together.
 
-- **The id goes in the address** (`#scan=<id>`), so a reload or a shared link
-  shows the same result without a new scan.
+- **The id and the open tab go in the address** (`#scan=<id>&tab=buys`), so
+  a reload or a shared link shows the same result, on the same tab, without
+  a new scan. Tabs: `sell`, `buys`, `out-there`, `start`.
+- **Everything the page changes on its own is announced** through one polite
+  live region (`#scan-live`): the result arriving, a pick, the email sent, a
+  failure.
 - **"Get the full picture"** posts the visitor's email to
   `POST /scan/:id/interest`. The first address on a scan is the one kept.
 - **Everything the scan wrote goes on the page as text**, never as HTML: it is
@@ -235,7 +241,7 @@ reference to it.
 grep -rn "?v=" index.html 404.html
 ```
 
-Currently at `v=26` for the stylesheet and `v=2` for the script. After a bump, the first 10 minutes still serve some
+Currently at `v=27` for the stylesheet and `v=3` for the script. After a bump, the first 10 minutes still serve some
 visitors cached HTML pointing at the old URL; after that everyone is
 guaranteed a matched pair.
 
